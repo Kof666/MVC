@@ -1,0 +1,23 @@
+/* Style for header and nav */
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--main-col);
+    min-height: 300px;
+    padding: 1em;
+    text-align: center;
+}
+
+footer div a {
+    font-family: var(--font-heading);
+    color: var(--font-col);
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+footer div a:hover {
+    color: var(--highlight-col);
+}

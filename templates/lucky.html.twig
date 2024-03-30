@@ -1,12 +1,19 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Magic number{% endblock %}
+{% block title %}Lucky Number{% endblock %}
 
 {% block main %}
-    <h1>Lucky!</h1>
+
+{% if number == 1 %} <div class="dice">&#9861;</div> 
+{% elseif number == 2 %} <div class="dice">&#9857;</div>
+{% elseif number == 3 %} <div class="dice">&#9858;</div>
+{% elseif number == 4 %} <div class="dice">&#9859;</div>
+{% elseif number == 5 %} <div class="dice">&#9860;</div>
+{% elseif number == 6 %} <div class="dice">&#9861;</div>
+{% endif %}
+
+
+    <h1>Lucky Number Page!</h1>
+    <p>Turnumret är denna gång <h2>{{ number }}</h2> <strong>&#9856; &#9857; &#9858; 	&#9859; &#9860; &#9861; </strong> </p>
     <p>this will be the crazy page..</p>
 {% endblock %}
-
-{% block header %}header{% endblock %}
-
-{% block footer %}footer{% endblock %}

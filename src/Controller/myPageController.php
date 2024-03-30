@@ -50,7 +50,17 @@ class myPageController extends AbstractController
     #[Route('/lucky', name: 'lucky')]
     public function lucky(): Response
     {
-        $number = random_int(0, 100);
+        $number = random_int(1, 6);
+        $dice = null;
+        switch ($number) {
+            case 1:
+                $dice = "&#9856;";
+                break;
+            default:
+                $dice = "&#9861;";
+        }
+
+
 
         $data = [
             'number' => $number
@@ -71,3 +81,4 @@ class myPageController extends AbstractController
         return $this->render('/me.html.twig', $data);
     }
 }
+

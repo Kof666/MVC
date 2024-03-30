@@ -1,0 +1,65 @@
+/* the basis for the typography style */
+
+html, body {
+    font-size: 100%;
+    height: 100%;
+    line-height: 1.4;
+}
+
+body {
+    line-height: 1.2;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    color: var(--font-col);
+    font-size: 2.8em;
+    margin-bottom: rem; /* baseline * 2, för att skapa mer utrymme *//*ändrade för det såg inte bra ut*/
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    color: var(--font-col);
+    font-size: 2em;
+    margin-bottom: 0.5rem; /* baseline * 2, för att skapa mer utrymme *//*ändrade för det såg inte bra ut*/
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    color: var(--font-col);
+    font-size: 1.2em;
+    margin-bottom: 0.5rem; /* baseline * 2, för att skapa mer utrymme *//*ändrade för det såg inte bra ut*/
+}
+
+p, td, th, li, dd {
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+p {
+    font-family: var(--font-p);
+    color: var(--font-col);
+    font-size: 1.25em;
+    margin-bottom: 1.5rem; /* 1.2 * 1.25em vår baseline */
+    letter-spacing: 1px;
+}
+
+a {
+    font-family: var(--font-p);
+    font-size: 1.25em;
+    color: var(--highlight-col);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--highlight-col);
+}
+
+h1, h2, h3, p {
+    margin-left: 0.5rem;
+}

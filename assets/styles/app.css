@@ -1,31 +1,8 @@
+
+@import 'var.css';
+@import 'base.css';
+@import 'typo.css';
 @import 'header.css';
+@import 'footer.css';
 @import 'grid.css';
 @import 'flexbox.css';
-
-
-
-* {
-    margin: auto;
-    padding: auto;
-}
-
-body {
-    background: url('../images/background.jpg');
-    background-size:auto;
-}
-
-header {
-    background-color: #ffffffcc;
-    padding: 0;
-}
-
-main {
-    width: 80%;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    background-color: #ffffffcc;
-}
-
-footer {
-    background-color: #ffffffcc;
-}

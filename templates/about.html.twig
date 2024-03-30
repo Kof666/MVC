@@ -1,18 +1,25 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Magic number{% endblock %}
+{% block title %}Om{% endblock %}
 
 {% block main %}
-    <h1>About!</h1>
     <div class="flex-container">
         <div class="flex1">
-            <a href="https://github.com/dbwebb-se/mvc"><i class="fa-brands fa-github"></i> Course Repo</a>
-    
+            <a href="{{ asset('img/php_symfony.png') }}">
+                <img src="{{ asset('img/php_symfony.png') }}" width="1000" alt="me">
+            </a>
         </div>
         <div class="flex2">
-            <p>The name "mvc" is our own nickname for the course and under that name hides object-oriented PHP programming with known web frameworks, unit testing, code quality and database connections with object relational mapping (ORM).</p>
-            <p>The course consists of 6 course elements that must be completed and submitted as well as a final kmom07/10 which examines the course. The course elements are partially marked in yellow as they will be reviewed and released continuously during the course.</p>
-            
+            <h1>Om!</h1>
+            <br>
+            <p>
+                Det här är en redovisnings sida för kursen mvc som ska lära oss om Objektorienterade webbteknologier. Vi jobbar med ett php ramverk kallat symfony. Vi kommre även titta på enhetstestning, kodkvalitet och databaskopplingar med något som förkortas ORM.
+            </p>
+            <br>
+            <p>här är några länkar</p>
+            <br>
+            <a href="https://github.com/dbwebb-se/mvc" target="_blank"><i class="fa-brands fa-github"></i> Kurs Repo</a><br>
+            <a href="https://github.com/Kof666/MVC" target="_blank"><i class="fa-brands fa-github"></i> Mitt Repo</a>
         </div>
     </div>
 

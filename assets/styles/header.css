@@ -1,3 +1,38 @@
+/* Style for header and nav */
+
 header {
     display: flex;
+    justify-content: space-between;
+    align-items: end;
+    background-color: var(--main-col);
+    min-height: 100px;
+    padding: 0;
+}
+
+header h1 {
+    font-family: var(--font-heading);
+    color: var(--font-col);
+    margin: 0.5em auto auto 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li a {
+    font-family: var(--font-heading);
+    color: var(--font-col);
+    font-weight: bold;
+    font-size:x-large;
+    text-decoration: none;
+    padding: 0px 20px 0px 20px;
+}
+
+nav ul li:hover {
+    transform: scale(1.2);
+}
+    
+nav ul li a:hover {
+    color: var(--highlight-col);
 }

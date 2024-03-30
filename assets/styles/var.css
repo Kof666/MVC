@@ -1,0 +1,12 @@
+/* Variables */
+
+/* Colors */
+:root {
+    --main-col: #746ff3e3;
+    --bg-col:#eeeeeedb;
+    --highlight-col:#1300ff;
+
+    --font-heading: 'Courier New', Courier, monospace;
+    --font-p: Arial, Helvetica, sans-serif;
+    --font-col:#333;
+}
