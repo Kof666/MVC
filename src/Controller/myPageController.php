@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,11 +15,7 @@ class myPageController extends AbstractController
     #[Route('/me', name: 'me')]
     public function me(): Response
     {
-        $number = random_int(0, 100);
-
-        $data = [
-            'number' => $number
-        ];
+        $data = [];
 
         return $this->render('/me.html.twig', $data);
     }
@@ -26,11 +23,7 @@ class myPageController extends AbstractController
     #[Route('/about', name: 'about')]
     public function about(): Response
     {
-        $number = random_int(0, 100);
-
-        $data = [
-            'number' => $number
-        ];
+        $data = [];
 
         return $this->render('/about.html.twig', $data);
     }
@@ -38,11 +31,7 @@ class myPageController extends AbstractController
     #[Route('/report', name: 'report')]
     public function report(): Response
     {
-        $number = random_int(0, 100);
-
-        $data = [
-            'number' => $number
-        ];
+        $data = [];
 
         return $this->render('/report.html.twig', $data);
     }
@@ -51,19 +40,15 @@ class myPageController extends AbstractController
     public function lucky(): Response
     {
         $number = random_int(1, 6);
-        $dice = null;
-        switch ($number) {
-            case 1:
-                $dice = "&#9856;";
-                break;
-            default:
-                $dice = "&#9861;";
+        $tag = null;
+        if($number == 6) {
+            $tag = 'winner';
+        } else {
+            $tag = 'loser';
         }
-
-
-
         $data = [
-            'number' => $number
+            'number' => $number,
+            'tag' => $tag
         ];
 
         return $this->render('/lucky.html.twig', $data);
@@ -72,13 +57,19 @@ class myPageController extends AbstractController
     #[Route('/')]
     public function start(): Response
     {
-        $number = random_int(0, 100);
-
-        $data = [
-            'number' => $number
-        ];
+        $data = [];
 
         return $this->render('/me.html.twig', $data);
     }
+
+    #[Route('/api', name: 'api')]
+    public function api(): Response
+    {
+        
+        $data = [];
+
+        return $this->render('/api.html.twig', $data);
+    }
+
 }
 
