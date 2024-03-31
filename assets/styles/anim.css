@@ -1,0 +1,16 @@
+
+.winner {
+    background-color: red;
+    position: relative;
+    animation-name: example;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes example {
+    0%   {background-color:rgb(242, 128, 128);}
+    25%  {background-color:rgb(245, 245, 119);}
+    50%  {background-color:rgb(110, 110, 241);}
+    75%  {background-color:rgb(109, 243, 109);}
+    100% {background-color:rgb(244, 120, 120);}
+  }

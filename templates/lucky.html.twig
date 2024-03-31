@@ -4,16 +4,30 @@
 
 {% block main %}
 
-{% if number == 1 %} <div class="dice">&#9861;</div> 
-{% elseif number == 2 %} <div class="dice">&#9857;</div>
-{% elseif number == 3 %} <div class="dice">&#9858;</div>
-{% elseif number == 4 %} <div class="dice">&#9859;</div>
-{% elseif number == 5 %} <div class="dice">&#9860;</div>
-{% elseif number == 6 %} <div class="dice">&#9861;</div>
-{% endif %}
+<div class="{{ tag }}">
+    <h1>Lucky?</h1>
+    {% if tag == 'loser' %}
+        <p>Testa din lycka! kasta tärningen och se om du kan få en sexa.</p>
+    {% elseif tag == 'winner' %}
+        <h1> GRATTIS!!! DU FICK EN SEXA!!!!</h1>
+    {% endif %}
 
+    {% if number == 1 %} <div class="dice">&#9856;</div> 
+    {% elseif number == 2 %} <div class="dice">&#9857;</div>
+    {% elseif number == 3 %} <div class="dice">&#9858;</div>
+    {% elseif number == 4 %} <div class="dice">&#9859;</div>
+    {% elseif number == 5 %} <div class="dice">&#9860;</div>
+    {% elseif number == 6 %} <div class="dice">&#9861;</div>
+    {% endif %}
 
-    <h1>Lucky Number Page!</h1>
-    <p>Turnumret är denna gång <h2>{{ number }}</h2> <strong>&#9856; &#9857; &#9858; 	&#9859; &#9860; &#9861; </strong> </p>
-    <p>this will be the crazy page..</p>
+    {% if tag == 'loser' %}
+        <p>Ledsen, ingen sexa. testa igen..</p>
+    {% elseif tag == 'winner' %}
+        <p>Kan du få en till sexa???</p>
+    {% endif %}
+
+    <button class="button" role="button">
+        <a href="{{ path('lucky') }}">Kasta tärningen</a>
+    </button>
+</div>
 {% endblock %}

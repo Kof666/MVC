@@ -14,3 +14,15 @@
 .flex2 {
     padding: 0em 2em 1em 1em;
 }
+
+/* .flex2 a {
+    font-family: var(--font-heading);
+    color: var(--font-col);
+    font-weight: bold;
+    text-decoration: none;
+}
+*/
+
+.flex2 ul li a:hover {
+    padding: 0 0 0 2em;
+}

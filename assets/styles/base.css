@@ -62,5 +62,6 @@ ul li a:hover {
 }
 
 .dice {
-    font-size: 100px;
+    font-size: 200px;
+    margin-left: 1em;
 }
