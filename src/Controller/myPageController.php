@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class myPageController extends AbstractController
 {
     #[Route('/me', name: 'me')]
+
     public function me(): Response
     {
         $data = [];
@@ -65,11 +66,10 @@ class myPageController extends AbstractController
     #[Route('/api', name: 'api')]
     public function api(): Response
     {
-        
+
         $data = [];
 
         return $this->render('/api.html.twig', $data);
     }
 
 }
-

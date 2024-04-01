@@ -12,7 +12,7 @@ class myPageControllerJson
     // #[Route('/api/', name: 'api')]
     // public function api(): Response
     // {
-        
+
     //     $data = [];
 
     //     return $this->render('/api.html.twig', $data);
@@ -36,11 +36,11 @@ class myPageControllerJson
 
         if($number == 1) {
             $quote = "Code is like humor. When you have to explain it, it’s bad. – Cory House";
-        } else if ($number == 2) {
+        } elseif ($number == 2) {
             $quote = "Experience is the name everyone gives to their mistakes. – Oscar Wilde";
-        } else if ($number == 3) {
+        } elseif ($number == 3) {
             $quote = "Confusion is part of programming. ― Felienne Hermans";
-        } 
+        }
 
         $data = [
             'quote' => $quote,
