@@ -19,8 +19,11 @@ We work with Symfony framework to learn about Object-oriented web technologies. 
 Documentations if needed
 ----------------------------
 [Symfony](https://symfony.com/doc/current/index.html)
+
 [PHP](https://www.php.net/manual/en/)
+
 [Twig](https://twig.symfony.com/doc/)
+
 [npm](https://docs.npmjs.com/)
 
 Requirements
