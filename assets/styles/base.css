@@ -65,3 +65,7 @@ ul li a:hover {
     font-size: 200px;
     margin-left: 1em;
 }
+
+main a {
+    margin: 0.5em;
+}
