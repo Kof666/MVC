@@ -18,7 +18,7 @@ class myPageControllerJson
     //     return $this->render('/api.html.twig', $data);
     // }
 
-    #[Route('/api/quote')]
+    #[Route('/api/quote', name: 'api/quote')]
     public function quote(): Response
     {
         // $quotes = [
