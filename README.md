@@ -8,12 +8,20 @@ revision:
 
 ![Symfony image](./public/img/php_symfony.png)
 
+
 Object-oriented web technologies
 =========================================
 
 This repo is a part of the course MVC at BTH. 
 
 We work with Symfony framework to learn about Object-oriented web technologies. This repo is made from a Symfony skeleton.
+
+Documentations if needed
+----------------------------
+[Symfony](https://symfony.com/doc/current/index.html)
+[PHP](https://www.php.net/manual/en/)
+[Twig](https://twig.symfony.com/doc/)
+[npm](https://docs.npmjs.com/)
 
 Requirements
 ------------------------------
