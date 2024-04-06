@@ -61,9 +61,11 @@ ul li a:hover {
     color: var(--highlight-col);
 }
 
+.dice-ul {
+    display: flex;
+}
 .dice {
-    font-size: 200px;
-    margin-left: 1em;
+    font-size: 150px;
 }
 
 main a {

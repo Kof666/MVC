@@ -1,0 +1,10 @@
+.pig {
+    background-color: #82c982;
+    border-radius: 1em;
+    padding:2em;
+}
+
+.pig form input {
+    font-size: 1.5em;
+    padding: 0.5em;
+}

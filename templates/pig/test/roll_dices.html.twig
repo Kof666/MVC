@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+<h1>Roll many dice!</h1>
+
+<p>You rolled {{ dice_count}} dices. Here's the values of the dices.</p>
+
+<div class="flex-container">
+    <ul class="dice-ul">
+        {% for roll in diceRoll %}
+            <li><div class="dice">{{ roll }}</div></li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+<p>Try to roll
+    <a href="{{path('test_roll_num_dice', {num: 5})}}">5</a>
+    or
+    <a href="{{path('test_roll_num_dice', {num: 10})}}">10</a>
+    dices...
+</p>
+
+{% endblock %}
