@@ -21,3 +21,7 @@ footer div a {
 footer div a:hover {
     color: var(--highlight-col);
 }
+
+.ul_foot {
+    text-align: center;
+}

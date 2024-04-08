@@ -35,6 +35,7 @@ class DiceGameController extends AbstractController
             $dice->roll();
             $diceRoll[] = $dice->getAsString();
         }
+        
         $data = [
             "diceRoll" => $diceRoll,
             "diceStr" => $dice->getAsString()

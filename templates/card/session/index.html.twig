@@ -1,0 +1,10 @@
+
+{% extends "base.html.twig" %}
+
+{% block title %}Session{% endblock %}
+
+{% block main %}
+<p>The session contains:</p>
+{{ include('flash.html.twig') }}
+{{ dump(session) }}
+{% endblock %}
