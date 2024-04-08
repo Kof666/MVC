@@ -20,21 +20,19 @@ class CardGameController extends AbstractController
     public function home(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
 
         return $this->render('card/home.html.twig');
     }
 
-     /**
-     * testing class Card
-     */
+    /**
+    * testing class Card
+    */
     #[Route("/game/card/test", name: "test")]
     public function test(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $cards = [];
         for ($i = 2; $i < 5; $i++) {
             $card = new Card($i, "hearts");
@@ -46,9 +44,6 @@ class CardGameController extends AbstractController
         $deck2 = new DeckOfCards();
         $deck2->shuffle();
         $carddeal = $deck1->draw();
-
-
-
 
         $data = [
             "cards" => $cards,
@@ -84,7 +79,7 @@ class CardGameController extends AbstractController
     public function session_destroy(
         SessionInterface $session
     ): Response {
-        
+
         $session->clear();
         $this->addFlash(
             'warning',

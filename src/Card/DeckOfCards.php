@@ -6,11 +6,13 @@ class DeckOfCards
 {
     private $cards;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->initDeck();
     }
 
-    private function initDeck() {
+    private function initDeck()
+    {
         $this->cards = [];
 
         $suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
@@ -23,11 +25,13 @@ class DeckOfCards
         }
     }
 
-    public function shuffle() {
+    public function shuffle()
+    {
         shuffle($this->cards);
     }
 
-    public function draw() {
+    public function draw()
+    {
         if (empty($this->cards)) {
             return null; // Return null if no cards left in the deck
         }
