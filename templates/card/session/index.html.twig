@@ -7,4 +7,7 @@
 <p>The session contains:</p>
 {{ include('flash.html.twig') }}
 {{ dump(session) }}
+
+<li class="ul_foot">{{ include('card/session/session_destroyed_link.html.twig') }}</li>
+
 {% endblock %}

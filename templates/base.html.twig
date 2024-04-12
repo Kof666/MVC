@@ -9,10 +9,10 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
+        {# {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        {% endblock %} #}
     </head>
     <body>
         <header>
@@ -43,7 +43,6 @@
                     <h2>Länkar till denna webplats</h2>
                     <ul class="ul_foot">
                         <li class="ul_foot">{{ include('card/session/session_link.html.twig') }}</li>
-                        <li class="ul_foot">{{ include('card/session/session_destroyed_link.html.twig') }}</li>
                     </ul>
                     <br>
                     <br>

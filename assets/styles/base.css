@@ -6,11 +6,6 @@
     padding: 0;
 }
 
-body {
-    background: url('../images/background.jpg');
-    background-size:cover;
-}
-
 main {
     width: 70%;
     /* min-height: 500px; */

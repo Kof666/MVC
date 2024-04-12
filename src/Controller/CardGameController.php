@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Card\Card;
 use App\Card\DeckOfCards;
+use App\Card\CardHand;
+use App\Card\CardGraphic;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,29 +35,49 @@ class CardGameController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        $cards = [];
-        for ($i = 2; $i < 5; $i++) {
-            $card = new Card($i, "hearts");
-            $cards[$i] = $card->__toString();
-        }
+            $card = new CardGraphic(6, "hearts");
+            $cards = $card->getAsString();
 
         $deck1 = new DeckOfCards();
 
         $deck2 = new DeckOfCards();
         $deck2->shuffle();
-        $carddeal = $deck1->draw();
+
+        $deck3 = new DeckOfCards();
+        $draw = $deck3->draw();
+        $draw = $deck3->draw();
+
+        $deck4 = new DeckOfCards();
+        $draw = $deck4->draw();
+        $deck4->shuffle();
+
+        $deck5 = new DeckOfCards();
+
+        $hand = new CardHand();
+        $hand->addCard($deck5->draw());
+        $hand->addCard($deck5->draw());
 
         $data = [
             "cards" => $cards,
             "deck1" => $deck1,
             "deck2" => $deck2,
-            "carddeal" => $carddeal
+            "deck3" => $deck3,
+            "deck4" => $deck4,
+            "deck5" => $deck5,
+            "hand" => $hand,
+            "draw" => $draw,
+            // "hand" => $hand
         ];
 
         $session->set("cards", $cards);
         $session->set("deck1", $deck1);
         $session->set("deck2", $deck2);
-        $session->set("carddeal", $carddeal);
+        $session->set("deck3", $deck3);
+        $session->set("deck4", $deck4);
+        $session->set("deck5", $deck5);
+        $session->set("hand", $hand);
+        $session->set("draw", $draw);
+        // $session->set("hand", $hand);
 
         return $this->render('card/test/test_page.html.twig', $data);
     }

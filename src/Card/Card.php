@@ -7,8 +7,8 @@ namespace App\Card;
  */
 class Card
 {
-    private $value;
-    private $suit;
+    protected $value;
+    protected $suit;
 
     public function __construct($value, $suit)
     {

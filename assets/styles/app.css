@@ -1,3 +1,7 @@
+body {
+    background: url('../images/background.jpg');
+    background-size:cover;
+}
 
 @import 'var.css';
 @import 'base.css';
