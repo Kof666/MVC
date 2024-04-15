@@ -1,9 +1,6 @@
 /* Style for header and nav */
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
     background-color: var(--main-col);
     min-height: 100px;
     padding: 0;
@@ -12,12 +9,18 @@ header {
 header h1 {
     font-family: var(--font-heading);
     color: var(--font-col);
-    margin: 0.5em auto auto 1em;
+    margin: auto auto 1em 1em;
+    padding: 1em 0 0 0;
 }
 
 nav ul {
     list-style-type: none;
     display: flex;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    margin: 0.5em 0 0.5em 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
 }
 
 nav ul li a {

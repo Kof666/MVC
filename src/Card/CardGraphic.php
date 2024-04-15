@@ -2,94 +2,60 @@
 
 namespace App\Card;
 
-class CardGraphic extends Card 
+/**
+ * A graphic class to that extends the class Card
+ */
+class CardGraphic extends Card
 {
-
-    // public function __construkt($gValue, $gSuit)
-    // {
-    //     parent::__construct($gValue, $gSuite ?? parent::getSuit());
-    // }
-
-
-  public function getAsString() {
-    switch ($this->suit) {
-        case 'hearts':
-            return $this->value . ' ' . '♥';
-        case 'Diamonds':
-            return $this->value . ' ' . '♦';
-        case 'Clubs':
-            return $this->value . ' ' . '♣';
-        case 'Spades':
-            return $this->value . ' ' . '♠';
-        default:
-        return $this->value . ' ' . 'unknown suit';
+    /**
+     * Give you a string representation of the cards value and suite
+     *
+     * @return string   string of value and suit as one string
+     */
+    public function cardAsString()
+    {
+        return $this->getAsString();
     }
-  }
 
+    /**
+     * A graphic representation of the suite of the card
+     *
+     * @return string   of the suite of the card
+     */
+    public function getGraphicSuit()
+    {
+        switch ($this->suit) {
+            case 'Hearts':
+                return '♥';
+            case 'Diamonds':
+                return '♦';
+            case 'Clubs':
+                return '♣';
+            case 'Spades':
+                return '♠';
+            default:
+                return 'unknown suit';
+        }
+    }
 
-    // public function __construct($value, $suit)
-    // {
-    //     parent::__construct($value, $suit);
-    // }
-
-    // public function getAsString() {
-    //     $suitSymbol = '♦';
-
-    //     switch (parent::suite) {
-    //         case 'Hearts':
-    //             $sutieSymbol = '♥';
-    //         case 'Diamonds':
-    //             return '♦';
-    //         case 'Clubs':
-    //             return '♣';
-    //         case 'Spades':
-    //             return '♠';
-    //         default:
-    //             return 'default';
-    //     }
-
-
-
-
-    //     return $this->value . ' ' . $suitSymbol;
-    // }
-
-    // protected function getSuitSymbol() {
-
-    //     return '♦';
-    //     // switch ($this->suit) {
-    //     //     case 'Hearts':
-    //     //         return '♥';
-    //     //     case 'Diamonds':
-    //     //         return '♦';
-    //     //     case 'Clubs':
-    //     //         return '♣';
-    //     //     case 'Spades':
-    //     //         return '♠';
-    //     //     default:
-    //     //         return '';
-    //     // }
-    // }
-
-
-
-    // protected $value;
-    // protected $suite;
-
-    // private $representation = [
-    //     '♥',
-    //     '♦',
-    //     '♣',
-    //     '♠'
-    // ];
-
-    // public function __construct($value, $suit)
-    // {
-    //     parent::__construct($value, $suit);
-    // }
-
-    // public function getAsString(): string
-    // {
-    //     return $this->suite;
-    // }
+    /**
+     * A graphic representation of the suite and the value of the card as one string
+     *
+     * @return string   of the suite and value of the card
+     */
+    public function getAsString()
+    {
+        switch ($this->suit) {
+            case 'Hearts':
+                return $this->value . ' ' . '♥';
+            case 'Diamonds':
+                return $this->value . ' ' . '♦';
+            case 'Clubs':
+                return $this->value . ' ' . '♣';
+            case 'Spades':
+                return $this->value . ' ' . '♠';
+            default:
+                return $this->value . ' ' . 'unknown suit';
+        }
+    }
 }

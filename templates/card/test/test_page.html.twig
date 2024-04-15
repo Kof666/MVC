@@ -2,27 +2,31 @@
 
 {% block main %}
 <h1>Testsida för kort klasser</h1>
-<p>Här har jag i test routen skapat olika instanser av dom olika klasserna och kallat på olika metoder/funktioner för att se att dessa funkar. Nedan är utskrifter/var_dumps för att kontrollera att det jag vill ska hända händer</p>
-<p>Här testas klassen Card som ges 3 instanser</p>
-<p>{{ dump(cards) }}</p>
+{{ include('card/card_nav.html.twig') }}
+<div class="game">
+    <p>Här har jag i test routen skapat olika instanser av dom olika klasserna och kallat på olika metoder/funktioner för att se att dessa funkar. Nedan är utskrifter/var_dumps för att kontrollera att det jag vill ska hända händer</p>
+    <p>Här testas klassen Card som ges 3 instanser</p>
+    <p>{{ dump(cards) }}</p>
+    
+    <p>
+    {{ cards }}
+    </p>
+    <p>Här testas klassen DeckOfCards</p>
+    <p>deck1 bör innehålla en oblandad kortlek</p>
+    <p>{{ dump(deckGraphic) }}</p>
+    
+    <p>deck2 bör innehålla en blandad kortlek</p>
+    <p>{{ dump(deck2) }}</p>
+    
+    <p>Här skapas en tredje kortlek deck3 som delar ut 2 kort. Den bör vara oblandad och sakna dom två första korten</p>
+    <p>{{ dump(deck3) }}</p>
+    
+    <p>Här skapas deck4 som delar ut 2 kort och blandas om vilket bör resultera i att den har 52 kort blandade</p>
+    <p>{{ dump(deck4) }}</p>
+    
+    <p>Här skapas $deck5 som delar ut två kort till $hand via klassen CardHand</p>
+    <p>{{ dump(deck5) }}</p>
+    <p>{{ dump(hand) }}</p>
+</div>
 
-<p>
-{{ cards }}
-</p>
-<p>Här testas klassen DeckOfCards</p>
-<p>deck1 bör innehålla en oblandad kortlek</p>
-<p>{{ dump(deck1) }}</p>
-
-<p>deck2 bör innehålla en blandad kortlek</p>
-<p>{{ dump(deck2) }}</p>
-
-<p>Här skapas en tredje kortlek deck3 som delar ut 2 kort. Den bör vara oblandad och sakna dom två första korten</p>
-<p>{{ dump(deck3) }}</p>
-
-<p>Här skapas deck4 som delar ut 2 kort och blandas om vilket bör resultera i att den har 52 kort blandade</p>
-<p>{{ dump(deck4) }}</p>
-
-<p>Här skapas $deck5 som delar ut två kort till $hand via klassen CardHand</p>
-<p>{{ dump(deck5) }}</p>
-<p>{{ dump(hand) }}</p>
 {% endblock %}

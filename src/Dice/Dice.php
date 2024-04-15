@@ -34,7 +34,7 @@ class Dice
     /**
      * Get value of the dice
      *
-     * @return the value of the dice
+     * @return value of the dice
      */
     public function getValue()
     {

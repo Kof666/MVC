@@ -2,22 +2,27 @@
 
 namespace App\Card;
 
-class CardHand {
+class CardHand
+{
     private $cards;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->cards = [];
     }
 
-    public function addCard(Card $card) {
+    public function addCard(Card $card)
+    {
         $this->cards[] = $card;
     }
 
-    public function getCards() {
+    public function getCards()
+    {
         return $this->cards;
     }
 
-    public function getTotalValue() {
+    public function getTotalValue()
+    {
         $totalValue = 0;
         foreach ($this->cards as $card) {
             $totalValue += $card->getValue();
