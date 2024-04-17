@@ -4,7 +4,7 @@
 <h1>Testsida för kort klasser</h1>
 {{ include('card/card_nav.html.twig') }}
 <div class="game">
-    <p>Här har jag i test routen skapat olika instanser av dom olika klasserna och kallat på olika metoder/funktioner för att se att dessa funkar. Nedan är utskrifter/var_dumps för att kontrollera att det jag vill ska hända händer</p>
+    {# <p>Här har jag i test routen skapat olika instanser av dom olika klasserna och kallat på olika metoder/funktioner för att se att dessa funkar. Nedan är utskrifter/var_dumps för att kontrollera att det jag vill ska hända händer</p>
     <p>Här testas klassen Card som ges 3 instanser</p>
     <p>{{ dump(cards) }}</p>
     
@@ -26,7 +26,7 @@
     
     <p>Här skapas $deck5 som delar ut två kort till $hand via klassen CardHand</p>
     <p>{{ dump(deck5) }}</p>
-    <p>{{ dump(hand) }}</p>
+    <p>{{ dump(hand) }}</p> #}
 </div>
 
 {% endblock %}

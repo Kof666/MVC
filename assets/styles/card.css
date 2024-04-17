@@ -1,7 +1,13 @@
 .game {
     background-color: #82c982;
     border-radius: 1em;
-    padding:2em;
+}
+
+.game form input {
+    font-size: 1.2em;
+    padding: 0.2em;
+    margin: 0 0 0.8em 0.1em;
+    border-radius: 0.4em;
 }
 
 .ul-game {
@@ -11,6 +17,18 @@
 
 .card {
     background-color: antiquewhite;
+    border-radius: 0.5em;
+    width: 80px;
+    height: 120px;
+    margin: 1em;
+    padding: 0.3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-card {
+    background-color: rgba(249, 0, 0, 0.742);
+    border: 6px antiquewhite solid ;
     border-radius: 0.5em;
     width: 80px;
     height: 120px;

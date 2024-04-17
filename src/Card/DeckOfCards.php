@@ -11,6 +11,7 @@ class DeckOfCards
      * @var array deck    an array of cards, a deck of cards
      */
     private $deck;
+    private $lastDraw = [];
 
     /**
      * Constructor to initiate a a deck of cards
@@ -63,7 +64,13 @@ class DeckOfCards
         if (empty($this->deck)) {
             return null; // Return null if no cards left in the deck
         }
-        return array_shift($this->deck); // Deal the top card from the deck
+        $lastDraw = array_shift($this->deck);
+        return $lastDraw; // Deal the top card from the deck
+    }
+
+    public function getLast ()
+    {
+        return $this->lastDraw;
     }
 
     /**
@@ -94,6 +101,10 @@ class DeckOfCards
         return $value;
     }
 
+    public function cardCount()
+    {
+        return count($this->deck);
+    }
 
     /**
      * get a representation of all cards in the deck
