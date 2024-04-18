@@ -5,14 +5,7 @@
     <h1>Dra ett kort [draw]</h1>
     {{ include('card/card_nav.html.twig') }}
     <p>Det är {{ card_count }} kort kvar i leken</p>
-
-    <p>kortleken</p>
-    {# <p>{{ draw }}</p> #}
-
-
-    {# {{ dump( draw_deck) }}
-    {{ dump(card_count) }}
-    {{ dump(str_draw) }} #}
+    {{ include('card/flash.html.twig') }}
 
     <ul class="ul-game">
         <div class="back-card"></div>

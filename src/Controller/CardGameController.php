@@ -23,6 +23,7 @@ class CardGameController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
+
         $drawDeck = new DeckOfCards();
         $drawDeck->shuffle();
 
@@ -112,10 +113,6 @@ class CardGameController extends AbstractController
     ): Response {
 
         $session->clear();
-        $this->addFlash(
-            'warning',
-            'nu är sessionen raderad'
-        );
 
         $data = [
             'session' => $session->all()
@@ -140,14 +137,10 @@ class CardGameController extends AbstractController
         $suit = $deckOfCards->getSuit();
 
         $data = [
-            "deck" => $deck,
-            "value" => $value,
-            "suit" => $suit,
+            "deck" => $deck
         ];
 
         $session->set("deck", $deck);
-        $session->set("value", $value);
-        $session->set("suit", $suit);
 
         return $this->render('card/deck.html.twig', $data);
     }
@@ -200,8 +193,31 @@ class CardGameController extends AbstractController
         //     $str = $draw->getAsString();
         //     $strDraw[0] = $str;
         // }
-        for($i = 0; $i < sizeOf($strDraw); $i++) {
-            $strDraw[$i] = $draw->getAsString();
+        if($draw) {
+            for($i = 0; $i < sizeOf($strDraw); $i++) {
+                $strDraw[$i] = $draw->getAsString();
+            }
+        }
+
+        if($cardCount <= 5 && $cardCount > 0) {
+            $this->addFlash(
+                'notice',
+                'Kortleken börjar ta slut.. kanske dags att blanda leken'
+            );
+        }
+
+        if($cardCount == 0) {
+            $this->addFlash(
+                'warning',
+                'Nu är kortleken slut. Nu måste du blanda leken för att fortsätta!!!'
+            );
+        }
+
+        if($cardCount == 52) {
+            $this->addFlash(
+                'notice',
+                'Kortleken är blandad. lycka till'
+            );
         }
 
         $data = [
@@ -248,11 +264,12 @@ class CardGameController extends AbstractController
             "str_draw" => $strDraw,
             // "last" => $last,
         ];
+
         return $this->redirectToRoute('draw_get', $data);
     }
 
-        /**
-     * Route to roll the dice
+    /**
+     * Route
      */
     #[Route("/game/card/deck/draw_cards", name: "draw_cards", methods: ['POST'])]
     public function drawCards(
@@ -262,20 +279,52 @@ class CardGameController extends AbstractController
     {
         $strDraw = [];
         $num = $request->request->get('num_cards');
+        $drawDeck = $session->get("draw_deck");
+        $cardCount = $drawDeck->cardCount();
 
         if ($num > 52) {
             throw new \Exception("Det är bara 52 kort i en kortlek...");
         }
 
-        $drawDeck = $session->get("draw_deck");
-
-        for($i = 0; $i < $num; $i++) {
-            $draw = $drawDeck->draw();
-            $strDraw[$i] = $draw->getAsString();
+        if($cardCount > 0) {
+            for($i = 0; $i < $num; $i++) {
+                $draw = $drawDeck->draw();
+                $strDraw[$i] = $draw->getAsString();
+            }
         }
 
-        $session->set("num", $num);
         $cardCount = $drawDeck->cardCount();
+        
+        // } else {
+        //     $draw = null;
+
+        //     $this->addFlash(
+        //         'warning',
+        //         'Nu är kortleken slut. Nu måste du blanda leken för att fortsätta!!!'
+        //     );
+        // }
+
+        if($cardCount <= 5 && $cardCount > 0) {
+            $this->addFlash(
+                'notice',
+                'Kortleken börjar ta slut.. kanske dags att blanda leken'
+            );
+        }
+
+        if($cardCount == 0) {
+            $this->addFlash(
+                'warning',
+                'Nu är kortleken slut. Nu måste du blanda leken för att fortsätta!!!'
+            );
+        }
+
+        // if($cardCount == 52) {
+        //     $this->addFlash(
+        //         'notice',
+        //         'Kortleken är blandad. lycka till'
+        //     );
+        // }
+        $session->set("num", $num);
         $session->set("card_count", $cardCount);
         $session->set("str_draw", $strDraw);
         $session->set("draw", $draw);

@@ -45,6 +45,11 @@ class DeckOfCards
         }
     }
 
+    public function getDeck()
+    {
+        return $this->deck;
+    }
+
     /**
      * shuffles the cards in the deck
      */

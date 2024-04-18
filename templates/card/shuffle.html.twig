@@ -4,20 +4,19 @@
 
 {% block main %}
 
-<h1>Kortleken sorterad per färg och värde</h1>
-{{ include('card/card_nav.html.twig') }}
-{# {{ dump(value) }} #}
 <div class="game">
+    <h1>Kortleken sorterad per färg och värde</h1>
+    {{ include('card/card_nav.html.twig') }}
+    {# {{ dump(value) }} #}
     <ul class="ul-game">
         {% for card in deck %}
-        <div class="card">
-            <li class="card-topp">{{ card }}</li>
-            <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
-            <li class="card-bottom">{{ card }}</li>
-        </div>
+            <div class="card">
+                <li class="card-topp">{{ card }}</li>
+                <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
+                <li class="card-bottom">{{ card }}</li>
+            </div>
         {% endfor %}
     </ul>
-
 </div>
 
 
