@@ -2,9 +2,15 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Card\Card;
+use App\Card\DeckOfCards;
+use App\Card\CardHand;
+use App\Card\CardGraphic;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -64,10 +70,22 @@ class myPageController extends AbstractController
     }
 
     #[Route('/api', name: 'api')]
-    public function api(): Response
-    {
+    public function api(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $apiDeck = new DeckOfCards();
+        $apiDeck->shuffle();
 
-        $data = [];
+        $session->set("api_deck", $apiDeck);
+        // $deck = new DeckOfCards();
+        // $apiDeck = $deck->getDeck();
+
+        $data = [
+            "api_deck" => $apiDeck
+        ];
+
+        // $session->set("api_deck", $apiDeck);
 
         return $this->render('/api.html.twig', $data);
     }

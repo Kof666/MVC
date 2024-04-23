@@ -23,6 +23,12 @@ video {
     max-width: 100%;
 }
 
+img {
+    display:block;
+    margin: auto;
+    padding: 0.5em;
+}
+
 a {
     font-family: var(--font-heading);
     color: var(--font-col);
@@ -64,4 +70,12 @@ ul li a:hover {
 
 main a {
     margin: 0.5em;
+}
+
+form input {
+    border:solid 1px black;
+    font-size: 1em;
+    padding: 0.2em;
+    margin: 0 0 0.8em 0.1em;
+    border-radius: 0.4em;
 }

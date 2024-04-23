@@ -18,12 +18,11 @@ class CardGameController extends AbstractController
     /**
      * the landing route for cards
      */
-    #[Route("/game/card", name: "card_start")]
+    #[Route("/card", name: "card_start")]
     public function home(
         Request $request,
         SessionInterface $session
     ): Response {
-
         $drawDeck = new DeckOfCards();
         $drawDeck->shuffle();
 
@@ -35,7 +34,7 @@ class CardGameController extends AbstractController
     /**
     * testing Card classes
     */
-    #[Route("/game/card/test", name: "test")]
+    #[Route("/card/test", name: "test")]
     public function test(
         Request $request,
         SessionInterface $session
@@ -92,7 +91,7 @@ class CardGameController extends AbstractController
     /**
      * landing page for Cards session
      */
-    #[Route("game/session", name: "session")]
+    #[Route("/session", name: "session")]
     public function play(
         SessionInterface $session
     ): Response {
@@ -107,12 +106,17 @@ class CardGameController extends AbstractController
     /**
      * destroy session
      */
-    #[Route("game/session/delete", name: "session_destroyed", methods: ['GET'])]
+    #[Route("/session/delete", name: "session_destroyed", methods: ['GET'])]
     public function session_destroy(
         SessionInterface $session
     ): Response {
 
         $session->clear();
+
+        $this->addFlash(
+            'warning',
+            'nu är sessionen raderad!!'
+        );
 
         $data = [
             'session' => $session->all()
@@ -124,7 +128,7 @@ class CardGameController extends AbstractController
     /**
      * route to view sorted deck of cards
      */
-    #[Route("/game/card/deck", name: "card_deck")]
+    #[Route("/card/deck", name: "card_deck")]
     public function deck(
         Request $request,
         SessionInterface $session
@@ -148,7 +152,7 @@ class CardGameController extends AbstractController
     /**
      * route for shuffled deck of cards
      */
-    #[Route("/game/card/deck/shuffle", name: "shuffle")]
+    #[Route("/card/deck/shuffle", name: "shuffle")]
     public function shuffle(
         Request $request,
         SessionInterface $session
@@ -170,29 +174,17 @@ class CardGameController extends AbstractController
     /**
      * routes for draw a card
      */
-    #[Route("/game/card/deck/draw", name: "draw_get", methods: ['GET'])]
+    #[Route("/card/deck/draw", name: "draw_get", methods: ['GET'])]
     public function draw(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
-        // $num = $session->get('num_cards');
-        // $numCards = $request->request->get('num_cards');
-        // $num = $numCards;
-
+    ): Response {
         $drawDeck = $session->get("draw_deck");
         $draw = $session->get('draw');
         $strDraw = $session->get('str_draw');
-        
-        $cardCount = $drawDeck->cardCount();
-        // $cardCount = $session->set("card_count", $cardCount);
 
-        // $strDeck = $drawDeck->getAsString();
-        // $strDraw = [];
-        // if($draw) {
-        //     $str = $draw->getAsString();
-        //     $strDraw[0] = $str;
-        // }
+        $cardCount = $drawDeck->cardCount();
+
         if($draw) {
             for($i = 0; $i < sizeOf($strDraw); $i++) {
                 $strDraw[$i] = $draw->getAsString();
@@ -222,23 +214,17 @@ class CardGameController extends AbstractController
 
         $data = [
             "draw_deck" => $drawDeck,
-            // "str_deck" => $strDeck,
-            // "num" => $num,
             "card_count" => $cardCount,
             "draw" => $draw,
             "str_draw" => $strDraw
         ];
-
-        // $session->set("str_deck", $strDeck);
-        // $session->set("str_draw", $strDraw);
-        // var_dump($draw);
         return $this->render('card/draw.html.twig', $data);
     }
 
     /**
-     * route for draw a card
+     * route for draw cards
      */
-    #[Route("/game/card/deck/draw", name: "draw_post", methods: ['POST'])]
+    #[Route("/card/deck/draw", name: "draw_post", methods: ['POST'])]
     public function drawCallback(
         Request $request,
         SessionInterface $session
@@ -246,8 +232,6 @@ class CardGameController extends AbstractController
 
         $deck = $session->get("draw_deck");
         $draw = $deck->draw();
-        // $last = $deck->getLast(); // kanske göra en funktion cardasstring i deck....
-        // // $last = $deck->getAsString();
 
         $strDraw = [];
         if($draw) {
@@ -257,26 +241,24 @@ class CardGameController extends AbstractController
 
         $session->set("draw", $draw);
         $session->set("str_draw", $strDraw);
-        // $session->set("last", $last);
+
         $data = [
             "deck" => $deck,
             "draw" => $draw,
-            "str_draw" => $strDraw,
-            // "last" => $last,
+            "str_draw" => $strDraw
         ];
 
         return $this->redirectToRoute('draw_get', $data);
     }
 
     /**
-     * Route
+     * route for draw cards
      */
-    #[Route("/game/card/deck/draw_cards", name: "draw_cards", methods: ['POST'])]
+    #[Route("/card/deck/draw_cards", name: "draw_cards", methods: ['POST'])]
     public function drawCards(
         Request $request,
         SessionInterface $session
-        ): Response
-    {
+    ): Response {
         $strDraw = [];
         $num = $request->request->get('num_cards');
         $drawDeck = $session->get("draw_deck");
@@ -286,23 +268,21 @@ class CardGameController extends AbstractController
             throw new \Exception("Det är bara 52 kort i en kortlek...");
         }
 
-        if($cardCount > 0) {
+        if($cardCount > 0 && $cardCount >= $num) {
             for($i = 0; $i < $num; $i++) {
                 $draw = $drawDeck->draw();
                 $strDraw[$i] = $draw->getAsString();
+                $session->set("draw", $draw);
             }
+        } else {
+            $draw = [];
+            $this->addFlash(
+                'notice',
+                'Du kan inte dra fler kort än det finns kvar i leken!'
+            );
         }
 
         $cardCount = $drawDeck->cardCount();
-        
-        // } else {
-        //     $draw = null;
-
-        //     $this->addFlash(
-        //         'warning',
-        //         'Nu är kortleken slut. Nu måste du blanda leken för att fortsätta!!!'
-        //     );
-        // }
 
         if($cardCount <= 5 && $cardCount > 0) {
             $this->addFlash(
@@ -318,16 +298,9 @@ class CardGameController extends AbstractController
             );
         }
 
-        // if($cardCount == 52) {
-        //     $this->addFlash(
-        //         'notice',
-        //         'Kortleken är blandad. lycka till'
-        //     );
-        // }
         $session->set("num", $num);
         $session->set("card_count", $cardCount);
         $session->set("str_draw", $strDraw);
-        $session->set("draw", $draw);
         $data = [
             'num' => $num,
             "draw_deck" => $drawDeck,
@@ -336,14 +309,13 @@ class CardGameController extends AbstractController
             "draw" => $draw
         ];
 
-        // var_dump($draw);
         return $this->render('card/draw.html.twig', $data);
     }
 
-        /**
-     * route for draw a card
+    /**
+     * route for shuffle
      */
-    #[Route("/game/card/deck/draw_shuffle", name: "draw_shuffle", methods: ['POST'])]
+    #[Route("/card/deck/draw_shuffle", name: "draw_shuffle", methods: ['POST'])]
     public function shuffleCallback(
         Request $request,
         SessionInterface $session

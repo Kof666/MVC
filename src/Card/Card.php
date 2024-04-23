@@ -11,13 +11,13 @@ class Card
      * @var integer value   the value of the card
      * @var string suit     the suit of the card
      */
-    protected $value;
-    protected $suit;
+    protected string $value;
+    protected string $suit;
 
     /**
      * Constructor to initiate a card
      */
-    public function __construct($value, $suit)
+    public function __construct(string $value, string $suit)
     {
         $this->value = $value;
         $this->suit = $suit;
@@ -26,7 +26,7 @@ class Card
     /**
      * To get the value of the card
      *
-     * @return integer value    the value of the card
+     * @return string value    the value of the card
      */
     public function getValue()
     {

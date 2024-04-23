@@ -45,10 +45,10 @@ class DeckOfCards
         }
     }
 
-    public function getDeck()
-    {
-        return $this->deck;
-    }
+    // public function getDeck()
+    // {
+    //     return $this->deck;
+    // }
 
     /**
      * shuffles the cards in the deck
@@ -73,7 +73,7 @@ class DeckOfCards
         return $lastDraw; // Deal the top card from the deck
     }
 
-    public function getLast ()
+    public function getLast()
     {
         return $this->lastDraw;
     }
@@ -109,6 +109,17 @@ class DeckOfCards
     public function cardCount()
     {
         return count($this->deck);
+    }
+
+    /**
+     * get a representation of all cards in the deck
+     *
+     * @return array cards
+     */
+    public function getDeck()
+    {
+
+        return $this->deck;
     }
 
     /**

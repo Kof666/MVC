@@ -16,6 +16,23 @@
 <p>Ger en kortlek sorterad i färg och värde</p>
 <a href="{{ path('api_shuffle') }}" target="_blank">api_shuffle</a>
 <p>Ger en blandad kortlek</p>
+<a href="{{ path('api_deck_draw_post') }}" target="_blank">api_draw</a>
+<p>Den här länken visar en kortlek för api. Här nedan kan du använda dessa knappar att antingen dra ett kort eller välja antal ur api kortleken. väljer du fler så dras samma antal varje gång du uppdaterar sidan</p>
 
+<div class="flex-container">
+    <form method="post" action="{{ path('api_deck_draw_post') }}">
+        <p>
+            <input type="submit" name="dra_kort" value="dra"
+                {# onClick="this.form.action='{{ path('api_deck_draw_post') }}';" #}
+            >
+        </p>
+    </form>
+    <form method="post" action="{{ path('api_deck_draw_num') }}">
+        <p>
+            <input type="number" name="api_num_cards" min="1" max="52" value="1">
+            <input type="submit" name="do_it" value="dra fler kort">
+        </p>
+    </form>
+</div>
 
 {% endblock %}

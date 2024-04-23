@@ -6,6 +6,20 @@
 <div class="game">
     <h1>Startsida för kortlek</h1>
     {{ include('card/card_nav.html.twig') }}
-    <p>På din landdningssida, berätta kort om strukturen på dina klasser, vilka klasser har du och hur är de relaterade till varandra. Rita ett UML klass diagram och visa i sidan.</p>
+
+    <p>
+        Här kan man hitta lite olika slags hantering av klasserna som hanterar kort. klicka runt och testa.
+    </p>
+    <h2>Kort klasser</h2>
+    <p>
+        Nu ska vi se om jag får till begreppen rätt här. Jag har i alla fall gjort några olika klasser som hanterar korten på den här sidan. Först och främst har vi klassen Card, denna klass hanterar värden för varje kort. Varje kort har två olika värden, value som ger kortets värde och suit som ger kortets färg. För att utskriften ska kunna bli trevligare har jag även gjort en klass CardGraphic som ärver Cards egenskaper och specialiserar/lägger till en snyggare utf8 utskrift av suit. Alltså istället för att det skrivs ut hearts så får man utf8 tecknet för ett hjärta. 
+    </p>
+    <p>
+        Utöver dessa klasser så har jag gjort två till som hanterar korten, DeckOfCards och CardHand. Hittills (kmom02) har jag egentligen bara skapat CardHand, det slutade med att jag hanterade uppgifterna utan att behöva använda denna klass än men misstänker att den kan komma väl till pass i senare kursmoment. Som det är nu, att Card skickas som argument i någon funktion tyder väl om jag förstått det hela på att förhållandet kan liknas vid aggretion men vi får väl se om detta kanske ändras i senare skede. DeckOfCards hanterar som namnet kanske avslöjar en kortlek, alltså ett flertal (i detta fall 52) CardGraphic instanser. Eftersom CardGraphic skapas i DeckOfCards konstruktor och därmed ger en stark relation mellan klasserna så skulle jag vilja kalla deras relation för komposition. 
+    </p>
+    <p>
+        Även om jag är osäker på aggretion och kompositions förhållandet så kan man ju ändå tycka att principen att ett kort från kortleken inte kan existera om kortleken försvinner men att kortet fortfarande kan existera även när en giv(CardHand) slutar existera. Den förhållningen stärker ju tankarna kring att förhållandet mellan klasserna kan stämma så som jag beskrivit ovan. Här nedan ser ni även mitt försök till UML diagram över klasserna som jag förstår det just nu. Detta kan ju kanske ändras i senare kursmoment även det.
+    </p>
+    <img class="uml_pic" src="{{ asset('img/UML_Cards.png') }}" width="600" alt="uml">
 </div>
 {% endblock %}

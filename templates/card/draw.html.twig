@@ -2,7 +2,7 @@
 
 {% block main %}
 <div class="game">
-    <h1>Dra ett kort [draw]</h1>
+    <h1>Dra ett kort</h1>
     {{ include('card/card_nav.html.twig') }}
     <p>Det är {{ card_count }} kort kvar i leken</p>
     {{ include('card/flash.html.twig') }}
@@ -32,27 +32,5 @@
             <input type="submit" name="do_it" value="dra fler kort">
         </p>
     </form>
-{# 
-
-    <form method="post" action="">
-        <p>
-            <input type="submit" name="dra kort" value="draw"
-                onClick="this.form.action='{{ path('draw_post') }}';"
-            >
-            <input type="submit" name="draw_shuffle" value="blanda leken"
-                onClick="this.form.action='{{ path('draw_shuffle') }}';"
-            >
-            <input type="number" name="num_cards" min="1" max="52" value="1">
-            <input type="submit" name="do_it" value="dra fler kort"
-                onClick="this.form.action='{{ path('draw_cards') }}';"
-            >
-        </p>
-    </form> #}
-
-    {# <p>Vill du dra fler kort?</p>
-    <form method="post" action="">
-        <input type="number" name="num_cards" min="1" max="52" value="1">
-        <input type="submit" name="do_it" value="dra fler kort">
-    </form> #}
 </div>
 {% endblock %}

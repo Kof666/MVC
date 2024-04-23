@@ -28,9 +28,9 @@ h2 {
 
 h3 {
     font-family: var(--font-heading);
-    font-weight: bold;
+    font-weight:bolder;
     color: var(--font-col);
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin-bottom: 0.5rem; /* baseline * 2, för att skapa mer utrymme *//*ändrade för det såg inte bra ut*/
 }
 
