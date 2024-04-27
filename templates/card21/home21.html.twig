@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card21 Game{% endblock %}
+
+{% block main %}
+<div class="game">
+    <h1>Spela 21!!!</h1>
+    <button class="button" role="button">
+        <a href="{{ path('start_21_get')}}">spela</a>
+    </button>
+    {{ dump(game) }}
+    <h3>Regler</h3>
+    <p>Här kommer reglerna komma</p>
+
+    <a href="{{ path('doc') }}">Dokumentation</a>
+</div>
+
+{% endblock %}

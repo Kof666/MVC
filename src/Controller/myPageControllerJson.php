@@ -26,7 +26,7 @@ class myPageControllerJson
         //     "Experience is the name everyone gives to their mistakes. – Oscar Wilde",
         //     "Confusion is part of programming. ― Felienne Hermans"
         // ]
-        $timestamp = time();
+        // $timestamp = time();
         date_default_timezone_set('Europe/Amsterdam');
         $date = date('Y-m-d', time());
         $time = date('H:i:s', time());

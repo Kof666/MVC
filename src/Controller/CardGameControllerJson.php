@@ -21,7 +21,6 @@ class CardGameControllerJson
      */
     #[Route("/api/deck", name: "api_deck")]
     public function apiDeck(
-        Request $request,
         SessionInterface $session
     ): Response {
 
@@ -46,7 +45,6 @@ class CardGameControllerJson
      */
     #[Route("/api/deck/shuffle", name: "api_shuffle")]
     public function apiShuffle(
-        Request $request,
         SessionInterface $session
     ): Response {
 
@@ -72,7 +70,7 @@ class CardGameControllerJson
      */
     #[Route("/api/deck/draw", name: "api_deck_draw_get", methods: ['GET'])]
     public function apiDrawGet(
-        Request $request,
+        // Request $request,
         SessionInterface $session
     ): Response {
         $deckOfCards = $session->get("api_deck");
@@ -99,7 +97,7 @@ class CardGameControllerJson
      */
     #[Route("/api/deck/draw", name: "api_deck_draw_post", methods: ['POST'])]
     public function apiDraw(
-        Request $request,
+        // Request $request,
         SessionInterface $session
     ): Response {
         $deckOfCards = $session->get("api_deck");
@@ -134,11 +132,11 @@ class CardGameControllerJson
     ): Response {
         $apiNum = $request->request->get('api_num_cards');
         $deckOfCards = $session->get("api_deck");
-        $cardCount = $deckOfCards->cardCount();
+        // $cardCount = $deckOfCards->cardCount();
 
         if($apiNum) {
             for($i = 0; $i < $apiNum; $i++) {
-                $apiDeckraw = $deckOfCards->draw();
+                $apiDeckDraw = $deckOfCards->draw();
             }
         }
 

@@ -24,15 +24,13 @@ class DeckOfCards
     /**
      * init a deck of cards
      */
-    private function initDeck()
+    private function initDeck(): void
     {
-        /**
-         * @var array deck      an array of cards
-         * @var array suits     an array of suits
-         * @var array values    an array of values
-         */
+
         $this->deck = [];
+
         $suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+
         $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
         /**
@@ -45,35 +43,34 @@ class DeckOfCards
         }
     }
 
-    // public function getDeck()
-    // {
-    //     return $this->deck;
-    // }
-
     /**
      * shuffles the cards in the deck
      */
-    public function shuffle()
+    public function shuffle(): array
     {
         $this->initDeck();
         shuffle($this->deck);
+
+        return $this->deck;
     }
 
     /**
      * draw the top card of the deck
      *
-     * @return string   top card in deck
+     * @return mixed   top card in deck
      */
-    public function draw()
+    public function draw(): mixed
     {
         if (empty($this->deck)) {
-            return null; // Return null if no cards left in the deck
+            $lastDraw = "";
+            return $lastDraw; // Return null if no cards left in the deck
         }
         $lastDraw = array_shift($this->deck);
+        
         return $lastDraw; // Deal the top card from the deck
     }
 
-    public function getLast()
+    public function getLast(): array
     {
         return $this->lastDraw;
     }
@@ -83,7 +80,7 @@ class DeckOfCards
      *
      * @return array suit
      */
-    public function getSuit()
+    public function getSuit(): array
     {
         $suit = [];
         foreach($this->deck as $card) {
@@ -97,7 +94,7 @@ class DeckOfCards
      *
      * @return array value
      */
-    public function getValue()
+    public function getValue(): array
     {
         $value = [];
         foreach($this->deck as $card) {
@@ -106,7 +103,7 @@ class DeckOfCards
         return $value;
     }
 
-    public function cardCount()
+    public function cardCount(): int
     {
         return count($this->deck);
     }
@@ -116,7 +113,7 @@ class DeckOfCards
      *
      * @return array cards
      */
-    public function getDeck()
+    public function getDeck(): array
     {
 
         return $this->deck;
@@ -127,7 +124,7 @@ class DeckOfCards
      *
      * @return array cards
      */
-    public function getAsString()
+    public function getAsString(): array
     {
         $cards = [];
         foreach ($this->deck as $card) {

@@ -50,9 +50,6 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/test/roll/{num<\d+>}", name: "test_roll_num_dice")]
     public function testRollDices(int $num): Response
     {
-        if ($num > 25) {
-            throw new \Exception("Can not roll more than 25 dices.");
-        }
         $diceRoll = [];
         for($i = 0; $i < $num; $i++) {
             $dice = new DiceGraphic();

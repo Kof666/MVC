@@ -20,7 +20,7 @@ class myPageController extends AbstractController
 {
     #[Route('/me', name: 'me')]
 
-    public function me(): Response
+    public function meRoute(): Response
     {
         $data = [];
 
@@ -50,7 +50,7 @@ class myPageController extends AbstractController
         $tag = null;
         if($number == 6) {
             $tag = 'winner';
-        } else {
+        } elseif ($number != 6) {
             $tag = 'loser';
         }
         $data = [
@@ -71,7 +71,6 @@ class myPageController extends AbstractController
 
     #[Route('/api', name: 'api')]
     public function api(
-        Request $request,
         SessionInterface $session
     ): Response {
         $apiDeck = new DeckOfCards();

@@ -14,19 +14,17 @@ class CardHand
         $this->cards = [];
     }
 
-    public function addCard(Card $card)
+    public function addCard(Card $card): void
     {
         $this->cards[] = $card;
-
-        return $this->cards;
     }
 
-    public function getCards()
+    public function getCards(): array
     {
         return $this->cards;
     }
 
-    public function getTotalValue()
+    public function getTotalValue(): int
     {
         $totalValue = 0;
         foreach ($this->cards as $card) {
