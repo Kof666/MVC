@@ -8,16 +8,16 @@ namespace App\Card;
 class Card
 {
     /**
-     * @var integer value   the value of the card
+     * @var mixed value   the value of the card
      * @var string suit     the suit of the card
      */
-    protected string $value;
+    protected mixed $value;
     protected string $suit;
 
     /**
      * Constructor to initiate a card
      */
-    public function __construct(string $value, string $suit)
+    public function __construct(mixed $value, string $suit)
     {
         $this->value = $value;
         $this->suit = $suit;
@@ -26,10 +26,20 @@ class Card
     /**
      * To get the value of the card
      *
-     * @return string value    the value of the card
+     * @return int value    the value of the card
      */
     public function getValue()
     {
+        switch ($this->value) {
+            case 'J':
+                return 10;
+            case 'Q':
+                return 10;
+            case 'K':
+                return 10;
+            case 'A':
+                return 10;
+            }
         return $this->value;
     }
 

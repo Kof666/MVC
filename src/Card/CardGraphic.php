@@ -58,4 +58,19 @@ class CardGraphic extends Card
                 return $this->value . ' ' . 'unknown suit';
         }
     }
+
+    public function getValue()
+    {
+        switch ($this->value) {
+            case 'J':
+                return 10;
+            case 'Q':
+                return 10;
+            case 'K':
+                return 10;
+            case 'A':
+                return 10;
+            }
+        return $this->value;
+    }
 }

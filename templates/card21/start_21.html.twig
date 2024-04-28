@@ -7,9 +7,10 @@
 <div class="game">
     <div class="scoure_view">
         <p>Omgång: {{ rounds }}</p>
-        <p>Croupier: {{ bank }}</p>
-        <p>Spelare: {{ player }}</p>
+        <p>Croupier: {{ bank_score }}</p>
+        <p>Spelare: {{ player_score }}</p>
     </div>
+    {{ include('card/flash.html.twig') }}
     <h2>Croupier</h2>
     <ul class="ul-game">
         <div class="back-card"></div>

@@ -10,8 +10,8 @@ class Play21
     /**
      * variables that handles the scoure
      */
-    protected int $bank = 0;
-    protected int $player = 0;
+    protected int $bankScore = 0;
+    protected int $playerScore = 0;
     
     /**
      * @var int $round  counts the rounds of the game
@@ -37,14 +37,24 @@ class Play21
         $this->rounds = $rounds;
     }
 
-    public function getBank()
+    public function getBankScore()
     {
-        return $this->bank;
+        return $this->bankScore;
     }
 
-    public function getPlayer()
+    public function setBankScore()
     {
-        return $this->player;
+        return array_sum($this->bankHand);
+    }
+
+    public function getPlayerScore()
+    {
+        return $this->playerScore;
+    }
+
+    public function setPlayerScore()
+    {
+        return array_sum($this->playerHand);
     }
 
     public function getRounds()
@@ -66,16 +76,57 @@ class Play21
 
     public function playerHand()
     {
-        $draw = $this->deck->draw();
-        $strDraw = [];
-        if($draw) {
-            $str = $draw->getAsString();
-            $strDraw = $str;
+        return $this->playerHand;
+    }
+
+    public function playerdraw()
+    {
+        if($this->playerScore <= 21) {
+            $value = 0;
+            $draw = $this->deck->draw();
+            $value = $value + $draw->getValue();
+            var_dump($value);
+            $value = $draw->getValue();
+            $this->playerScore = $this->playerScore + $value;
+            if($draw) {
+                $this->playerHand[] = $draw->getAsString();
+            }
         }
-        $this->playerHand[] = $strDraw;
 
         return $this->playerHand;
     }
 
+    public function playerScore()
+    {
+        return array_sum($this->playerHand);
+    }
+
+    public function bankHand()
+    {
+        return $this->bankHand;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function bankdraw(): array
+    {
+        $value = 0;
+        while ($value < 17) {
+            $draw = $this->deck->draw();
+            $value = $value + $draw->getValue();
+            // var_dump($value);
+            $this->bankScore = $value;
+            $this->bankHand[] = $draw->getAsString();
+        }
+
+        return $this->bankHand;
+    }
+
+    public function clearHands()
+    {
+        $this->playerHand = array();
+        $this->bankHand = array();
+    }
 
 }

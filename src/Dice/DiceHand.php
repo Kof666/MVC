@@ -9,7 +9,7 @@ class DiceHand
     /**
      * @var array $hand
      */
-    private array $hand = [];
+    private $hand = array();
 
     public function add(Dice $die): void
     {

@@ -26,6 +26,11 @@ class Card21Controller extends AbstractController
         $game = new Play21();
         $session->set("game", $game);
 
+        // $this->addFlash(
+        //     'notice',
+        //     'Kortleken börjar ta slut.. kanske dags att blanda leken'
+        // );
+
         $data = [
             "game" => $game
         ];
@@ -41,21 +46,23 @@ class Card21Controller extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        $deck = $game->getDeck();
+        // $deck = $game->getDeck();
+        $game->playerDraw();
         $playerHand = $game->playerHand();
-        $bank = $game->getBank();
-        $player = $game->getPlayer();
+        $bankScore = $game->getBankScore();
+        // $game->setPlayerScore();
+        $playerScore = $game->getPlayerScore();
         $rounds = $game->getRounds();
 
-        $session->set("deck", $deck);
+        $session->set("game", $game);
 
         $data = [
             "game" => $game,
-            "deck" => $deck,
+            // "deck" => $deck,
             "playerHand" => $playerHand,
-            "bank" => $bank,
-            "player" => $player,
-            "rounds" => $rounds,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+            "rounds" => $rounds
         ];
         return $this->render('card21/start_21.html.twig', $data);
     }
@@ -68,20 +75,21 @@ class Card21Controller extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        $deck = $game->getDeck();
+        // $deck = $game->getDeck();
+        $game->playerDraw();
         $playerHand = $game->playerHand();
-        $bank = $game->getBank();
-        $player = $game->getPlayer();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
         $rounds = $game->getRounds();
 
-        $session->set("deck", $deck);
+        $session->set("game", $game);
 
         $data = [
             "game" => $game,
-            "deck" => $deck,
+            // "deck" => $deck,
             "playerHand" => $playerHand,
-            "bank" => $bank,
-            "player" => $player,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
             "rounds" => $rounds,
         ];
         return $this->render('card21/start_21.html.twig', $data);
@@ -95,23 +103,27 @@ class Card21Controller extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        $deck = $game->getDeck();
+        // $deck = $game->getDeck();
         $playerHand = $game->playerHand();
-        // $bankHand = $game->bankHand();
-        $bank = $game->getBank();
-        $player = $game->getPlayer();
+        $bankHand = $game->bankDraw();
+        $bankScore = $game->getBankScore();
+        $bankHand = $game->bankHand();
+        // $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
         $rounds = $game->getRounds();
 
-        $session->set("deck", $deck);
+        $session->set("game", $game);
+        // $session->set("bank_score", $bankScore);
 
         $data = [
             "game" => $game,
-            "deck" => $deck,
+            // "deck" => $deck,
             "playerHand" => $playerHand,
-            // "bankHand" => $bankHand,
-            "bank" => $bank,
-            "player" => $player,
-            "rounds" => $rounds,
+            "bankHand" => $bankHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+            "rounds" => $rounds
+            
         ];
         return $this->render('card21/bankHand_21.html.twig', $data);
     }

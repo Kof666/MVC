@@ -31,7 +31,7 @@ class DeckOfCards
 
         $suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
 
-        $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+        $values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
 
         /**
          * loop that gives the array deck the values
@@ -45,8 +45,10 @@ class DeckOfCards
 
     /**
      * shuffles the cards in the deck
+     * 
+     * @return array<mixed, deck> $deck
      */
-    public function shuffle(): array
+    public function shuffle(): mixed
     {
         $this->initDeck();
         shuffle($this->deck);
@@ -94,14 +96,14 @@ class DeckOfCards
      *
      * @return array value
      */
-    public function getValue(): array
-    {
-        $value = [];
-        foreach($this->deck as $card) {
-            $value[] = $card->getValue();
-        }
-        return $value;
-    }
+    // public function getValue(): array
+    // {
+    //     $value = [];
+    //     foreach($this->deck as $card) {
+    //         $value[] = $card->getValue();
+    //     }
+    //     return $value;
+    // }
 
     public function cardCount(): int
     {

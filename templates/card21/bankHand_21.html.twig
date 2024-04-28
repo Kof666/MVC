@@ -7,21 +7,19 @@
 <div class="game">
     <div class="scoure_view">
         <p>Omgång: {{ rounds }}</p>
-        <p>Croupier: {{ bank }}</p>
-        <p>Spelare: {{ player }}</p>
+        <p>Croupier: {{ bank_score }}</p>
+        <p>Spelare: {{ player_score }}</p>
     </div>
     <h2>Croupier</h2>
     <ul class="ul-game">
         <div class="back-card"></div>
-    {% if game is not null %}
-    {% for card in game %}
+    {% for card in bankHand %}
         <div class="card">
             <li class="card-topp">{{ card }}</li>
             <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
             <li class="card-bottom">{{ card }}</li>
         </div>
     {% endfor %}
-    {% endif %}
     </ul>
 
     <h2>Spelare</h2>
@@ -44,7 +42,7 @@
                 onClick="this.form.action='{{ path('start_21_post') }}';"
             >
             <input type="submit" name="new_round" value="ny runda"
-            onClick="this.form.action='{{ path('start_21_post') }}';"
+            onClick="this.form.action='{{ path('start_21_get') }}';"
         >
         </p>
     </form>
