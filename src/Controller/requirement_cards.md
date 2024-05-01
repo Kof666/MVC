@@ -1,68 +1,43 @@
-kmom03
+kmom04
 ----------------
 
-Krav
----------
+Installera och konfigurera
+----------------------------------
 
-Kraven är uppdelade i sektioner.
-Landningssida och intro
--------------------------------
+    Installera phpunit och lägg till det som ett skript composer phpunit.
 
-    Skapa en landdningssida för spelet game/ där du samlar information om spelet och kan starta spelet. Placera länken i webbplatsens navbar.
+    Gör så att kodtäckningsrapport för HTML genereras till katalogen docs/coverage.
 
-    I din landningssida, inled med en kort beskrivning av ditt kortspel och reglerna för hur det fungerar.
+Bygg en test suite
+-------------------------
 
-    Placera en knapp eller länk som leder till att spelet börjar.
+    Skapa en test suite för ditt kortspel.
 
-Problemlösning
-----------------------
+    Dina modellklasser är dina testobjekt och varje modellklass skall ha minst en testklass med testfall.
 
-Du skall problemlösa det spelet du valt med flödesschema och pseudokod. Gör din problemlösning innan du påbörjar att implementera spelet.
+    Varje testfall har minst en assertion.
 
-    Samla all din dokumentation i en webbsida under routen game/doc och länka till dokumentationssidan från din landningssida.
+    Du har en kodtäckning som överträffar 70% på varje testobjekt men sikta mot att nå över 90% kodtäckning.
 
-    Skapa ett flödesschema som representerar hur du tänker lösa grunderna i spelet. Resultatet kan du placera som en bild i webbsidan för dokumentationen. Det behöver inte vara en komplett lösning, en dellösning räcker bra.
+    Det är helt okey om du vill uppdatera din källkod för att göra den bättre eller mer testbar. Code refactoring (att skriva om sin kod för att förbättra den) är ofta ett bra alternativ.
 
-    Skapa psuedokod som visar hur du tänker lösa delar av spelet. Du kan spara resultatet som text eller bild men visa upp det i webbsidan för dokumentationen. Det behöver inte vara en komplett lösning, en dellösning räcker bra.
+    Kär enhetstesterna med composer phpdoc.
 
-    Fundera igenom vilka klasser du behöver för att implementera spelet. Beskriv klasserna i text med klassens namn och en mening som beskriver vad klassens syfte är. Håll det kort och enkelt.
+[OPTIONELLT] Som en extra utmaning kan du se om dina controllers är testbara med phpunit och i vilken mån du kan testa dem eller vad som krävs för att du skall kunna testa dem.
+Dokumentera kod
 
-Följande krav är optionella och du gör dem om du har tid och lust.
+    Välj ut minst en av dina klasser och lägg till kommentarer med PHP DockBlock. Dina kommentarer skall minst innehålla en rads beskrivning av vad metoderna och klassen gör.
 
-    Rita ett UML klass diagram som du också visar i webbsidan för dokumentationen.
+    Generera dokumentationen till katalogen docs/api med kommandot composer phpdoc.
 
-Kortspel
--------------
+Utvecklingsmiljö
+---------------------------
 
-Bygg ditt kortspel i Symfony med objektorienterade konstruktioner i PHP och försök tänka till så att du får “snygg kod”.
+    Fixa till din kod enligt den kodstil du kör genom att köra composer csfix.
 
-    All applikationskod placerar du i klasser som din kontroller använder. Se till att du har så lite kod som möjligt i din kontroller. Om du har mycket kod där så flyttar du den till en egen klass. Tänk att kontrollern skall vara tunn (lite kod) och modellerna (applikationens klasser) kan vara tjocka (mycket kod).
+    Kolla din kod hur den matchar dina linters genom att köra composer lint.
 
-    Använd templatefiler för att rendera webbsidorna.
+    Dubbelkolla att dina testfall passerar med composer phpunit.
 
-    Bygg spelet så att det fungerar minst enligt de regler som visas i introduktionen ovan.
-
-    Banken behöver inte vara speciellt intelligent i sitt kortspel. Det räcker att den kan utföra sin uppgift och spela spelet. En enkel variant är att banken alltid plockar kort tills den har 17 eller mer, sedan stannar den.
-
-Kortspel valfritt
-----------------------
-
-Följande krav är optionella och du gör dem om du har tid och lust.
-
-    Gör så att spelaren kan satsa pengar. Man kan satsa en viss summa vid varje spel. Håll koll på hur mycket pengar som spelaren och banken har.
-
-    Låt banken och spelaren börja med 100 pengar var. När någon har 0 pengar har den spelaren förlorat.
-
-    Korträkning med sannolikhet att få högt/lågt kort. Låt bli att blanda kortleken inför varje ny runda och spela tills kortleken är slut. Visa statistik som berättar sannolikheten för att få ett visst kort. Visa statistiken så att spelaren kan ha hjälp av den. Tex om spelaren har 15, visa sannolikheten för att spelaren inte skall bli tjock om nytt kort tas.
-
-    Bygg en smartare bank som spelar på ett “intelligent sätt”. Låt banken ta hjälp av statistiken.
-
-    Låt spelaren välja om den spelar mot den “dumma” eller den “smarta” banken.
-
-    Förklara taktiken för den “dumma” och den “smarta” banken på dokumentationssidan.
-
-Kortspel JSON
-------------------
-
-    I din landningssida för api/ lägger du till routen api/game som visar upp den aktuella ställningen för spelet i en JSON struktur.
+    Generera documentation av din kod med composer phpdoc.
 
