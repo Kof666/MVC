@@ -17,14 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class Game21ControllerJson
 {
     /**
-     * route to view sorted deck of cards
+     * route to view Card21 rounds and hands score
      */
     #[Route("/api/game", name: "api_game")]
     public function apiGame(
         SessionInterface $session
     ): Response {
 
-        
+
         $game = $session->get("game");
         if($game) {
             $rounds = $game->getRounds();
@@ -32,7 +32,7 @@ class Game21ControllerJson
             $playerRounds = $game->getPlayerRounds();
             $bankScore = $game->getBankScore();
             $playerScore = $game->getPlayerScore();
-    
+
             $data = [
                 "rounds" => $rounds,
                 "bank_rounds" => $bankRounds,
@@ -40,7 +40,7 @@ class Game21ControllerJson
                 "bank_score" => $bankScore,
                 "player_score" => $playerScore
             ];
-        } else {
+        } elseif (!$game) {
             $data = [];
         }
 

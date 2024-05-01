@@ -60,6 +60,45 @@ class Card21Controller extends AbstractController
             "player_rounds" => $playerRounds,
             "bank_rounds" => $bankRounds
         ];
+        return $this->render('card21/start_21_surface.html.twig', $data);
+    }
+
+    /**
+     * POST Route for playerhand
+     */
+    #[Route("/game/21/start", name: "start_21_surface")]
+    public function surface(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        // $game->playerDraw();
+        $playerHand = $game->playerHand();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
+        $rounds = $game->getRounds();
+        $playerRounds = $game->getPlayerRounds();
+        $bankRounds = $game->getBankRounds();
+
+        $str = $game->bustOrWinn();
+        if($str) {
+            $this->addFlash(
+                'notice',
+                $str
+            );
+        }
+
+        $session->set("game", $game);
+
+        $data = [
+            "game" => $game,
+            "playerHand" => $playerHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+            "rounds" => $rounds,
+            "player_rounds" => $playerRounds,
+            "bank_rounds" => $bankRounds
+        ];
+
         return $this->render('card21/start_21.html.twig', $data);
     }
 
@@ -154,7 +193,6 @@ class Card21Controller extends AbstractController
     ): Response {
         $game = $session->get("game");
         $game->clearHands();
-        $game->playerDraw();
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();

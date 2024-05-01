@@ -157,10 +157,7 @@ class Play21
     {
         $str = "";
 
-        if ($this->getBankScore() > $this->getPlayerScore()) {
-            $str = "House wins";
-            $this->setBankRounds();
-        } elseif ($this->getPlayerScore() > $this->getBankScore()) {
+        if ($this->getPlayerScore() > $this->getBankScore()) {
             if($this->getPlayerScore() == 21) {
                 $str = "Player winns!!";
                 $this->setPlayerRounds();
@@ -181,6 +178,11 @@ class Play21
         } elseif ($this->getBankScore() > 21) {
             $str = "House bust and loose!";
             $this->setPlayerRounds();
+        }
+
+        if ($this->getBankScore() > $this->getPlayerScore() && $this->getBankScore() < 21) {
+            $str = "House wins";
+            $this->setBankRounds();
         }
 
         return $str;
