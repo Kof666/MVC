@@ -24,20 +24,25 @@ class Game21ControllerJson
         SessionInterface $session
     ): Response {
 
+        
         $game = $session->get("game");
-        $rounds = $game->getRounds();
-        $bankRounds = $game->getBankRounds();
-        $playerRounds = $game->getPlayerRounds();
-        $bankScore = $game->getBankScore();
-        $playerScore = $game->getPlayerScore();
-
-        $data = [
-            "rounds" => $rounds,
-            "bank_rounds" => $bankRounds,
-            "player_rounds" => $playerRounds,
-            "bank_score" => $bankScore,
-            "player_score" => $playerScore
-        ];
+        if($game) {
+            $rounds = $game->getRounds();
+            $bankRounds = $game->getBankRounds();
+            $playerRounds = $game->getPlayerRounds();
+            $bankScore = $game->getBankScore();
+            $playerScore = $game->getPlayerScore();
+    
+            $data = [
+                "rounds" => $rounds,
+                "bank_rounds" => $bankRounds,
+                "player_rounds" => $playerRounds,
+                "bank_score" => $bankScore,
+                "player_score" => $playerScore
+            ];
+        } else {
+            $data = [];
+        }
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
