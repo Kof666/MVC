@@ -44,6 +44,17 @@ class DeckOfCards
     }
 
     /**
+     * get a representation of all cards in the deck
+     *
+     * @return array cards
+     */
+    public function getDeck(): array
+    {
+
+        return $this->deck;
+    }
+
+    /**
      * shuffles the cards in the deck
      *
      * @return mixed    $deck of cards
@@ -92,36 +103,11 @@ class DeckOfCards
     }
 
     /**
-     * get the values of the cards in the deck
-     *
-     * @return array value
-     */
-    // public function getValue(): array
-    // {
-    //     $value = [];
-    //     foreach($this->deck as $card) {
-    //         $value[] = $card->getValue();
-    //     }
-    //     return $value;
-    // }
-
-    /**
      * @return int numbers of card left in deck
      */
     public function cardCount(): int
     {
         return count($this->deck);
-    }
-
-    /**
-     * get a representation of all cards in the deck
-     *
-     * @return array cards
-     */
-    public function getDeck(): array
-    {
-
-        return $this->deck;
     }
 
     /**

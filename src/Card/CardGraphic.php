@@ -63,13 +63,13 @@ class CardGraphic extends Card
     {
         switch ($this->value) {
             case 'J':
-                return 10;
+                return 11;
             case 'Q':
-                return 10;
+                return 12;
             case 'K':
-                return 10;
+                return 13;
             case 'A':
-                return 10;
+                return 14;
         }
         return $this->value;
     }

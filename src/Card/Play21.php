@@ -34,8 +34,6 @@ class Play21
         $deck = new DeckOfCards();
         $deck->shuffle();
         $this->deck = $deck;
-        // $this->bank = $bank;
-        // $this->player = $player;
         $this->rounds = $rounds;
         $this->bankRounds = $bankRounds;
         $this->playerRounds = $playerRounds;
@@ -114,7 +112,7 @@ class Play21
             $value = 0;
             $draw = $this->deck->draw();
             $value = $value + $draw->getValue();
-            var_dump($value);
+            // var_dump($value);
             $value = $draw->getValue();
             $this->playerScore = $this->playerScore + $value;
             if($draw) {
@@ -123,11 +121,6 @@ class Play21
         }
 
         return $this->playerHand;
-    }
-
-    public function playerScore()
-    {
-        return array_sum($this->playerHand);
     }
 
     public function bankHand()

@@ -53,7 +53,6 @@ class Card21Controller extends AbstractController
 
         $data = [
             "game" => $game,
-            // "deck" => $deck,
             "playerHand" => $playerHand,
             "bank_score" => $bankScore,
             "player_score" => $playerScore,
@@ -72,7 +71,6 @@ class Card21Controller extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        // $deck = $game->getDeck();
         $game->playerDraw();
         $playerHand = $game->playerHand();
         $bankScore = $game->getBankScore();
@@ -93,7 +91,6 @@ class Card21Controller extends AbstractController
 
         $data = [
             "game" => $game,
-            // "deck" => $deck,
             "playerHand" => $playerHand,
             "bank_score" => $bankScore,
             "player_score" => $playerScore,
@@ -168,11 +165,9 @@ class Card21Controller extends AbstractController
         $bankRounds = $game->getBankRounds();
 
         $session->set("game", $game);
-        // $session->set("bank_score", $bankScore);
 
         $data = [
             "game" => $game,
-            // "deck" => $deck,
             "playerHand" => $playerHand,
             "bankHand" => $bankHand,
             "bank_score" => $bankScore,
@@ -184,30 +179,6 @@ class Card21Controller extends AbstractController
         ];
         return $this->render('card21/start_21.html.twig', $data);
     }
-
-    // #[Route("/game/21", name: "start_21_post", methods: ['POST'])]
-    // public function start21Post(
-    //     SessionInterface $session
-    // ): Response {
-    //     $game = $session->get("game");
-    //     $deck = $game->getDeck();
-    //     $playerHand = $game->playerHand();
-    //     $bank = $game->getBank();
-    //     $player = $game->getPlayer();
-    //     $rounds = $game->getRounds();
-
-    //     $session->set("deck", $deck);
-
-    //     $data = [
-    //         "game" => $game,
-    //         "deck" => $deck,
-    //         "playerHand" => $playerHand,
-    //         "bank" => $bank,
-    //         "player" => $player,
-    //         "rounds" => $rounds,
-    //     ];
-    //     return $this->render('card21/start_21.html.twig', $data);
-    // }
 
     /**
      * the landing route for cards
