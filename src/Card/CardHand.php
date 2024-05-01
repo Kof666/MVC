@@ -20,7 +20,7 @@ class CardHand
     }
 
     /**
-     * @return array<mixed, card> $card
+     * @return array<mixed, Card> $card
      */
     public function getCards(): mixed
     {

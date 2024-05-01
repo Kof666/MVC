@@ -45,8 +45,8 @@ class DeckOfCards
 
     /**
      * shuffles the cards in the deck
-     * 
-     * @return array<mixed, deck> $deck
+     *
+     * @return mixed    $deck of cards
      */
     public function shuffle(): mixed
     {
@@ -68,7 +68,7 @@ class DeckOfCards
             return $lastDraw; // Return null if no cards left in the deck
         }
         $lastDraw = array_shift($this->deck);
-        
+
         return $lastDraw; // Deal the top card from the deck
     }
 
@@ -105,6 +105,9 @@ class DeckOfCards
     //     return $value;
     // }
 
+    /**
+     * @return int numbers of card left in deck
+     */
     public function cardCount(): int
     {
         return count($this->deck);

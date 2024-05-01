@@ -13,13 +13,15 @@
         </div>
         <ul class="ul-game">
             <div class="back-card"></div>
-        {% for card in bankHand %}
+        {% if game is not null %}
+        {% for card in game %}
             <div class="card">
                 <li class="card-topp">{{ card }}</li>
                 <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
                 <li class="card-bottom">{{ card }}</li>
             </div>
         {% endfor %}
+        {% endif %}
         </ul>
     </div>
     <div class="space">
@@ -31,17 +33,15 @@
             <p>points: {{ player_score }}</p>
         </div>
         <ul class="ul-game">
-        {% for card in playerHand %}
-            <div class="card">
-                <li class="card-topp">{{ card }}</li>
-                <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
-                <li class="card-bottom">{{ card }}</li>
-            </div>
-        {% endfor %}
+            {% for card in playerHand %}
+                <div class="card">
+                    <li class="card-topp">{{ card }}</li>
+                    <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
+                    <li class="card-bottom">{{ card }}</li>
+                </div>
+            {% endfor %}
         </ul>
     </div>
-
-
     <form class="form_card21" method="post" action="">
         <p>
             {# <input type="submit" name="done" value="Stand"
@@ -55,10 +55,9 @@
             >
             <input type="submit" name="new_round" value="new round"
             onClick="this.form.action='{{ path('new_round_21') }}';"
-        >
+            >
         </p>
     </form>
-    </div>
 </div>
 
 {% endblock %}

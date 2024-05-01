@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Routes to control the report web-site
  */
-class myPageController extends AbstractController
+class MyPageController extends AbstractController
 {
     #[Route('/me', name: 'me')]
 
