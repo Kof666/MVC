@@ -7,7 +7,7 @@ use App\Dice\Dice;
 class DiceHand
 {
     /**
-     * @var array $hand
+     * @var array<string|int, mixed> $hand
      */
     private $hand = array();
 
@@ -28,6 +28,9 @@ class DiceHand
         return count($this->hand);
     }
 
+    /**
+     * @return array<string|int, mixed> $values
+     */
     public function getValues(): array
     {
         $values = [];
@@ -37,6 +40,9 @@ class DiceHand
         return $values;
     }
 
+    /**
+     * @return array<string|int, mixed> $values
+     */
     public function getString(): array
     {
         $values = [];

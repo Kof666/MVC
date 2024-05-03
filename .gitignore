@@ -34,3 +34,5 @@ yarn-error.log
 ###> development tools ###
 tools/
 ###< development tools ###
+
+.phpdoc/

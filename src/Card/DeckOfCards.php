@@ -8,9 +8,13 @@ namespace App\Card;
 class DeckOfCards
 {
     /**
-     * @var array deck    an array of cards, a deck of cards
+     * @var array<string|int, mixed> $deck      an array of cards, a deck of cards
      */
     private $deck;
+
+    /**
+     * @var array<string|int, mixed> $lastDraw  array of last card that was drawn from deck
+     */
     private $lastDraw = [];
 
     /**
@@ -33,9 +37,7 @@ class DeckOfCards
 
         $values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
 
-        /**
-         * loop that gives the array deck the values
-         */
+        //loop that gives the array deck the values
         foreach ($suits as $suit) {
             foreach ($values as $value) {
                 $this->deck[] = new CardGraphic($value, $suit);
@@ -46,9 +48,9 @@ class DeckOfCards
     /**
      * get a representation of all cards in the deck
      *
-     * @return array cards
+     * @return array<string|int, mixed> cards
      */
-    public function getDeck(): array
+    public function getDeck(): mixed
     {
 
         return $this->deck;
@@ -70,7 +72,7 @@ class DeckOfCards
     /**
      * draw the top card of the deck
      *
-     * @return mixed   top card in deck
+     * @return mixed  top card in deck
      */
     public function draw(): mixed
     {
@@ -83,7 +85,12 @@ class DeckOfCards
         return $lastDraw; // Deal the top card from the deck
     }
 
-    public function getLast(): array
+    /**
+     * Get last drawn card from the deck
+     *
+     * @return array<string|int, mixed> $lastDraw
+     */
+    public function getLast(): mixed
     {
         return $this->lastDraw;
     }
@@ -91,9 +98,9 @@ class DeckOfCards
     /**
      * get the suit of the cards in the deck
      *
-     * @return array suit
+     * @return array<string|int, mixed> $suit
      */
-    public function getSuit(): array
+    public function getSuit(): mixed
     {
         $suit = [];
         foreach($this->deck as $card) {
@@ -103,6 +110,8 @@ class DeckOfCards
     }
 
     /**
+     * Get number of cards left in the deck
+     *
      * @return int numbers of card left in deck
      */
     public function cardCount(): int
@@ -113,9 +122,9 @@ class DeckOfCards
     /**
      * get a representation of all cards in the deck
      *
-     * @return array cards
+     * @return array<string|int, mixed> cards
      */
-    public function getAsString(): array
+    public function getAsString(): mixed
     {
         $cards = [];
         foreach ($this->deck as $card) {

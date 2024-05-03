@@ -12,7 +12,7 @@ class CardGraphic extends Card
      *
      * @return string   string of value and suit as one string
      */
-    public function cardAsString()
+    public function cardAsString(): string
     {
         return $this->getAsString();
     }
@@ -22,7 +22,7 @@ class CardGraphic extends Card
      *
      * @return string   of the suite of the card
      */
-    public function getGraphicSuit()
+    public function getGraphicSuit(): string
     {
         switch ($this->suit) {
             case 'Hearts':
@@ -43,7 +43,7 @@ class CardGraphic extends Card
      *
      * @return string   of the suite and value of the card
      */
-    public function getAsString()
+    public function getAsString(): string
     {
         switch ($this->suit) {
             case 'Hearts':
@@ -59,7 +59,12 @@ class CardGraphic extends Card
         }
     }
 
-    public function getValue()
+    /**
+     * Get value of card
+     *
+     * @return int $value
+     */
+    public function getValue(): int
     {
         switch ($this->value) {
             case 'J':

@@ -166,7 +166,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/App-Card-DeckOfCards.html#property_lastDraw">$lastDraw</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
 
     </dl>
@@ -189,6 +189,7 @@
     <span>
                                 &nbsp;: int    </span>
 </dt>
+<dd>Get number of cards left in the deck</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Card-DeckOfCards.html#method_draw">draw()</a>
@@ -216,6 +217,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
+<dd>Get last drawn card from the deck</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Card-DeckOfCards.html#method_getSuit">getSuit()</a>
@@ -281,7 +283,7 @@
     </code>
 
     
-        <section class="phpdocumentor-description"><p>deck    an array of cards, a deck of cards</p>
+        <section class="phpdocumentor-description"><p>an array of cards, a deck of cards</p>
 </section>
 
     
@@ -304,19 +306,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$lastDraw</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
     
-    
+        <section class="phpdocumentor-description"><p>array of last card that was drawn from deck</p>
+</section>
+
     
 
 </article>
@@ -342,7 +346,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
@@ -374,11 +378,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">108</span>
+    <span class="phpdocumentor-element-found-in__line">117</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get number of cards left in the deck</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">cardCount</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
@@ -413,7 +418,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
@@ -453,7 +458,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">127</span>
 
     </aside>
 
@@ -493,7 +498,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">53</span>
 
     </aside>
 
@@ -533,11 +538,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">86</span>
+    <span class="phpdocumentor-element-found-in__line">93</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get last drawn card from the deck</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getLast</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
@@ -551,6 +557,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>$lastDraw</p>
+</section>
+
             </section>
 
 </article>
@@ -568,7 +578,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">103</span>
 
     </aside>
 
@@ -588,7 +598,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>suit</p>
+                <section class="phpdocumentor-description"><p>$suit</p>
 </section>
 
             </section>
@@ -608,7 +618,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 
     </aside>
 
@@ -648,7 +658,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Card/DeckOfCards.php"><a href="files/src-card-deckofcards.html"><abbr title="src/Card/DeckOfCards.php">DeckOfCards.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 

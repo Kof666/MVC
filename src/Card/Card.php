@@ -28,7 +28,7 @@ class Card
      *
      * @return int value    the value of the card
      */
-    public function getValue()
+    public function getValue(): int
     {
         switch ($this->value) {
             case 'J':

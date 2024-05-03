@@ -5,7 +5,7 @@ namespace App\Dice;
 class DiceGraphic extends Dice
 {
     /**
-     * @var array<string, representation> $represantation
+     * @var array<string|int, mixed>  $represantation
      */
     private array $representation = [
         '⚀',
@@ -19,6 +19,7 @@ class DiceGraphic extends Dice
     public function __construct()
     {
         parent::__construct();
+
     }
 
     public function getAsString(): string
