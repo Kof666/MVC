@@ -17,7 +17,7 @@ class Card
     /**
      * Constructor to initiate a card
      */
-    public function __construct(mixed $value, string $suit)
+    public function __construct(mixed $value = 0, string $suit = "")
     {
         $this->value = $value;
         $this->suit = $suit;

@@ -5,8 +5,9 @@ namespace App\Dice;
 class DiceGraphic extends Dice
 {
     /**
-     * @var array<string|int, mixed>  $represantation
+     * @var array<string, represantation>  $represantation
      */
+    /** @phpstan-ignore-next-line */
     private array $representation = [
         '⚀',
         '⚁',

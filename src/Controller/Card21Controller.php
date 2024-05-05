@@ -89,6 +89,8 @@ class Card21Controller extends AbstractController
 
         $session->set("game", $game);
 
+        $draw = $session->get("draw");
+
         $data = [
             "game" => $game,
             "playerHand" => $playerHand,
@@ -96,7 +98,8 @@ class Card21Controller extends AbstractController
             "player_score" => $playerScore,
             "rounds" => $rounds,
             "player_rounds" => $playerRounds,
-            "bank_rounds" => $bankRounds
+            "bank_rounds" => $bankRounds,
+            "draw" => $draw
         ];
 
         return $this->render('card21/start_21.html.twig', $data);
