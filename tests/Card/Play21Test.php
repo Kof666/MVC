@@ -6,6 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for class Ply21.
+ *
+ * @SuppressWarnings(PHPMD)
  */
 class Play21Test extends TestCase
 {

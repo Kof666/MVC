@@ -19,7 +19,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class MyPageController extends AbstractController
 {
     #[Route('/me', name: 'me')]
-
     public function meRoute(): Response
     {
         $data = [];
@@ -88,5 +87,4 @@ class MyPageController extends AbstractController
 
         return $this->render('/api.html.twig', $data);
     }
-
 }
