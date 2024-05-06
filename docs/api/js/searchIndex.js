@@ -146,6 +146,11 @@ Search.appendIndex(
             "summary": "Set\u0020bankScore",
             "url": "classes/App-Card-Play21.html#method_setBankScore"
         },                {
+            "fqsen": "\\App\\Card\\Play21\u003A\u003AsetBankScoreTest\u0028\u0029",
+            "name": "setBankScoreTest",
+            "summary": "Set\u0020bankScore\u0020for\u0020tests",
+            "url": "classes/App-Card-Play21.html#method_setBankScoreTest"
+        },                {
             "fqsen": "\\App\\Card\\Play21\u003A\u003AgetPlayerScore\u0028\u0029",
             "name": "getPlayerScore",
             "summary": "Get\u0020playerScore",
@@ -153,8 +158,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Play21\u003A\u003AsetPlayerScore\u0028\u0029",
             "name": "setPlayerScore",
-            "summary": "Set\u0020playerScore",
+            "summary": "Set\u0020playerScore\u0020for\u0020tests",
             "url": "classes/App-Card-Play21.html#method_setPlayerScore"
+        },                {
+            "fqsen": "\\App\\Card\\Play21\u003A\u003AsetPlayerScoreTest\u0028\u0029",
+            "name": "setPlayerScoreTest",
+            "summary": "Set\u0020playerScore\u0020for\u0020tests",
+            "url": "classes/App-Card-Play21.html#method_setPlayerScoreTest"
         },                {
             "fqsen": "\\App\\Card\\Play21\u003A\u003AgetBankRounds\u0028\u0029",
             "name": "getBankRounds",
@@ -530,6 +540,26 @@ Search.appendIndex(
             "name": "value",
             "summary": "",
             "url": "classes/App-Dice-Dice.html#property_value"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceGraphic",
+            "name": "DiceGraphic",
+            "summary": "A\u0020simple\u0020dice",
+            "url": "classes/App-Dice-DiceGraphic.html"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor\u0020to\u0020initiate\u0020the\u0020dice",
+            "url": "classes/App-Dice-DiceGraphic.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003AgetAsString\u0028\u0029",
+            "name": "getAsString",
+            "summary": "Value\u0020as\u0020string",
+            "url": "classes/App-Dice-DiceGraphic.html#method_getAsString"
+        },                {
+            "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003A\u0024representation",
+            "name": "representation",
+            "summary": "",
+            "url": "classes/App-Dice-DiceGraphic.html#property_representation"
         },                {
             "fqsen": "\\App\\Dice\\DiceHand",
             "name": "DiceHand",

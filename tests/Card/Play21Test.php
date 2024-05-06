@@ -32,7 +32,7 @@ class Play21Test extends TestCase
     /**
      * Tests getBankScore and verify that function returns int
      */
-    public function testGetBankScore()
+    public function testGetBankScore(): void
     {
         $game = new Play21();
         $res = $game->getBankScore();
@@ -43,7 +43,7 @@ class Play21Test extends TestCase
     /**
      * Tests setBankScore and verify that function returns int
      */
-    public function testSetBankScore()
+    public function testSetBankScore(): void
     {
         $game = new Play21();
         $res = $game->setBankScore();
@@ -54,7 +54,7 @@ class Play21Test extends TestCase
     /**
      * Tests getPlayerScore and verify that function returns int
      */
-    public function testGetPlayerScore()
+    public function testGetPlayerScore(): void
     {
         $game = new Play21();
         $res = $game->getPlayerScore();
@@ -65,7 +65,7 @@ class Play21Test extends TestCase
     /**
      * Tests setPlayerScore and verify that function returns int
      */
-    public function testSetPlayerScore()
+    public function testSetPlayerScore(): void
     {
         $game = new Play21();
         $res = $game->setPlayerScore();
@@ -76,7 +76,7 @@ class Play21Test extends TestCase
     /**
      * Tests getBankRounds and verify that function returns int
      */
-    public function testGetBankRounds()
+    public function testGetBankRounds(): void
     {
         $game = new Play21();
         $res = $game->getBankRounds();
@@ -88,7 +88,7 @@ class Play21Test extends TestCase
      * Tests setBankRounds and verify that function
      * works by using it once and expect int 1 (default = 0)
      */
-    public function testSetBankRounds()
+    public function testSetBankRounds(): void
     {
         $game = new Play21();
         $game->setBankRounds();
@@ -101,7 +101,7 @@ class Play21Test extends TestCase
     /**
      * Tests getPlayerRounds and verify that function returns int
      */
-    public function testGetPlayerRounds()
+    public function testGetPlayerRounds(): void
     {
         $game = new Play21();
         $res = $game->getPlayerRounds();
@@ -113,7 +113,7 @@ class Play21Test extends TestCase
      * Tests setPlayerRounds and verify that function
      * works by using it once and expect int 1 (default = 0)
      */
-    public function testSetPlayerRounds()
+    public function testSetPlayerRounds(): void
     {
         $game = new Play21();
         $game->setPlayerRounds();
@@ -127,7 +127,7 @@ class Play21Test extends TestCase
      * Tests getDeck and verify that function
      * returns an object
      */
-    public function testGetDeck()
+    public function testGetDeck(): void
     {
         $game = new Play21();
         $res = $game->getDeck();
@@ -138,7 +138,7 @@ class Play21Test extends TestCase
     /**
      * Tests getRounds and verify that function returns int
      */
-    public function testGetRounds()
+    public function testGetRounds(): void
     {
         $game = new Play21();
         $res = $game->getRounds();
@@ -150,7 +150,7 @@ class Play21Test extends TestCase
      * Tests setRounds and verify that function
      * works by using it once and expect int 2 (default = 1)
      */
-    public function testSetRounds()
+    public function testSetRounds(): void
     {
         $game = new Play21();
         $game->setRounds();
@@ -163,7 +163,7 @@ class Play21Test extends TestCase
     /**
      * Tests draw and verify that function returns object
      */
-    public function testDraw()
+    public function testDraw(): void
     {
         $game = new Play21();
         $res = $game->draw();
@@ -174,7 +174,7 @@ class Play21Test extends TestCase
     /**
      * Tests playerHand and verify that function returns object
      */
-    public function testPlayerHand()
+    public function testPlayerHand(): void
     {
         $game = new Play21();
         $res = $game->playerHand();
@@ -185,7 +185,7 @@ class Play21Test extends TestCase
     /**
      * Tests playerDraw and verify that function returns object
      */
-    public function testPlayerDraw()
+    public function testPlayerDraw(): void
     {
         $game = new Play21();
         $res = $game->playerDraw();
@@ -196,7 +196,7 @@ class Play21Test extends TestCase
     /**
      * Tests bankHand and verify that function returns object
      */
-    public function testBankHand()
+    public function testBankHand(): void
     {
         $game = new Play21();
         $res = $game->bankHand();
@@ -207,7 +207,7 @@ class Play21Test extends TestCase
     /**
      * Tests bankDraw and verify that function returns object
      */
-    public function testBankDraw()
+    public function testBankDraw(): void
     {
         $game = new Play21();
         $res = $game->bankDraw();
@@ -218,7 +218,7 @@ class Play21Test extends TestCase
     /**
      * Tests clearHands and verify that function returns object
      */
-    public function testclearHands()
+    public function testclearHands(): void
     {
         $game = new Play21();
         $game->playerDraw();
@@ -237,5 +237,155 @@ class Play21Test extends TestCase
         $this->assertEquals($res, $exp);
         $exp = $game->bankHand();
         $this->assertEquals($res, $exp);
+    }
+
+    /**
+     * tests getWinner when player gets 21
+     */
+    public function testPlayerWinnsBy21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(21);
+        $game->setbankScoreTest(20);
+        $res = $game->getWinner();
+
+        $exp = "Player winns!!";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests getWinner when player gets over 21
+     */
+    public function testPlayerOver21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(22);
+        $game->setbankScoreTest(20);
+        $res = $game->getWinner();
+
+        $exp = "Player bust and loose!";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests getWinner when player and bank is equal
+     */
+    public function testPlayerAndBankIsEqual(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(20);
+        $game->setbankScoreTest(20);
+        $res = $game->getWinner();
+
+        $exp = "Even, so house winns!";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests getWinner when bank gets 21
+     */
+    public function testBankWinnsBy21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(20);
+        $game->setbankScoreTest(21);
+        $res = $game->getWinner();
+
+        $exp = "House winns!!";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests getWinner when bank gets over 21
+     */
+    public function testBankOver21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(20);
+        $game->setbankScoreTest(22);
+        $res = $game->getWinner();
+
+        $exp = "House bust and loose!";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests getWinner when bank higher than player and lower than 21
+     */
+    public function testBankHigherThanPlayerAndLowerThan21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(19);
+        $game->setbankScoreTest(20);
+        $res = $game->getWinner();
+
+        $exp = "House wins";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests bustOrWinn() player get 21
+     */
+    public function testBustOrWinnPlayer21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(21);
+        $game->setbankScoreTest(20);
+        $res = $game->bustOrWinn();
+
+        $exp = "Player winns!!";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests bustOrWinn() player over 21
+     */
+    public function testBustOrWinnPlayerOver21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(22);
+        $game->setbankScoreTest(20);
+        $res = $game->bustOrWinn();
+
+        $exp = "Player bust and loose!";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests bustOrWinn() bank get 21
+     */
+    public function testBustOrWinnBank21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(20);
+        $game->setbankScoreTest(21);
+        $res = $game->bustOrWinn();
+
+        $exp = "House winns!!";
+        $this->assertEquals($res, $exp);
+
+    }
+
+    /**
+     * tests bustOrWinn() bank over 21
+     */
+    public function testBustOrWinnBankOver21(): void
+    {
+        $game = new Play21();
+        $game->setPlayerScoreTest(20);
+        $game->setbankScoreTest(22);
+        $res = $game->bustOrWinn();
+
+        $exp = "House bust and loose!";
+        $this->assertEquals($res, $exp);
+
     }
 }

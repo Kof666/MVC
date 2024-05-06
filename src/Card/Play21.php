@@ -101,6 +101,15 @@ class Play21
     }
 
     /**
+     * Set bankScore for tests
+     *
+     */
+    public function setBankScoreTest(int $score): void
+    {
+        $this->bankScore = $score;
+    }
+
+    /**
      * Get playerScore
      *
      * @return int $playerScore
@@ -111,13 +120,21 @@ class Play21
     }
 
     /**
-     * Set playerScore
+     * Set playerScore for tests
      *
-     * @return int $playerScore
      */
-    public function setPlayerScore()
+    public function setPlayerScore(): int
     {
         return array_sum($this->playerHand);
+    }
+
+    /**
+     * Set playerScore for tests
+     *
+     */
+    public function setPlayerScoreTest(int $score): void
+    {
+        $this->playerScore = $score;
     }
 
     /**
@@ -276,6 +293,8 @@ class Play21
         $str = "";
 
         if ($this->getPlayerScore() > $this->getBankScore()) {
+            $str = "Player wins";
+            $this->setPlayerRounds();
             if($this->getPlayerScore() == 21) {
                 $str = "Player winns!!";
                 $this->setPlayerRounds();
@@ -283,8 +302,6 @@ class Play21
                 $str = "Player bust and loose!";
                 $this->setBankRounds();
             }
-            $str = "Player wins";
-            $this->setPlayerRounds();
         } elseif ($this->getBankScore() == $this->getPlayerScore()) {
             $str = "Even, so house winns!";
             $this->setBankRounds();
