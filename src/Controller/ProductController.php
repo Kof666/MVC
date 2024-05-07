@@ -84,4 +84,62 @@ class ProductController extends AbstractController
     
         return $this->redirectToRoute('product_show_all');
     }
+
+    #[Route('/product/update/{id}/{value}', name: 'product_update')]
+    public function updateProduct(
+        ManagerRegistry $doctrine,
+        int $id,
+        int $value
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
+    
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+    
+        $product->setValue($value);
+        $entityManager->flush();
+    
+        return $this->redirectToRoute('product_show_all');
+    }
+
+    #[Route('/product/view', name: 'product_view_all')]
+    public function viewAllProduct(
+        ProductRepository $productRepository
+    ): Response {
+        $products = $productRepository->findAll();
+    
+        $data = [
+            'products' => $products
+        ];
+    
+        return $this->render('product/view.html.twig', $data);
+    }
+
+    #[Route('/product/view/{value}', name: 'product_view_minimum_value')]
+    public function viewProductWithMinimumValue(
+        ProductRepository $productRepository,
+        int $value
+    ): Response {
+        $products = $productRepository->findByMinimumValue($value);
+    
+        $data = [
+            'products' => $products
+        ];
+    
+        return $this->render('product/view.html.twig', $data);
+    }
+
+    #[Route('/product/show/min/{value}', name: 'product_by_min_value')]
+    public function showProductByMinimumValue(
+        ProductRepository $productRepository,
+        int $value
+    ): Response {
+        $products = $productRepository->findByMinimumValue2($value);
+    
+        return $this->json($products);
+    }
 }
