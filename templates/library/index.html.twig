@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LibraryController!{% endblock %}
+
+{% block main %}
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>/home/kb/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php</code></li>
+        <li>Your template at <code>/home/kb/dbwebb-kurser/mvc/me/report/templates/library/index.html.twig</code></li>
+    </ul>
+</div>
+
+<button class="button" role="button">
+    <a href="{{ path('library_create_get')}}">add new</a>
+</button>
+{% endblock %}
