@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library{% endblock %}
+
+{% block main %}
+
+<h2>View one book in library</h2>
+
+<ul class="lib">
+    {% for book in library %}
+        <li><img src="{{ book.picture|e }}" alt="album bild" width="100" height="100"></li>
+        <li>{{ book.id|e }} | {{ book.title|e }} | {{ book.isbn|e }} | {{ book.author|e }}</li>
+        <li>{{ book.description|e }}</li>
+    {% endfor %}
+</ul>
+
+<button class="button" role="button">
+    <a href="{{ path('library_view_all')}}">back</a>
+</button>
+
+{% endblock %}

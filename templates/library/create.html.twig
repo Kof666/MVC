@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LibraryController!{% endblock %}
+{% block title %}Library{% endblock %}
 
 {% block main %}
 
@@ -16,7 +16,9 @@
     <label for="author">Author:</label><br>
         <input type="text" id="author" name="author" value="author"><br>
     <label for="pic">picture:</label><br>
-        <input type="text" id="pic" name="pic" value="link to picture"><br><br>    
+        <input type="text" id="pic" name="pic" value="link to picture"><br>
+    <label for="description">description:</label><br>
+        <input type="text" id="description" name="description" value="description"><br><br>    
         
         <input type="submit" value="Submit"
         {# onClick="this.form.action='{{ path('library_create_post') }}';" #}

@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LibraryController!{% endblock %}
+{% block title %}Library{% endblock %}
 
 {% block main %}
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Library homepage</h1>
+    {{ include('card/flash.html.twig') }}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/kb/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php</code></li>
-        <li>Your template at <code>/home/kb/dbwebb-kurser/mvc/me/report/templates/library/index.html.twig</code></li>
-    </ul>
+    <p>Here you can add, read about, update and delete books from the library</p>
 </div>
 
 <button class="button" role="button">
     <a href="{{ path('library_create_get')}}">add new</a>
+</button>
+
+<button class="button" role="button">
+    <a href="{{ path('library_view_all')}}">view books</a>
 </button>
 {% endblock %}

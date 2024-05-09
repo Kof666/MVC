@@ -16,6 +16,26 @@ class LibraryRepository extends ServiceEntityRepository
         parent::__construct($registry, Library::class);
     }
 
+/**
+ * Find all book having a id specified with SQL.
+ * 
+ * @return [][] Returns an array of arrays (i.e. a raw data set)
+ */
+public function findById($id): array
+{
+    $conn = $this->getEntityManager()->getConnection();
+
+    $sql = '
+        SELECT * FROM library AS p
+        WHERE p.id = :id
+    ';
+
+    $resultSet = $conn->executeQuery($sql, ['id' => $id]);
+
+    return $resultSet->fetchAllAssociative();
+}
+
+
 
     //    /**
     //     * @return Library[] Returns an array of Library objects
