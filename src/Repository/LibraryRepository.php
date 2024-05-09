@@ -35,6 +35,19 @@ public function findById($id): array
     return $resultSet->fetchAllAssociative();
 }
 
+public function deleteAll(): array
+{
+    $conn = $this->getEntityManager()->getConnection();
+
+    $sql = '
+        DELETE FROM library
+    ';
+
+    $resultSet = $conn->executeQuery($sql);
+
+    return $resultSet->fetchAllAssociative();
+}
+
 
 
     //    /**
