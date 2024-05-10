@@ -4,9 +4,9 @@
 
 {% block main %}
 
-<h2>Edit one book in library</h2>
+<h2>Uppdatera</h2>
 
-<form method="POST" action="">
+<form class="form-lib" method="POST" action="">
     {% for book in books %}
     <label for="title">title:</label><br>
         <input type="text" id="title" name="title" value="{{ book.title|e }}"><br>
