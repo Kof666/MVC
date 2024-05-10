@@ -38,4 +38,10 @@
 <a href="{{ path('api_game') }}" target="_blank">api_game21</a>
 <p>Här kan du se aktuell ställning i kortspelet 21</p>
 
+<a href="{{ path('api_library_books') }}" target="_blank">api_library_books</a>
+<p>Här ser du alla böcker som finns sparade i biblioteket</p>
+
+<a href="{{ path('api_library_book', {'isbn': '9789155042486'})}}" target="_blank">exampel of api_library_book/9789155042486</a>
+<p>här är en exempel länk för att se en bok i bibloteket. I detta fall Slumpens Musik med hjälp av ISBN nr. testa att byt ut ISBN i url om du vill se en annan bok.</p>
+
 {% endblock %}

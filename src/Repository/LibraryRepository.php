@@ -19,9 +19,9 @@ class LibraryRepository extends ServiceEntityRepository
 
     /**
      * Find book by id
-     * 
+     *
      * @param int $id id number of book
-     * 
+     *
      * @return array<string|int, mixed> $resultSet
      */
     public function findById($id): array
@@ -38,10 +38,31 @@ class LibraryRepository extends ServiceEntityRepository
         return $resultSet->fetchAllAssociative();
     }
 
+    /**
+     * Find book by ISBN
+     *
+     * @param string $isbn ISBN number of book
+     *
+     * @return array<string|int, mixed> $resultSet
+     */
+    public function findByIsbn($isbn): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM library AS p
+            WHERE p.isbn = :isbn
+        ';
+
+        $resultSet = $conn->executeQuery($sql, ['isbn' => $isbn]);
+
+        return $resultSet->fetchAllAssociative();
+    }
+
 
     /**
      * Deletes all books from library
-     * 
+     *
      * @return array<string|int, mixed> $resultSet
      */
     public function deleteAll(): array

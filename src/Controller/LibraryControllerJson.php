@@ -27,13 +27,12 @@ class LibraryControllerJson extends AbstractController
         return $response;
     }
 
-    #[Route('api/library/books/{id}', name: 'api_library_book')]
-    public function showBookById(
+    #[Route('api/library/book/{isbn}', name: 'api_library_book')]
+    public function findByIsbn(
         LibraryRepository $libraryRepository,
-        int $id
+        string $isbn
     ): Response {
-        $library = $libraryRepository
-            ->findById($id);
+        $library = $libraryRepository->findByIsbn($isbn);
 
         return $this->json($library);
     }

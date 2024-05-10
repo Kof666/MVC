@@ -516,6 +516,21 @@ Search.appendIndex(
             "summary": "Post\u0020route\u0020to\u0020update\u0020book\u0020by\u0020id",
             "url": "classes/App-Controller-LibraryController.html#method_updateLibraryPost"
         },                {
+            "fqsen": "\\App\\Controller\\LibraryControllerJson",
+            "name": "LibraryControllerJson",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryControllerJson.html"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryControllerJson\u003A\u003AshowAllBooks\u0028\u0029",
+            "name": "showAllBooks",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryControllerJson.html#method_showAllBooks"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryControllerJson\u003A\u003AfindByIsbn\u0028\u0029",
+            "name": "findByIsbn",
+            "summary": "",
+            "url": "classes/App-Controller-LibraryControllerJson.html#method_findByIsbn"
+        },                {
             "fqsen": "\\App\\Controller\\MyPageController",
             "name": "MyPageController",
             "summary": "Routes\u0020to\u0020control\u0020the\u0020report\u0020web\u002Dsite",
@@ -848,12 +863,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\LibraryRepository\u003A\u003AfindById\u0028\u0029",
             "name": "findById",
-            "summary": "",
+            "summary": "Find\u0020book\u0020by\u0020id",
             "url": "classes/App-Repository-LibraryRepository.html#method_findById"
+        },                {
+            "fqsen": "\\App\\Repository\\LibraryRepository\u003A\u003AfindByIsbn\u0028\u0029",
+            "name": "findByIsbn",
+            "summary": "Find\u0020book\u0020by\u0020ISBN",
+            "url": "classes/App-Repository-LibraryRepository.html#method_findByIsbn"
         },                {
             "fqsen": "\\App\\Repository\\LibraryRepository\u003A\u003AdeleteAll\u0028\u0029",
             "name": "deleteAll",
-            "summary": "",
+            "summary": "Deletes\u0020all\u0020books\u0020from\u0020library",
             "url": "classes/App-Repository-LibraryRepository.html#method_deleteAll"
         },                {
             "fqsen": "\\App\\Repository\\ProductRepository",
@@ -868,12 +888,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\ProductRepository\u003A\u003AfindByMinimumValue\u0028\u0029",
             "name": "findByMinimumValue",
-            "summary": "",
+            "summary": "Find\u0020product\u0020by\u0020min\u0020value",
             "url": "classes/App-Repository-ProductRepository.html#method_findByMinimumValue"
         },                {
             "fqsen": "\\App\\Repository\\ProductRepository\u003A\u003AfindByMinimumValue2\u0028\u0029",
             "name": "findByMinimumValue2",
-            "summary": "",
+            "summary": "Find\u0020product\u0020by\u0020min\u0020value",
             "url": "classes/App-Repository-ProductRepository.html#method_findByMinimumValue2"
         },                {
             "fqsen": "\\",
