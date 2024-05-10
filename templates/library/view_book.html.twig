@@ -3,16 +3,27 @@
 {% block title %}Library{% endblock %}
 
 {% block main %}
+{# <h2>View one book in library</h2> #}
+{% for book in library %}
+<div class="flex-container-lib">
+    <div class="d-pic">
+        <img class="lib-pic" src="{{ book.picture|e }}" alt="album bild" height="300">
+    </div>
+    <div class="d-text">
+        <h2>{{ book.title|e }}</h2>
+        <p class="info">id: {{ book.id|e }}</p>
+        <p class="info">titel: {{ book.title|e }}</p>
+        <p class="info">ISBN: {{ book.isbn|e }}</p>
+        <p class="info">författare: {{ book.author|e }}</p><br>
+    
+        <h3>Beskrivning:</h3>
+        <p>{{ book.description|e }}</p> 
+    </div>
+</div>
 
-<h2>View one book in library</h2>
 
-<ul class="lib">
-    {% for book in library %}
-        <li><img src="{{ book.picture|e }}" alt="album bild" width="100" height="100"></li>
-        <li>{{ book.id|e }} | {{ book.title|e }} | {{ book.isbn|e }} | {{ book.author|e }}</li>
-        <li>{{ book.description|e }}</li>
-    {% endfor %}
-</ul>
+{% endfor %}
+
 
 <button class="button" role="button">
     <a href="{{ path('library_view_all')}}">back</a>

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library{% endblock %}
+
+{% block main %}
+
+<h2>Edit one book in library</h2>
+
+<form method="POST" action="">
+    {% for book in books %}
+    <label for="title">title:</label><br>
+        <input type="text" id="title" name="title" value="{{ book.title|e }}"><br>
+    <label for="isbn">ISBN:</label><br>
+        <input type="text" id="isbn" name="isbn" value="{{ book.isbn|e }}"><br>
+    <label for="author">Author:</label><br>
+        <input type="text" id="author" name="author" value="{{ book.author|e }}"><br>
+    <label for="pic">picture:</label><br>
+        <input type="text" id="pic" name="pic" value="{{ book.picture|e }}"><br>
+    <label for="description">description:</label><br>
+        <input type="text" id="description" name="description" value="{{ book.description|e }}"><br><br>    
+        
+        <input type="submit" value="Update"
+        {# onClick="this.form.action='{{ path('library_create_post') }}';" #}
+        >
+        {% endfor %}
+  </form> 
+
+<button class="button" role="button">
+    <a href="{{ path('library_view_all')}}">back</a>
+</button>
+
+{% endblock %}

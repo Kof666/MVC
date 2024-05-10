@@ -4,23 +4,23 @@
 
 {% block main %}
 
-<h2>Create</h2>
+<h2>Lägg till Bok</h2>
 
-<p>heres where to create your library</p>
+<p>Här kan du lägga till en ny bok i bibloteket</p>
 
-<form method="POST" action="">
-    <label for="title">title:</label><br>
-        <input type="text" id="title" name="title" value="title"><br>
+<form class="form-lib" method="POST" action="">
+    <label form="title">title:</label><br>
+        <input type="string" id="title" name="title" value="title"><br>
     <label for="isbn">ISBN:</label><br>
-        <input type="text" id="isbn" name="isbn" value="isbn"><br>
+        <input type="string" id="isbn" name="isbn" value="isbn"><br>
     <label for="author">Author:</label><br>
-        <input type="text" id="author" name="author" value="author"><br>
+        <input type="string" id="author" name="author" value="author"><br>
     <label for="pic">picture:</label><br>
-        <input type="text" id="pic" name="pic" value="link to picture"><br>
+        <input type="string" id="pic" name="pic" value="link to picture"><br>
     <label for="description">description:</label><br>
-        <input type="text" id="description" name="description" value="description"><br><br>    
+        <input type="string" id="description" name="description" value="description"><br><br>    
         
-        <input type="submit" value="Submit"
+        <input type="submit" value="Spara"
         {# onClick="this.form.action='{{ path('library_create_post') }}';" #}
         >
   </form> 

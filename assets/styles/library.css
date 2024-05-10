@@ -1,0 +1,44 @@
+.form-lib {
+    border:solid 1px black;
+    font-size: 1em;
+    padding: 0.2em;
+    margin: 0 0 0.8em 0.1em;
+    border-radius: 0.4em;
+}
+
+.form-lib label {
+    margin-left: 1em;
+}
+
+.form-lib input {
+    margin-left: 1em;
+}
+
+.flash-lib {
+    padding: 0.5em;
+    color: #004085;
+    background-color: #f5d48c;
+    border-color: #b8daff;
+    border-radius: 1em;
+    font-size: x-large;
+}
+.flash-lib:before {
+    content: "ⓘ";
+}
+
+.flex-container-lib {
+    display:flex;
+}
+
+.flex-container-lib > .d-pic {
+    width: 30%;
+}
+
+.flex-container-lib > .d-text {
+    width: 70%;
+}
+
+.flex-container-lib > .d-text .info {
+    font-size: small;
+    margin:0 0 0 1.2em;
+}

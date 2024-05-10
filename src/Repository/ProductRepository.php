@@ -17,9 +17,11 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     /**
-     * Find all producs having a value above the specified one.
+     * Find product by min value
      * 
-     * @return Product[] Returns an array of Product objects
+     * @param int $value
+     * 
+     * @return array<string|int, mixed> $resultSet
      */
     public function findByMinimumValue($value): array
     {
@@ -32,25 +34,27 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
-/**
- * Find all producs having a value above the specified one with SQL.
- * 
- * @return [][] Returns an array of arrays (i.e. a raw data set)
- */
-public function findByMinimumValue2($value): array
-{
-    $conn = $this->getEntityManager()->getConnection();
+    /**
+     * Find product by min value
+     * 
+     * @param int $value
+     * 
+     * @return array<string|int, mixed> $resultSet
+     */
+    public function findByMinimumValue2($value): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
 
-    $sql = '
+        $sql = '
         SELECT * FROM product AS p
         WHERE p.value >= :value
         ORDER BY p.value ASC
     ';
 
-    $resultSet = $conn->executeQuery($sql, ['value' => $value]);
+        $resultSet = $conn->executeQuery($sql, ['value' => $value]);
 
-    return $resultSet->fetchAllAssociative();
-}
+        return $resultSet->fetchAllAssociative();
+    }
 
     //    /**
     //     * @return Product[] Returns an array of Product objects

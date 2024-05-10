@@ -5,21 +5,21 @@
 {% block main %}
 
 <div class="example-wrapper">
-    <h1>Library homepage</h1>
-    {{ include('card/flash.html.twig') }}
+    <h1>Bibloteket</h1>
+    {{ include('library/flash.html.twig') }}
 
-    <p>Here you can add, read about, update and delete books from the library</p>
+    <p>Välkomen till bibloteket. Här kan du lägga till, läsa om, uppdatera och radera böcker.</p>
 </div>
 
 <button class="button" role="button">
-    <a href="{{ path('library_create_get')}}">add new</a>
+    <a href="{{ path('library_create_get')}}">lägg till</a>
 </button>
 
 <button class="button" role="button">
-    <a href="{{ path('library_view_all')}}">view books</a>
+    <a href="{{ path('library_view_all')}}">Lista över böcker</a>
 </button>
 
 <button class="button" role="button">
-    <a href="{{ path('library_reset')}}">Reset Library</a>
+    <a href="{{ path('library_reset')}}">Bibloteks reset</a>
 </button>
 {% endblock %}

@@ -16,62 +16,44 @@ class LibraryRepository extends ServiceEntityRepository
         parent::__construct($registry, Library::class);
     }
 
-/**
- * Find all book having a id specified with SQL.
- * 
- * @return [][] Returns an array of arrays (i.e. a raw data set)
- */
-public function findById($id): array
-{
-    $conn = $this->getEntityManager()->getConnection();
 
-    $sql = '
-        SELECT * FROM library AS p
-        WHERE p.id = :id
-    ';
+    /**
+     * Find book by id
+     * 
+     * @param int $id id number of book
+     * 
+     * @return array<string|int, mixed> $resultSet
+     */
+    public function findById($id): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
 
-    $resultSet = $conn->executeQuery($sql, ['id' => $id]);
+        $sql = '
+            SELECT * FROM library AS p
+            WHERE p.id = :id
+        ';
 
-    return $resultSet->fetchAllAssociative();
-}
+        $resultSet = $conn->executeQuery($sql, ['id' => $id]);
 
-public function deleteAll(): array
-{
-    $conn = $this->getEntityManager()->getConnection();
-
-    $sql = '
-        DELETE FROM library
-    ';
-
-    $resultSet = $conn->executeQuery($sql);
-
-    return $resultSet->fetchAllAssociative();
-}
+        return $resultSet->fetchAllAssociative();
+    }
 
 
+    /**
+     * Deletes all books from library
+     * 
+     * @return array<string|int, mixed> $resultSet
+     */
+    public function deleteAll(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
 
-    //    /**
-    //     * @return Library[] Returns an array of Library objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('l')
-    //            ->andWhere('l.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('l.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+        $sql = '
+            DELETE FROM library
+        ';
 
-    //    public function findOneBySomeField($value): ?Library
-    //    {
-    //        return $this->createQueryBuilder('l')
-    //            ->andWhere('l.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        $resultSet = $conn->executeQuery($sql);
+
+        return $resultSet->fetchAllAssociative();
+    }
 }
