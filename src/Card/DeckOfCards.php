@@ -77,8 +77,7 @@ class DeckOfCards
     public function draw(): mixed
     {
         if (empty($this->deck)) {
-            $lastDraw = "";
-            return $lastDraw; // Return null if no cards left in the deck
+            $this->shuffle();
         }
         $lastDraw = array_shift($this->deck);
 

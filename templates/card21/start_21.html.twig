@@ -7,6 +7,19 @@
 {{ dump(draw) }} #}
 <div class="game">
     {{ include('card21/card21_score.html.twig') }}
+    <form class="form_card21" method="post" action="">
+        <p>
+            <input type="submit" name="quit" value="quit"
+            onClick="this.form.action='{{ path('card_21') }}';"
+            >
+            <input type="submit" name="done" value="Stand"
+                onClick="this.form.action='{{ path('bankHand_21') }}';"
+            >
+            <input type="submit" name="draw_card" value="draw"
+                onClick="this.form.action='{{ path('start_21_post') }}';"
+            >
+        </p>
+    </form>
     <div class="card_flex">
         <div class="game_info">
             <h2>House</h2>
@@ -43,19 +56,7 @@
             {% endfor %}
         </ul>
     </div>
-    <form class="form_card21" method="post" action="">
-        <p>
-            <input type="submit" name="quit" value="quit"
-            onClick="this.form.action='{{ path('card_21') }}';"
-            >
-            <input type="submit" name="done" value="Stand"
-                onClick="this.form.action='{{ path('bankHand_21') }}';"
-            >
-            <input type="submit" name="draw_card" value="draw"
-                onClick="this.form.action='{{ path('start_21_post') }}';"
-            >
-        </p>
-    </form>
+
 </div>
 
 {% endblock %}
