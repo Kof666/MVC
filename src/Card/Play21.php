@@ -97,7 +97,7 @@ class Play21
      */
     public function setBankScore(): int
     {
-        return array_sum($this->bankHand);
+        return $this->bankScore;
     }
 
     /**

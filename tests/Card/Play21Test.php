@@ -220,15 +220,15 @@ class Play21Test extends TestCase
     /**
      * Tests clearHands and verify that function returns object
      */
-    public function testclearHands(): void
+    public function testClearHands(): void
     {
         $game = new Play21();
         $game->playerDraw();
         $pHand = $game->playerHand();
         $game->bankDraw();
         $bHand = $game->bankHand();
-        $game->setPlayerScore();
-        $game->setBankScore();
+        $game->setPlayerScore(0);
+        $game->setBankScore(0);
 
         $this->assertIsArray($pHand);
         $this->assertIsArray($bHand);
