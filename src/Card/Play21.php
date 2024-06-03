@@ -122,10 +122,11 @@ class Play21
     /**
      * Set playerScore for tests
      *
+     * @return int $playerScore
      */
     public function setPlayerScore(): int
     {
-        return array_sum($this->playerHand);
+        return $this->playerScore;
     }
 
     /**
