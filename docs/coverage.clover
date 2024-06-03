@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1717445484">
-  <project timestamp="1717445484">
+<coverage generated="1717446845">
+  <project timestamp="1717446845">
     <file name="/home/kb/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="7" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="16" coveredelements="16"/>
@@ -43,22 +43,22 @@
       <line num="46" type="method" name="getAsString" visibility="public" complexity="6" crap="6" count="6"/>
       <line num="48" type="stmt" count="6"/>
       <line num="49" type="stmt" count="6"/>
-      <line num="50" type="stmt" count="3"/>
+      <line num="50" type="stmt" count="5"/>
       <line num="51" type="stmt" count="5"/>
-      <line num="52" type="stmt" count="2"/>
+      <line num="52" type="stmt" count="4"/>
       <line num="53" type="stmt" count="5"/>
-      <line num="54" type="stmt" count="4"/>
+      <line num="54" type="stmt" count="3"/>
       <line num="55" type="stmt" count="4"/>
       <line num="56" type="stmt" count="3"/>
       <line num="58" type="stmt" count="2"/>
       <line num="67" type="method" name="getValue" visibility="public" complexity="5" crap="5" count="4"/>
       <line num="69" type="stmt" count="4"/>
       <line num="70" type="stmt" count="4"/>
-      <line num="71" type="stmt" count="1"/>
+      <line num="71" type="stmt" count="2"/>
       <line num="72" type="stmt" count="4"/>
-      <line num="73" type="stmt" count="1"/>
+      <line num="73" type="stmt" count="2"/>
       <line num="74" type="stmt" count="4"/>
-      <line num="75" type="stmt" count="1"/>
+      <line num="75" type="stmt" count="2"/>
       <line num="76" type="stmt" count="4"/>
       <line num="77" type="stmt" count="1"/>
       <line num="79" type="stmt" count="4"/>
