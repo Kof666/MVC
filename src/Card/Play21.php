@@ -234,7 +234,7 @@ class Play21
         if($this->playerScore <= 21) {
             $value = 0;
             $draw = $this->deck->draw();
-            $value = $value + $draw->getValue();
+            //$value = $value + $draw->getValue();
             // var_dump($value);
             $value = $draw->getValue();
             $this->playerScore = $this->playerScore + $value;
