@@ -87,4 +87,12 @@ class MyPageController extends AbstractController
 
         return $this->render('/api.html.twig', $data);
     }
+
+    #[Route('/metrics', name: 'metrics')]
+    public function metrics(): Response
+    {
+        $data = [];
+
+        return $this->render('/metrics.html.twig', $data);
+    }
 }

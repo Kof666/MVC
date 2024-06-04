@@ -90,3 +90,14 @@ bin/console cache:clear
 # Show available commands
 bin/console
 ```
+
+ scrutinizer
+ ---------------
+
+ This git repo is linked to scrutinizer. Check out the results if you're interested.
+ 
+<div class="flex-container">
+    <a href="https://scrutinizer-ci.com/g/Kof666/MVC/?branch=main" target="_blank"><img src="https://scrutinizer-ci.com/g/Kof666/MVC/badges/quality-score.png?b=main" alt="coverage"></a>
+    <a href="https://scrutinizer-ci.com/g/Kof666/MVC/code-structure/main/code-coverage/src/" target="_blank"><img src="https://scrutinizer-ci.com/g/Kof666/MVC/badges/coverage.png?b=main" alt="coverage"></a>
+    <a href="https://scrutinizer-ci.com/g/Kof666/MVC/inspections/58b84745-c2c7-4664-a6af-99b7fcf5d078/log" target="_blank"><img src="https://scrutinizer-ci.com/g/Kof666/MVC/badges/build.png?b=main" alt="coverage"></a>
+</div>

@@ -61,6 +61,24 @@ ul li a:hover {
     color: var(--highlight-col);
 }
 
+.ul-metrics {
+    list-style-type: square;
+}
+
+.li-metrics {
+    font-family: var(--font-heading);
+    color: var(--font-col);
+    font-weight: bold;
+    font-size: large;
+    margin: 1em;
+}
+
+.li-metrics:hover {
+    transform:none;
+}
+
+
+
 .dice-ul {
     display: flex;
 }
@@ -78,4 +96,10 @@ form input {
     padding: 0.2em;
     margin: 0 0 0.8em 0.1em;
     border-radius: 0.4em;
+}
+
+.ram {
+    border: 1px solid black;
+    border-radius: 1%;
+    background-color: #d0cece;;
 }
