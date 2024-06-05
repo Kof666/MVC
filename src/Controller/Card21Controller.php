@@ -159,7 +159,7 @@ class Card21Controller extends AbstractController
         $playerHand = $game->playerHand();
         $bankHand = $game->bankDraw();
         $bankScore = $game->getBankScore();
-        $bankHand = $game->bankHand();
+        // $bankHand = $game->bankHand();
         $playerScore = $game->getPlayerScore();
         $rounds = $game->getRounds();
         $playerRounds = $game->getPlayerRounds();

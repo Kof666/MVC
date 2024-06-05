@@ -54,12 +54,7 @@ class DeckOfCardsTest extends TestCase
         $deck = new DeckOfCards();
         $res = $deck->draw();
 
-        for ($i = 0; $i < 53; $i++) {
-            $resNull = $deck->draw();
-        }
-
         $this->assertIsObject($res);
-        // $this->assertEquals($resNull, null);
     }
 
     /**

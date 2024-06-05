@@ -34,7 +34,7 @@ class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         /** @phpstan-ignore-next-line */
-        $library = $entityManager->getRepository(Library::class)->deleteAll();
+        $entityManager->getRepository(Library::class)->deleteAll();
 
         $library = new Library();
         $library->setTitle('Liftarens guide till galaxen');
@@ -94,7 +94,7 @@ class LibraryController extends AbstractController
         $entityManager = $doctrine->getManager();
 
         $library = new Library();
-        $title = $request->request->get('title');
+        $request->request->get('title');
         $library->setTitle($request->request->get('title'));/** @phpstan-ignore-line */
         $library->setIsbn($request->request->get('isbn'));/** @phpstan-ignore-line */
         $library->setauthor($request->request->get('author'));/** @phpstan-ignore-line */

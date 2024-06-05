@@ -232,10 +232,7 @@ class Play21
     public function playerdraw(): mixed
     {
         if($this->playerScore <= 21) {
-            //$value = 0;
             $draw = $this->deck->draw();
-            //$value = $value + $draw->getValue();
-            // var_dump($value);
             $value = $draw->getValue();
             $this->playerScore = $this->playerScore + $value;
             if($draw) {

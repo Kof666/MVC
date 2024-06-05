@@ -153,7 +153,7 @@ class CardGameController extends AbstractController
     ): Response {
 
         $deckOfCards = new DeckOfCards();
-        $deck = $deckOfCards->shuffle();
+        $deckOfCards->shuffle();
         $deck = $deckOfCards->getAsString();
 
         $data = [
@@ -264,7 +264,6 @@ class CardGameController extends AbstractController
                 $session->set("draw", $draw);
             }
         } elseif($cardCount < $num) {
-            $draw = [];
             $this->addFlash(
                 'notice',
                 'Du kan inte dra fler kort än det finns kvar i leken!'

@@ -227,8 +227,8 @@ class Play21Test extends TestCase
         $pHand = $game->playerHand();
         $game->bankDraw();
         $bHand = $game->bankHand();
-        $game->setPlayerScore(0);
-        $game->setBankScore(0);
+        $game->setPlayerScore();
+        $game->setBankScore();
 
         $this->assertIsArray($pHand);
         $this->assertIsArray($bHand);

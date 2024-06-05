@@ -49,7 +49,7 @@ class CardGameControllerJson
     ): Response {
 
         $deckOfCards = new DeckOfCards();
-        $apiDeckShuffled = $deckOfCards->shuffle();
+        $deckOfCards->shuffle();
         $apiDeckShuffled = $deckOfCards->getAsString();
 
         $data = [
@@ -101,7 +101,7 @@ class CardGameControllerJson
         SessionInterface $session
     ): Response {
         $deckOfCards = $session->get("api_deck");
-        $apiDeckDraw = $deckOfCards->draw();
+        $deckOfCards->draw();
         $apiDeckDraw = $deckOfCards->getAsString();
 
         $apiCount = $deckOfCards->cardCount();
@@ -136,7 +136,7 @@ class CardGameControllerJson
 
         if($apiNum) {
             for($i = 0; $i < $apiNum; $i++) {
-                $apiDeckDraw = $deckOfCards->draw();
+                $deckOfCards->draw();
             }
         }
 
