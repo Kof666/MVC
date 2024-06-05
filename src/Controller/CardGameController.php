@@ -179,7 +179,8 @@ class CardGameController extends AbstractController
         $cardCount = $drawDeck->cardCount();
 
         if($draw) {
-            for($i = 0; $i < sizeOf($strDraw); $i++) {
+            $size = sizeOf($strDraw);
+            for($i = 0; $i < $size; $i++) {
                 $strDraw[$i] = $draw->getAsString();
             }
         }
