@@ -290,16 +290,13 @@ class Play21
     {
         $str = "no winner yet";
 
-        if ($this->getPlayerScore() > $this->getBankScore()) {
+        if ($this->getPlayerScore() > $this->getBankScore() || $this->getPlayerScore() == 21) {
             $str = "Player wins";
             $this->setPlayerRounds();
-            if($this->getPlayerScore() == 21) {
-                $str = "Player winns!!";
-                $this->setPlayerRounds();
-            } elseif($this->getPlayerScore() > 21) {
-                $str = "Player bust and loose!";
-                $this->setBankRounds();
-            }
+                 
+        } elseif($this->getPlayerScore() > 21) {
+            $str = "Player bust and loose!";
+            $this->setBankRounds();
         } elseif ($this->getBankScore() == $this->getPlayerScore()) {
             $str = "Even, so house winns!";
             $this->setBankRounds();
