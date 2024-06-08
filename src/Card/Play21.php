@@ -288,7 +288,7 @@ class Play21
      */
     public function getWinner(): string
     {
-        $str = "";
+        $str = "no winner yet";
 
         if ($this->getPlayerScore() > $this->getBankScore()) {
             $str = "Player wins";
@@ -328,7 +328,7 @@ class Play21
      */
     public function bustOrWinn(): string
     {
-        $str = "";
+        $str = "It´s fun to play...right?";
 
         if($this->getPlayerScore() == 21) {
             $str = "Player winns!!";

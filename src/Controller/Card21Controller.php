@@ -80,7 +80,7 @@ class Card21Controller extends AbstractController
         $bankRounds = $game->getBankRounds();
 
         $str = $game->bustOrWinn();
-        if($str) {
+        if($str != 'It´s fun to play...right?') {
             $this->addFlash(
                 'notice',
                 $str
@@ -122,7 +122,7 @@ class Card21Controller extends AbstractController
         $bankRounds = $game->getBankRounds();
 
         $str = $game->bustOrWinn();
-        if($str) {
+        if($str != 'It´s fun to play...right?') {
             $this->addFlash(
                 'notice',
                 $str
@@ -141,9 +141,9 @@ class Card21Controller extends AbstractController
             "bank_rounds" => $bankRounds
         ];
 
-        if ($str) {
+        if ($str != 'It´s fun to play...right?') {
             return $this->render('card21/start_21_bustOrWinn.html.twig', $data);
-        } elseif (!$str) {
+        } elseif ($str == 'It´s fun to play...right?') {
             return $this->render('card21/start_21.html.twig', $data);
         }
     }

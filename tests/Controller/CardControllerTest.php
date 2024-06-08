@@ -45,11 +45,11 @@
 //         $client = static::createClient();
 //         $crawler = $client->request('GET', '/card/deck');
 //         $this->assertResponseIsSuccessful();
-//     }  
-    
+//     }
+
 //     public function testShuffle(): void {
 //         $client = static::createClient();
 //         $crawler = $client->request('GET', '/card/deck/shuffle');
 //         $this->assertResponseIsSuccessful();
-//     } 
+//     }
 // }
