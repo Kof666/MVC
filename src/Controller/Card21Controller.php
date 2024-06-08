@@ -143,9 +143,9 @@ class Card21Controller extends AbstractController
 
         if ($str != 'It´s fun to play...right?') {
             return $this->render('card21/start_21_bustOrWinn.html.twig', $data);
-        } elseif ($str == 'It´s fun to play...right?') {
-            return $this->render('card21/start_21.html.twig', $data);
         }
+        
+        return $this->render('card21/start_21.html.twig', $data);   
     }
 
     /**
