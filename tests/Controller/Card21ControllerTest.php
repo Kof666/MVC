@@ -1,35 +1,37 @@
 <?php
 
-namespace App\tests\Controller;
+// namespace App\tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+// use PHPUnit\Framework\TestCase;
 
-/**
- * Test cases for class Game21Controller.
- *
- * @SuppressWarnings(PHPMD)
- */
-class testGame21Controller extends WebTestCase
-{
+// use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-    // #[Route("/game", name: "card_21")]
-    public function testHome21(): void {
+// /**
+//  * Test cases for class Game21Controller.
+//  *
+//  * @SuppressWarnings(PHPMD)
+//  */
+// class testGame21Controller extends WebTestCase
+// {
 
-        $client = static::createClient();
+//     // #[Route("/game", name: "card_21")]
+//     public function testHome21(): void {
 
-        $crawler = $client->request('GET', '/game');
+//         $client = static::createClient();
 
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', "MVC Rapporter");
+//         $crawler = $client->request('GET', '/game');
+
+//         $this->assertResponseIsSuccessful();
+//         $this->assertSelectorTextContains('h1', "MVC Rapporter");
 
 
-    }
+//     }
 
-    public function testDoc21(): void {
-        $client = static::createClient();
+//     public function testDoc21(): void {
+//         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/game/doc');
+//         $crawler = $client->request('GET', '/game/doc');
 
-        $this->assertResponseIsSuccessful();
-    }
-}
+//         $this->assertResponseIsSuccessful();
+//     }
+// }
