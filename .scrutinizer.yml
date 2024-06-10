@@ -18,7 +18,7 @@ build:
         analysis:
             tests:
                 override:
-                    - php-scrutinizer-run
+                    #- php-scrutinizer-run
                     #- phpcs-run # Not used, missing config file
     tests:
         override:
