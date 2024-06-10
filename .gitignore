@@ -36,5 +36,3 @@ tools/
 ###< development tools ###
 
 .phpdoc/
-
-/tests/Controller
