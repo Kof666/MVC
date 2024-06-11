@@ -23,8 +23,6 @@ class testGame21Controller extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', "MVC Rapporter");
-
-
     }
 
     public function testDoc21(): void {

@@ -24,7 +24,7 @@ class Game21ControllerJson
         SessionInterface $session
     ): Response {
 
-
+        $data = [];
         $game = $session->get("game");
         if($game) {
             $rounds = $game->getRounds();
@@ -40,8 +40,6 @@ class Game21ControllerJson
                 "bank_score" => $bankScore,
                 "player_score" => $playerScore
             ];
-        } elseif (!$game) {
-            $data = [];
         }
 
         $response = new JsonResponse($data);
