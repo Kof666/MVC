@@ -38,7 +38,6 @@ class DiceGameController extends AbstractController
 
         $data = [
             "diceRoll" => $diceRoll,
-            "diceStr" => $dice->getAsString()
         ];
 
         return $this->render('pig/test/roll.html.twig', $data);
