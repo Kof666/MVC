@@ -107,16 +107,18 @@
 
         <br>
         <h2 id="Analys">Analys</h2>
-        <p>Efter visst arbete med att försöka förbättra koden enligt ovan kommer följande analys.</p>
+        <p>Efter att jag försökt implementera förbättringarna inser jag svårigheten att lyckas. Jag började med att titta på issues på scrunitzer där jag hittade flera enklare förbättringar, till exempel att någon metod kunde returnera null vilket inte är helt ok i de fallen. Jag hittade även en del onödiga rader kod. Variabler som blivit tilldelade värden och sen några rader längre ner fått nya värden utan att användas. Ofta på ställen i koden där jag jobbat en stund för att komma rätt. Detta arbete förbättrade kanske inte mina testresultat speciellt men gav ändå mej en del insikt. Antalet issues har minskat markant.</p>
+        
+        <br><p>Kod täckningen har även förbättrats. Den har ökat till 52% från 23% och fått en gul badge. Detta på grund av ökade test av controller klasser vilket per automatik gett viss kodtäckning även i entity- och repository klasserna. Här var mitt mål att få en grön badge men jag fick nöja mej med en gul då jag inte lyckades hitta något vettigt sätt att testa session variablerna i controller klasserna. Tiden fanns helt enkelt inte för detta tyvärr.</p>
+        
+        <br><p>Efter lite analyserande av komplexiteten i klassen Play21 och Card21Controller och Worst rated PHP Operations inser jag att detta nog blir ett större ingrepp än tiden ger mej. Jag bestämmer mig för att i projektet försöka skaffa mig bättre ordning och dela upp uppgifterna i olika metoder och klasser på ett bättre sätt och släpper detta här.</p>
+        
+        <br><p>Jag valde även att rensa bort vissa övningsfiler, de kopplade till övning 1 från kmom05. Detta kändes rätt då den övningen inte ska lämnas in utan bara ge en förståelse hur man kan komma igång med Doctrine i Symfony.</p>
+        
         <h2 id="Diskussion">Diskussion</h2>
-        <p>
-            Avsluta med ett stycke “Diskussion” där du diskuterar kort kring det du nyss gjort.
-        </p>
-        <p>
-            Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?
-            Finns det fördelar och kanske nackdelar?
-            Ser du andra möjligheter att jobba mot “clean code”?
-        </p>
+        <p>Det har känts lärorikt och intressant att testa att jobba med clean code på det här sättet. Jag kan se både fördelar och nackdelar med det här sättet att arbeta även om kanske fördelarna väger tyngre. Det är ju smidigt att ha dessa olika tester som hjälpmedel att hålla sig till projektets kodstandard och som sammanfattar din kod på olika sätt så att du kan få en bild över hur clean den är. Samtidigt har jag märkt att jag själv kanske byter lite fokus från att skriva kod som ger rätt funktioner till att anpassa koden efter dessa testers standard. Jag kan snabbt få en känsla av att jag vill ha bra betyg av kod-testningen och glömmer ibland att tänka tanken vad koden egentligen är skriven för.</p>
+        
+        <br><p>Jag tycker det är ett utmärkt verktyg för utbildningen där man får en väldigt bra hint om var eller vilka delar av sin kod man kan fokusera på för att förbättra sin egen standard. Ofta känner jag att tiden kanske är lite för knapp för att fundera på hur jag kan göra en snyggare lösning utan man får fokusera på att bara få en lösning. Till sist bör jag väl sammanfatta det hela med att säga att även om jag inser värdet i testerna är jag ju tyvärr inte helt nöjd. Jag fick bara upp coverage till gul badge där jag ville ha grön och min overall gick ner till 9.88 från 9.91 på scrutinizer. Känns ju som ett litet nederlag att sänka sitt betyg helt enkelt..</p>
     </div>
 </div>
 {% endblock %}
