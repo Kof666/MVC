@@ -13,9 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class testGame21Controller extends WebTestCase
 {
-
     // #[Route("/game", name: "card_21")]
-    public function testHome21(): void {
+    public function testHome21(): void
+    {
 
         $client = static::createClient();
 
@@ -25,7 +25,8 @@ class testGame21Controller extends WebTestCase
         $this->assertSelectorTextContains('h1', "MVC Rapporter");
     }
 
-    public function testDoc21(): void {
+    public function testDoc21(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/game/doc');

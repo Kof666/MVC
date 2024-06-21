@@ -11,7 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class testGameController extends WebTestCase
 {
-    public function testHome(): void {
+    public function testHome(): void
+    {
 
         $client = static::createClient();
 
@@ -23,31 +24,36 @@ class testGameController extends WebTestCase
 
     }
 
-    public function testTest(): void {
+    public function testTest(): void
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', '/card/test');
         $this->assertResponseIsSuccessful();
     }
 
-    public function testPlay(): void {
+    public function testPlay(): void
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', '/session');
         $this->assertResponseIsSuccessful();
     }
 
-    public function testSessionDestroy(): void {
+    public function testSessionDestroy(): void
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', '/session/delete');
         $this->assertResponseIsSuccessful();
     }
 
-    public function testDeck(): void {
+    public function testDeck(): void
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', '/card/deck');
         $this->assertResponseIsSuccessful();
     }
 
-    public function testShuffle(): void {
+    public function testShuffle(): void
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', '/card/deck/shuffle');
         $this->assertResponseIsSuccessful();

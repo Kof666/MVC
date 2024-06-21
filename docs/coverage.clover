@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1718717236">
-  <project timestamp="1718717236">
+<coverage generated="1719006915">
+  <project timestamp="1719006915">
     <file name="/home/kb/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="7" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="16" coveredelements="16"/>
@@ -43,18 +43,18 @@
       <line num="46" type="method" name="getAsString" visibility="public" complexity="6" crap="6" count="11"/>
       <line num="48" type="stmt" count="11"/>
       <line num="49" type="stmt" count="11"/>
-      <line num="50" type="stmt" count="8"/>
+      <line num="50" type="stmt" count="9"/>
       <line num="51" type="stmt" count="11"/>
-      <line num="52" type="stmt" count="10"/>
-      <line num="53" type="stmt" count="10"/>
-      <line num="54" type="stmt" count="8"/>
-      <line num="55" type="stmt" count="10"/>
-      <line num="56" type="stmt" count="9"/>
+      <line num="52" type="stmt" count="9"/>
+      <line num="53" type="stmt" count="11"/>
+      <line num="54" type="stmt" count="7"/>
+      <line num="55" type="stmt" count="11"/>
+      <line num="56" type="stmt" count="10"/>
       <line num="58" type="stmt" count="2"/>
       <line num="67" type="method" name="getValue" visibility="public" complexity="5" crap="5" count="4"/>
       <line num="69" type="stmt" count="4"/>
       <line num="70" type="stmt" count="4"/>
-      <line num="71" type="stmt" count="2"/>
+      <line num="71" type="stmt" count="1"/>
       <line num="72" type="stmt" count="4"/>
       <line num="73" type="stmt" count="2"/>
       <line num="74" type="stmt" count="4"/>
@@ -833,7 +833,7 @@
     </file>
     <file name="/home/kb/dbwebb-kurser/mvc/me/report/src/Controller/MyPageController.php">
       <class name="App\Controller\MyPageController" namespace="global">
-        <metrics complexity="9" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="27" elements="35" coveredelements="33"/>
+        <metrics complexity="9" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="26" elements="35" coveredelements="32"/>
       </class>
       <line num="21" type="method" name="meRoute" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="24" type="stmt" count="1"/>
@@ -844,13 +844,13 @@
       <line num="37" type="method" name="report" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="40" type="stmt" count="1"/>
       <line num="42" type="stmt" count="1"/>
-      <line num="45" type="method" name="lucky" visibility="public" complexity="3" crap="3.01" count="1"/>
+      <line num="45" type="method" name="lucky" visibility="public" complexity="3" crap="3.05" count="1"/>
       <line num="48" type="stmt" count="1"/>
       <line num="49" type="stmt" count="1"/>
       <line num="50" type="stmt" count="1"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="1"/>
-      <line num="53" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="52" type="stmt" count="0"/>
+      <line num="53" type="stmt" count="0"/>
       <line num="55" type="stmt" count="1"/>
       <line num="56" type="stmt" count="1"/>
       <line num="57" type="stmt" count="1"/>
@@ -870,7 +870,7 @@
       <line num="91" type="method" name="metrics" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="94" type="stmt" count="1"/>
       <line num="96" type="stmt" count="1"/>
-      <metrics loc="99" ncloc="93" classes="1" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="27" elements="35" coveredelements="33"/>
+      <metrics loc="99" ncloc="93" classes="1" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="26" elements="35" coveredelements="32"/>
     </file>
     <file name="/home/kb/dbwebb-kurser/mvc/me/report/src/Controller/MyPageControllerJson.php">
       <class name="App\Controller\MyPageControllerJson" namespace="global">
@@ -1013,6 +1013,6 @@
       <line num="78" type="stmt" count="1"/>
       <metrics loc="81" ncloc="59" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="11" elements="20" coveredelements="14"/>
     </file>
-    <metrics files="21" loc="2383" ncloc="1886" classes="18" methods="115" coveredmethods="88" conditionals="0" coveredconditionals="0" statements="771" coveredstatements="368" elements="886" coveredelements="456"/>
+    <metrics files="21" loc="2383" ncloc="1886" classes="18" methods="115" coveredmethods="88" conditionals="0" coveredconditionals="0" statements="771" coveredstatements="367" elements="886" coveredelements="455"/>
   </project>
 </coverage>

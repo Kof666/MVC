@@ -13,9 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class testMyPageController extends WebTestCase
 {
-
     // #[Route("/game", name: "card_21")]
-    public function testMeRoute(): void {
+    public function testMeRoute(): void
+    {
 
         $client = static::createClient();
 
@@ -25,7 +25,8 @@ class testMyPageController extends WebTestCase
         // $this->assertSelectorTextContains('h1', "MVC Rapporter");
     }
 
-    public function testAbout(): void {
+    public function testAbout(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/about');
@@ -33,7 +34,8 @@ class testMyPageController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testReport(): void {
+    public function testReport(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/report');
@@ -41,7 +43,8 @@ class testMyPageController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testLycky(): void {
+    public function testLycky(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/lucky');
@@ -49,7 +52,8 @@ class testMyPageController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testStart(): void {
+    public function testStart(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
@@ -57,7 +61,8 @@ class testMyPageController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testApi(): void {
+    public function testApi(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/api');
@@ -65,7 +70,8 @@ class testMyPageController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testMetrics(): void {
+    public function testMetrics(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/metrics');

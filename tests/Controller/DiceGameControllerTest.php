@@ -11,7 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class testDiceGameController extends WebTestCase
 {
-    public function testHome(): void {
+    public function testHome(): void
+    {
 
         $client = static::createClient();
 
@@ -21,19 +22,22 @@ class testDiceGameController extends WebTestCase
         $this->assertSelectorTextContains('h1', "MVC Rapporter");
     }
 
-    public function testTestRollDice(): void {
+    public function testTestRollDice(): void
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', '/game/pig/test/roll');
         $this->assertResponseIsSuccessful();
     }
 
-    public function testTestRollDices(): void {
+    public function testTestRollDices(): void
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', '/game/pig/test/roll');
         $this->assertResponseIsSuccessful();
     }
 
-    public function testInitCallback(): void {
+    public function testInitCallback(): void
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', '/game/pig/init');
         $this->assertResponseIsSuccessful();

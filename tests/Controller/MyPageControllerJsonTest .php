@@ -11,8 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class MyPageControllerJsonTest extends WebTestCase
 {
-
-    public function testQuote(): void {
+    public function testQuote(): void
+    {
 
         $client = static::createClient();
 

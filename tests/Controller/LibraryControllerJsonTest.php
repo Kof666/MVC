@@ -15,8 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class LibraryControllerJsonTest extends WebTestCase
 {
-
-    public function testApiShowAllBooks(): void {
+    public function testApiShowAllBooks(): void
+    {
 
         $client = static::createClient();
 
@@ -25,7 +25,8 @@ class LibraryControllerJsonTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testFindByIsbn(): void {
+    public function testFindByIsbn(): void
+    {
 
         $client = static::createClient();
 

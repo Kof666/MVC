@@ -11,8 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class test21GameControllerJson extends WebTestCase
 {
-
-    public function testApiGame(): void {
+    public function testApiGame(): void
+    {
 
         $client = static::createClient();
 
@@ -21,7 +21,8 @@ class test21GameControllerJson extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testApiSchuffle(): void {
+    public function testApiSchuffle(): void
+    {
 
         $client = static::createClient();
 

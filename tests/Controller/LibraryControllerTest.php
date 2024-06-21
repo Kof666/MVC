@@ -13,9 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class testLibraryController extends WebTestCase
 {
-
     // #[Route("/game", name: "card_21")]
-    public function testIndex(): void {
+    public function testIndex(): void
+    {
 
         $client = static::createClient();
 
@@ -25,7 +25,8 @@ class testLibraryController extends WebTestCase
         // $this->assertSelectorTextContains('h1', "MVC Rapporter");
     }
 
-    public function testReset(): void {
+    public function testReset(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/library/reset');
@@ -33,7 +34,8 @@ class testLibraryController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testCreate(): void {
+    public function testCreate(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/library/create');
@@ -41,7 +43,8 @@ class testLibraryController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testViewAllLibrary(): void {
+    public function testViewAllLibrary(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/library/view');
@@ -49,7 +52,8 @@ class testLibraryController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testViewLibraryById(): void {
+    public function testViewLibraryById(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/library/view');
@@ -57,7 +61,8 @@ class testLibraryController extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testDeleteLibraryById(): void {
+    public function testDeleteLibraryById(): void
+    {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/library/view');
