@@ -4,6 +4,7 @@ body {
 }
 
 @import 'var.css';
+@import 'proj.css';
 @import 'base.css';
 @import 'typo.css';
 @import 'header.css';

@@ -1,0 +1,41 @@
+/* Style for header and nav */
+
+header {
+    text-align: center;
+    min-height: 100px;
+    padding: 0;
+}
+
+header h1 {
+    font-family: var(--font-heading-proj);
+    font-weight:bolder;
+    font-size: 400%;
+    color: var(--font-col-proj);
+    padding: 0.3em;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    margin: 0 0 1em 0;
+}
+
+nav ul li a {
+    font-family: var(--font-heading-proj);
+    color: var(--font-col-proj);
+    font-weight: bold;
+    font-size:large;
+    text-decoration: none;
+    padding: 0px 20px 0px 20px;
+}
+
+nav ul li:hover {
+    transform: scale(1.2);
+}
+    
+nav ul li a:hover {
+    color: var(--highlight-col-proj);
+}

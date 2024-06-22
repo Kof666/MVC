@@ -8,6 +8,15 @@
       "css": [
         "build/app.css"
       ]
+    },
+    "proj": {
+      "js": [
+        "build/runtime.js",
+        "build/proj.js"
+      ],
+      "css": [
+        "build/proj.css"
+      ]
     }
   }
 }

@@ -1,0 +1,14 @@
+html {
+    background-color: rgb(107, 1, 1);
+}
+
+body {
+    background: url('../images/proj_bg2.jpg');
+    background-size:cover;
+}
+
+@import 'proj_var.css';
+@import 'proj_typo.css';
+@import 'proj_base.css';
+@import 'proj_header.css';
+@import 'proj_footer.css';

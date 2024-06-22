@@ -1,0 +1,171 @@
+/*!*******************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/proj_var.css ***!
+  \*******************************************************************************************************************/
+/* Variables */
+
+/* Colors */
+:root {
+    --proj-col: #746ff3e3;
+    --bg-proj-col:rgba(0, 0, 0, 0.51);
+    --highlight-proj-col:#ff0000ad;
+
+    --font-heading-proj: "Anton", sans-serif;
+    --font-p-proj: Arial, Helvetica, sans-serif;
+    --font-col-proj:#dcdcdc;
+}
+
+/*!********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/proj_typo.css ***!
+  \********************************************************************************************************************/
+/* the basis for the typography style */
+
+html, body {
+    font-size: 100%;
+    height: 100%;
+    line-height: 1.4;
+}
+
+body {
+    line-height: 1.2;
+}
+
+h1 {
+    font-family: var(--font-heading-proj);
+    font-weight: bold;
+    color: var(--font-col-proj);
+    font-size: 2.8em;
+    margin-bottom: rem; /* baseline * 2, för att skapa mer utrymme *//*ändrade för det såg inte bra ut*/
+}
+
+h2 {
+    font-family: var(--font-heading-proj);
+    font-weight: bold;
+    color: var(--font-col-proj);
+    font-size: 2em;
+    margin-bottom: 0.5rem; /* baseline * 2, för att skapa mer utrymme *//*ändrade för det såg inte bra ut*/
+}
+
+h3, th {
+    font-family: var(--font-heading-proj);
+    font-weight:bolder;
+    color: var(--font-col-proj);
+    font-size: 1.4em;
+    margin-bottom: 0.5rem; /* baseline * 2, för att skapa mer utrymme *//*ändrade för det såg inte bra ut*/
+}
+
+td, th, li, dd {
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+p {
+    font-family: var(--font-p-proj);
+    color: var(--font-col-proj);
+    font-size: 1.25em;
+    margin-bottom: 1.5rem; /* 1.2 * 1.25em vår baseline */
+    letter-spacing: 1px;
+    margin: 1em;
+}
+
+a {
+    font-family: var(--font-p-proj);
+    font-size: 1.25em;
+    color: var(--highlight-col-proj);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--highlight-col-proj);
+}
+
+h1, h2, h3, p, a {
+    margin-left: 1rem;
+}
+/*!********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/proj_base.css ***!
+  \********************************************************************************************************************/
+/* The basic style element */
+* {
+    box-sizing: border-box;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+
+.blackjack {
+    width:80%;
+    margin:auto;
+    border-radius: 1%;
+    text-align: center;
+    background-color: rgba(119, 0, 0, 0.72);
+}
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/proj_header.css ***!
+  \**********************************************************************************************************************/
+/* Style for header and nav */
+
+header {
+    text-align: center;
+    min-height: 100px;
+    padding: 0;
+}
+
+header h1 {
+    font-family: var(--font-heading-proj);
+    font-weight:bolder;
+    font-size: 400%;
+    color: var(--font-col-proj);
+    padding: 0.3em;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    margin: 0 0 1em 0;
+}
+
+nav ul li a {
+    font-family: var(--font-heading-proj);
+    color: var(--font-col-proj);
+    font-weight: bold;
+    font-size:large;
+    text-decoration: none;
+    padding: 0px 20px 0px 20px;
+}
+
+nav ul li:hover {
+    transform: scale(1.2);
+}
+    
+nav ul li a:hover {
+    color: var(--highlight-col-proj);
+}
+
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/proj_footer.css ***!
+  \**********************************************************************************************************************/
+/* Style for header and nav */
+
+footer p {
+    text-align: center;
+    padding: 1em;
+}
+
+/*!***************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/proj.css ***!
+  \***************************************************************************************************************/
+html {
+    background-color: rgb(107, 1, 1);
+}
+
+body {
+    background: url(images/proj_bg2.ac718949.jpg);
+    background-size:cover;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJvai5jc3MiLCJtYXBwaW5ncyI6Ijs7O0FBQUEsY0FBYzs7QUFFZCxXQUFXO0FBQ1g7SUFDSSxxQkFBcUI7SUFDckIsaUNBQWlDO0lBQ2pDLDhCQUE4Qjs7SUFFOUIsd0NBQXdDO0lBQ3hDLDJDQUEyQztJQUMzQyx1QkFBdUI7QUFDM0I7Ozs7O0FDWEEsdUNBQXVDOztBQUV2QztJQUNJLGVBQWU7SUFDZixZQUFZO0lBQ1osZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0kscUNBQXFDO0lBQ3JDLGlCQUFpQjtJQUNqQiwyQkFBMkI7SUFDM0IsZ0JBQWdCO0lBQ2hCLGtCQUFrQixFQUFFLDRDQUE0QyxDQUFDLGtDQUFrQztBQUN2Rzs7QUFFQTtJQUNJLHFDQUFxQztJQUNyQyxpQkFBaUI7SUFDakIsMkJBQTJCO0lBQzNCLGNBQWM7SUFDZCxxQkFBcUIsRUFBRSw0Q0FBNEMsQ0FBQyxrQ0FBa0M7QUFDMUc7O0FBRUE7SUFDSSxxQ0FBcUM7SUFDckMsa0JBQWtCO0lBQ2xCLDJCQUEyQjtJQUMzQixnQkFBZ0I7SUFDaEIscUJBQXFCLEVBQUUsNENBQTRDLENBQUMsa0NBQWtDO0FBQzFHOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSwrQkFBK0I7SUFDL0IsMkJBQTJCO0lBQzNCLGlCQUFpQjtJQUNqQixxQkFBcUIsRUFBRSw4QkFBOEI7SUFDckQsbUJBQW1CO0lBQ25CLFdBQVc7QUFDZjs7QUFFQTtJQUNJLCtCQUErQjtJQUMvQixpQkFBaUI7SUFDakIsZ0NBQWdDO0lBQ2hDLGlCQUFpQjtJQUNqQixxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxnQ0FBZ0M7QUFDcEM7O0FBRUE7SUFDSSxpQkFBaUI7QUFDckIsQzs7OztBQ2pFQSw0QkFBNEI7QUFDNUI7SUFDSSxzQkFBc0I7SUFDdEIsY0FBYztJQUNkLFNBQVM7SUFDVCxVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxTQUFTO0lBQ1QsV0FBVztJQUNYLGlCQUFpQjtJQUNqQixrQkFBa0I7SUFDbEIsdUNBQXVDO0FBQzNDLEM7Ozs7QUNkQSw2QkFBNkI7O0FBRTdCO0lBQ0ksa0JBQWtCO0lBQ2xCLGlCQUFpQjtJQUNqQixVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxxQ0FBcUM7SUFDckMsa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZiwyQkFBMkI7SUFDM0IsY0FBYztBQUNsQjs7QUFFQTtJQUNJLHFCQUFxQjtJQUNyQixhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLGVBQWU7SUFDZixjQUFjO0lBQ2QsaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0kscUNBQXFDO0lBQ3JDLDJCQUEyQjtJQUMzQixpQkFBaUI7SUFDakIsZUFBZTtJQUNmLHFCQUFxQjtJQUNyQiwwQkFBMEI7QUFDOUI7O0FBRUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxnQ0FBZ0M7QUFDcEM7Ozs7O0FDeENBLDZCQUE2Qjs7QUFFN0I7SUFDSSxrQkFBa0I7SUFDbEIsWUFBWTtBQUNoQjs7Ozs7QUNMQTtJQUNJLGdDQUFnQztBQUNwQzs7QUFFQTtJQUNJLG1EQUF5QztJQUN6QyxxQkFBcUI7QUFDekIsQyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL2Fzc2V0cy9zdHlsZXMvcHJval92YXIuY3NzIiwid2VicGFjazovLy8uL2Fzc2V0cy9zdHlsZXMvcHJval90eXBvLmNzcyIsIndlYnBhY2s6Ly8vLi9hc3NldHMvc3R5bGVzL3Byb2pfYmFzZS5jc3MiLCJ3ZWJwYWNrOi8vLy4vYXNzZXRzL3N0eWxlcy9wcm9qX2hlYWRlci5jc3MiLCJ3ZWJwYWNrOi8vLy4vYXNzZXRzL3N0eWxlcy9wcm9qX2Zvb3Rlci5jc3MiLCJ3ZWJwYWNrOi8vLy4vYXNzZXRzL3N0eWxlcy9wcm9qLmNzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKiBWYXJpYWJsZXMgKi9cblxuLyogQ29sb3JzICovXG46cm9vdCB7XG4gICAgLS1wcm9qLWNvbDogIzc0NmZmM2UzO1xuICAgIC0tYmctcHJvai1jb2w6cmdiYSgwLCAwLCAwLCAwLjUxKTtcbiAgICAtLWhpZ2hsaWdodC1wcm9qLWNvbDojZmYwMDAwYWQ7XG5cbiAgICAtLWZvbnQtaGVhZGluZy1wcm9qOiBcIkFudG9uXCIsIHNhbnMtc2VyaWY7XG4gICAgLS1mb250LXAtcHJvajogQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZjtcbiAgICAtLWZvbnQtY29sLXByb2o6I2RjZGNkYztcbn1cbiIsIi8qIHRoZSBiYXNpcyBmb3IgdGhlIHR5cG9ncmFwaHkgc3R5bGUgKi9cblxuaHRtbCwgYm9keSB7XG4gICAgZm9udC1zaXplOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBsaW5lLWhlaWdodDogMS40O1xufVxuXG5ib2R5IHtcbiAgICBsaW5lLWhlaWdodDogMS4yO1xufVxuXG5oMSB7XG4gICAgZm9udC1mYW1pbHk6IHZhcigtLWZvbnQtaGVhZGluZy1wcm9qKTtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICBjb2xvcjogdmFyKC0tZm9udC1jb2wtcHJvaik7XG4gICAgZm9udC1zaXplOiAyLjhlbTtcbiAgICBtYXJnaW4tYm90dG9tOiByZW07IC8qIGJhc2VsaW5lICogMiwgZsO2ciBhdHQgc2thcGEgbWVyIHV0cnltbWUgKi8vKsOkbmRyYWRlIGbDtnIgZGV0IHPDpWcgaW50ZSBicmEgdXQqL1xufVxuXG5oMiB7XG4gICAgZm9udC1mYW1pbHk6IHZhcigtLWZvbnQtaGVhZGluZy1wcm9qKTtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICBjb2xvcjogdmFyKC0tZm9udC1jb2wtcHJvaik7XG4gICAgZm9udC1zaXplOiAyZW07XG4gICAgbWFyZ2luLWJvdHRvbTogMC41cmVtOyAvKiBiYXNlbGluZSAqIDIsIGbDtnIgYXR0IHNrYXBhIG1lciB1dHJ5bW1lICovLyrDpG5kcmFkZSBmw7ZyIGRldCBzw6VnIGludGUgYnJhIHV0Ki9cbn1cblxuaDMsIHRoIHtcbiAgICBmb250LWZhbWlseTogdmFyKC0tZm9udC1oZWFkaW5nLXByb2opO1xuICAgIGZvbnQtd2VpZ2h0OmJvbGRlcjtcbiAgICBjb2xvcjogdmFyKC0tZm9udC1jb2wtcHJvaik7XG4gICAgZm9udC1zaXplOiAxLjRlbTtcbiAgICBtYXJnaW4tYm90dG9tOiAwLjVyZW07IC8qIGJhc2VsaW5lICogMiwgZsO2ciBhdHQgc2thcGEgbWVyIHV0cnltbWUgKi8vKsOkbmRyYWRlIGbDtnIgZGV0IHPDpWcgaW50ZSBicmEgdXQqL1xufVxuXG50ZCwgdGgsIGxpLCBkZCB7XG4gICAgdGV4dC1hbGlnbjoganVzdGlmeTtcbiAgICBvdmVyZmxvdy13cmFwOiBicmVhay13b3JkO1xuICAgIHdvcmQtd3JhcDogYnJlYWstd29yZDtcbn1cblxucCB7XG4gICAgZm9udC1mYW1pbHk6IHZhcigtLWZvbnQtcC1wcm9qKTtcbiAgICBjb2xvcjogdmFyKC0tZm9udC1jb2wtcHJvaik7XG4gICAgZm9udC1zaXplOiAxLjI1ZW07XG4gICAgbWFyZ2luLWJvdHRvbTogMS41cmVtOyAvKiAxLjIgKiAxLjI1ZW0gdsOlciBiYXNlbGluZSAqL1xuICAgIGxldHRlci1zcGFjaW5nOiAxcHg7XG4gICAgbWFyZ2luOiAxZW07XG59XG5cbmEge1xuICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1mb250LXAtcHJvaik7XG4gICAgZm9udC1zaXplOiAxLjI1ZW07XG4gICAgY29sb3I6IHZhcigtLWhpZ2hsaWdodC1jb2wtcHJvaik7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xufVxuXG5hOmhvdmVyIHtcbiAgICBjb2xvcjogdmFyKC0taGlnaGxpZ2h0LWNvbC1wcm9qKTtcbn1cblxuaDEsIGgyLCBoMywgcCwgYSB7XG4gICAgbWFyZ2luLWxlZnQ6IDFyZW07XG59IiwiLyogVGhlIGJhc2ljIHN0eWxlIGVsZW1lbnQgKi9cbioge1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgYm9yZGVyOiAwIG5vbmU7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG59XG5cbi5ibGFja2phY2sge1xuICAgIHdpZHRoOjgwJTtcbiAgICBtYXJnaW46YXV0bztcbiAgICBib3JkZXItcmFkaXVzOiAxJTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgxMTksIDAsIDAsIDAuNzIpO1xufSIsIi8qIFN0eWxlIGZvciBoZWFkZXIgYW5kIG5hdiAqL1xuXG5oZWFkZXIge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtaW4taGVpZ2h0OiAxMDBweDtcbiAgICBwYWRkaW5nOiAwO1xufVxuXG5oZWFkZXIgaDEge1xuICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1mb250LWhlYWRpbmctcHJvaik7XG4gICAgZm9udC13ZWlnaHQ6Ym9sZGVyO1xuICAgIGZvbnQtc2l6ZTogNDAwJTtcbiAgICBjb2xvcjogdmFyKC0tZm9udC1jb2wtcHJvaik7XG4gICAgcGFkZGluZzogMC4zZW07XG59XG5cbm5hdiB1bCB7XG4gICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgZmxleC13cmFwOiB3cmFwO1xuICAgIHBhZGRpbmc6IDAuNWVtO1xuICAgIG1hcmdpbjogMCAwIDFlbSAwO1xufVxuXG5uYXYgdWwgbGkgYSB7XG4gICAgZm9udC1mYW1pbHk6IHZhcigtLWZvbnQtaGVhZGluZy1wcm9qKTtcbiAgICBjb2xvcjogdmFyKC0tZm9udC1jb2wtcHJvaik7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgZm9udC1zaXplOmxhcmdlO1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBwYWRkaW5nOiAwcHggMjBweCAwcHggMjBweDtcbn1cblxubmF2IHVsIGxpOmhvdmVyIHtcbiAgICB0cmFuc2Zvcm06IHNjYWxlKDEuMik7XG59XG4gICAgXG5uYXYgdWwgbGkgYTpob3ZlciB7XG4gICAgY29sb3I6IHZhcigtLWhpZ2hsaWdodC1jb2wtcHJvaik7XG59XG4iLCIvKiBTdHlsZSBmb3IgaGVhZGVyIGFuZCBuYXYgKi9cblxuZm9vdGVyIHAge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBwYWRkaW5nOiAxZW07XG59XG4iLCJodG1sIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMTA3LCAxLCAxKTtcbn1cblxuYm9keSB7XG4gICAgYmFja2dyb3VuZDogdXJsKCcuLi9pbWFnZXMvcHJval9iZzIuanBnJyk7XG4gICAgYmFja2dyb3VuZC1zaXplOmNvdmVyO1xufVxuXG5AaW1wb3J0ICdwcm9qX3Zhci5jc3MnO1xuQGltcG9ydCAncHJval90eXBvLmNzcyc7XG5AaW1wb3J0ICdwcm9qX2Jhc2UuY3NzJztcbkBpbXBvcnQgJ3Byb2pfaGVhZGVyLmNzcyc7XG5AaW1wb3J0ICdwcm9qX2Zvb3Rlci5jc3MnOyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==*/

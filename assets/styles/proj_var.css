@@ -1,0 +1,12 @@
+/* Variables */
+
+/* Colors */
+:root {
+    --proj-col: #746ff3e3;
+    --bg-proj-col:rgba(0, 0, 0, 0.51);
+    --highlight-proj-col:#ff0000ad;
+
+    --font-heading-proj: "Anton", sans-serif;
+    --font-p-proj: Arial, Helvetica, sans-serif;
+    --font-col-proj:#dcdcdc;
+}

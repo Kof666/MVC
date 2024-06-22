@@ -581,6 +581,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-MyPageControllerJson.html#method_quote"
         },                {
+            "fqsen": "\\App\\Controller\\ProjController",
+            "name": "ProjController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003Aproj\u0028\u0029",
+            "name": "proj",
+            "summary": "the\u0020landing\u0020route\u0020for\u0020proj",
+            "url": "classes/App-Controller-ProjController.html#method_proj"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003Aabout\u0028\u0029",
+            "name": "about",
+            "summary": "the\u0020landing\u0020route\u0020for\u0020proj",
+            "url": "classes/App-Controller-ProjController.html#method_about"
+        },                {
             "fqsen": "\\App\\Dice\\Dice",
             "name": "Dice",
             "summary": "A\u0020simple\u0020dice",
