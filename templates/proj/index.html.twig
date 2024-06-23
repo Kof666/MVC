@@ -1,20 +1,31 @@
 {% extends "proj_base.html.twig" %}
 
-{% block title %}Projekt{% endblock %}
+{% block title %}Card21 Game{% endblock %}
 
 {% block main %}
+{# {{ dump(game) }} #}
+{# {{ dump(draw) }} #}
 <div class="blackjack">
-    {# {{ dump(game) }} #}
-    <h1>Slutprojektet Blackjack</h1><br>
-    <p>Här kommer en text om spelet...</p>
+<h1>Blackjack [START]</h1>
 
-    <a href="https://sv.wikipedia.org/wiki/Black_Jack">Blackjack - Wikipedia</a><br>
 
-    <button class="button" role="button">
-        <a href="">spela</a>
-    </button><br>
+<button class="button" role="button">
+    <a href="{{ path('init_get')}}">new game</a>
+</button><br>
 
-    <a href="{{ path('doc') }}">Dokumentation</a>
+<button class="button" role="button">
+    <a href="">load game</a>
+</button><br>
+
+<button class="button" role="button">
+    <a href="{{ path('me') }}">quit</a>
+</button><br>
+
 </div>
 
 {% endblock %}
+
+
+
+
+

@@ -1,6 +1,33 @@
 /* Style for header and nav */
-
+footer {
+    display: block;
+}
 footer p {
     text-align: center;
     padding: 1em;
+}
+
+
+footer div a {
+    font-family: var(--font-heading);
+    color: var(--font-col);
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+footer div a:hover {
+    color: var(--highlight-col);
+}
+
+.ul_foot {
+    text-align: center;
+}
+
+footer a {
+    text-align: center;
+    margin: auto;
+    display: block;
+    color: var(--font-col);
 }

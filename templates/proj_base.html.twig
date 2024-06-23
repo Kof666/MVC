@@ -19,7 +19,7 @@
             <nav>
                 <ul>
                     <li><a href="{{ path('proj') }}">Start</a></li>
-                    <li><a href="{{ path('proj/about') }}">about</a></li>
+                    <li><a href="{{ path('about_proj') }}">about</a></li>
                     <li><a href="{{ path('me') }}">quit</a></li>
                 </ul>
             </nav>
@@ -31,6 +31,7 @@
         </main>        
         <footer>
             <p>Denna sidan är Copyright &copy; av Kristoffer Berg.</p>
+            <a href="{{ path('session_destroyed') }}">destroy session</a>
         </footer>
     </body>
 </html>

@@ -6,7 +6,8 @@ use App\Card\Card;
 use App\Card\DeckOfCards;
 use App\Card\CardHand;
 use App\Card\CardGraphic;
-use App\Card\Play21;
+use App\Card\PlayBlackjack;
+use App\Card\Player;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,32 +18,307 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjController extends AbstractController
 {
     /**
-     * the landing route for proj
+     * the landing route for blackjack
      */
     #[Route("/proj", name: "proj")]
-    public function proj(
+    public function homeBJ(
         SessionInterface $session
     ): Response {
-        $game = new Play21();
+        $game = new PlayBlackjack();
         $session->set("game", $game);
 
-        $data = [];
+        $data = [
+            "game" => $game
+        ];
 
-        return $this->render('/proj/index.html.twig', $data);
+        return $this->render('proj/index.html.twig', $data);
     }
 
     /**
-     * the landing route for proj
+     * about route for blackjack
      */
-    #[Route("/proj/about", name: "proj/about")]
-    public function about(
+    #[Route("/proj/about", name: "about_proj")]
+    public function aboutBj(
         SessionInterface $session
     ): Response {
-        $game = new Play21();
+        $game = $session->get("game");
+
+        $data = [
+            "game" => $game
+        ];
+
+        return $this->render('proj/about_proj.html.twig', $data);
+    }
+
+    /**
+     * init route for blackjack
+     */
+    #[Route("/proj/init", name: "init_get", methods: ['GET'])]
+    public function init(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+
+        $data = [
+            "game" => $game
+        ];
+
+        return $this->render('proj/init.html.twig', $data);
+    }
+
+    /**
+     * post for init
+     */
+    #[Route("/proj/init", name: "init_post", methods: ['POST'])]
+    public function initCallback(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $numOfHands = $request->request->get('num_of_hands');
+        $name = $request->request->get('name');
+
+        $player = new Player($name, 1000, $numOfHands);
+        $session->set("player", $player);
+        $name = $player->getName();
+
+        $data = [
+            "player" => $player,
+            "name" => $name
+        ];
+
+        // $hand = $numHands;
+        // for ($i = 0; $i < $numDice; $i++) {
+        //     $hand->add(new DiceGraphic());
+        // }
+        // $hand->roll();
+
+        return $this->redirectToRoute('play', $data);
+    }
+
+    /**
+     * landing page for play
+     */
+    #[Route("/proj/play", name: "play", methods: ['GET'])]
+    public function play(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        $player = $session->get("player");
+        $name = $player->getName();
+        $account = $player->getAccount();
+        $playerHand = $game->playerHand();
+        $game->draw();
+
+        $this->addFlash(
+            'notice', 'place your bet'
+        );
+
+        $data = [
+            "game" => $game,
+            "player" => $player,
+            "name" => $name,
+            "account" => $account,
+            "playerHand" => $playerHand,
+        ];
+        // echo var_dump($session->get("pig_dicehand"));
+        return $this->render('proj/play.html.twig', $data);
+    }
+
+    /**
+     * GET Route for player hand
+     */
+    #[Route("/game/21/player", name: "start_21_get", methods: ['GET'])]
+    public function playerHand21Get(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        $game->playerDraw();
+        $playerHand = $game->playerHand();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
+        $rounds = $game->getRounds();
+        $playerRounds = $game->getPlayerRounds();
+        $bankRounds = $game->getBankRounds();
+
         $session->set("game", $game);
 
-        $data = [];
+        $data = [
+            "game" => $game,
+            "playerHand" => $playerHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+            "rounds" => $rounds,
+            "player_rounds" => $playerRounds,
+            "bank_rounds" => $bankRounds
+        ];
+        return $this->render('card21/start_21_surface.html.twig', $data);
+    }
 
-        return $this->render('/proj/about_proj.html.twig', $data);
+    /**
+     * POST Route for playerhand
+     */
+    #[Route("/game/21/start", name: "start_21_surface")]
+    public function surface(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        // $game->playerDraw();
+        $playerHand = $game->playerHand();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
+        $rounds = $game->getRounds();
+        $playerRounds = $game->getPlayerRounds();
+        $bankRounds = $game->getBankRounds();
+
+        $str = $game->bustOrWinn();
+        if($str != 'It´s fun to play...right?') {
+            $this->addFlash(
+                'notice',
+                $str
+            );
+        }
+
+        $session->set("game", $game);
+
+        $draw = $session->get("draw");
+
+        $data = [
+            "game" => $game,
+            "playerHand" => $playerHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+            "rounds" => $rounds,
+            "player_rounds" => $playerRounds,
+            "bank_rounds" => $bankRounds,
+            "draw" => $draw
+        ];
+
+        return $this->render('card21/start_21.html.twig', $data);
+    }
+
+    /**
+     * POST Route for playerhand
+     */
+    #[Route("/game/21/player", name: "start_21_post", methods: ['POST'])]
+    public function playerHand21Post(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        $game->playerDraw();
+        $playerHand = $game->playerHand();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
+        $rounds = $game->getRounds();
+        $playerRounds = $game->getPlayerRounds();
+        $bankRounds = $game->getBankRounds();
+
+        $str = $game->bustOrWinn();
+        if($str != 'It´s fun to play...right?') {
+            $this->addFlash(
+                'notice',
+                $str
+            );
+        }
+
+        $session->set("game", $game);
+
+        $data = [
+            "game" => $game,
+            "playerHand" => $playerHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+            "rounds" => $rounds,
+            "player_rounds" => $playerRounds,
+            "bank_rounds" => $bankRounds
+        ];
+
+        if ($str != 'It´s fun to play...right?') {
+            return $this->render('card21/start_21_bustOrWinn.html.twig', $data);
+        }
+
+        return $this->render('card21/start_21.html.twig', $data);
+    }
+
+    /**
+     * Route for bank hand
+     */
+    #[Route("/game/21/bank", name: "bankHand_21", methods: ['POST'])]
+    public function bankHand21Post(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        $playerHand = $game->playerHand();
+        $bankHand = $game->bankDraw();
+        $bankScore = $game->getBankScore();
+        // $bankHand = $game->bankHand();
+        $playerScore = $game->getPlayerScore();
+        $rounds = $game->getRounds();
+        $playerRounds = $game->getPlayerRounds();
+        $bankRounds = $game->getBankRounds();
+
+        $str = $game->getWinner();
+        $this->addFlash(
+            'notice',
+            $str
+        );
+
+        $session->set("game", $game);
+
+        $data = [
+            "game" => $game,
+            "playerHand" => $playerHand,
+            "bankHand" => $bankHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+            "rounds" => $rounds,
+            "player_rounds" => $playerRounds,
+            "bank_rounds" => $bankRounds
+
+        ];
+        return $this->render('card21/bankHand_21.html.twig', $data);
+    }
+
+    /**
+     * Route for bank hand
+     */
+    #[Route("/game/21/new_round", name: "new_round_21", methods: ['POST'])]
+    public function newRound21(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        $game->clearHands();
+        $playerHand = $game->playerHand();
+        $bankHand = $game->bankHand();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
+        $game->setRounds();
+        $rounds = $game->getRounds();
+        $playerRounds = $game->getPlayerRounds();
+        $bankRounds = $game->getBankRounds();
+
+        $session->set("game", $game);
+
+        $data = [
+            "game" => $game,
+            "playerHand" => $playerHand,
+            "bankHand" => $bankHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+            "rounds" => $rounds,
+            "player_rounds" => $playerRounds,
+            "bank_rounds" => $bankRounds
+
+        ];
+        return $this->render('card21/start_21.html.twig', $data);
+    }
+
+    /**
+     * the landing route for cards
+     */
+    #[Route("/game/doc", name: "doc")]
+    public function doc21(
+    ): Response {
+
+        return $this->render('card21/doc.html.twig');
     }
 }

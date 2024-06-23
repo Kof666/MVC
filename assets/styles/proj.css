@@ -12,3 +12,6 @@ body {
 @import 'proj_base.css';
 @import 'proj_header.css';
 @import 'proj_footer.css';
+@import 'card.css';
+@import 'cardBj.css';
+@import 'button.css';

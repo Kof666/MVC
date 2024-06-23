@@ -52,5 +52,6 @@
   }
 
 .button a {
-    color: var(--font-col);
+    color: #eee;
+    margin:0 1em 0 1em;
 }

@@ -11,5 +11,14 @@
     margin:auto;
     border-radius: 1%;
     text-align: center;
-    background-color: rgba(119, 0, 0, 0.72);
+    background-color: rgba(196, 2, 2, 0.72);
+}
+
+form input {
+    border:solid 1px black;
+    text-align: center;
+    font-size: 1em;
+    padding: 0.2em;
+    margin: 0 0 0.8em 0.1em;
+    border-radius: 0.4em;
 }

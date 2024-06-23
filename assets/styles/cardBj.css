@@ -1,0 +1,28 @@
+.scoure_view {
+    display: flex;
+    justify-content: end;
+}
+
+.scoure_view p {
+    margin: 0.3em 2em 0em 0em;
+}
+
+.space {
+    height: 5em;
+}
+
+.card_flex {
+    display: flex;
+    padding: 0 0 0 2em;
+}
+
+.game_info {
+    margin: 0 5em 0 0;
+    padding: 2em 0 0 0;
+}
+
+.form_card21 p {
+    text-align: end;
+    margin: 0 2em 0 0;
+}
+
