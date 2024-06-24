@@ -38,6 +38,18 @@
     justify-content: space-between;
 }
 
+.card-area {
+    background-color:  rgba(149, 0, 0, 0.74);
+    border: 6px  rgba(149, 0, 0, 0.74);
+    border-radius: 0.5em;
+    width: 80px;
+    height: 120px;
+    margin: 1em;
+    padding: 0.3em;
+    display: flex;
+    justify-content: space-between;
+}
+
 .card-topp {
     align-self: baseline;
     line-height: 0.8;

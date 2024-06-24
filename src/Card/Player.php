@@ -26,7 +26,23 @@ class Player
         return $this->name;
     }
 
+    public function setName(string $name) {
+        $this->name = $name;
+    }
+
     public function getAccount() {
         return $this->account;
+    }
+
+    public function setAccount($amount) {
+        $this->account = $account;
+    }
+
+    public function bet($amount) {
+        if($this->account > $amount) {
+            $this->account = $this->account - $amount;
+        } elseif ($this->account < $account) {
+            consolelog('not enough money on account');
+        }        
     }
 }

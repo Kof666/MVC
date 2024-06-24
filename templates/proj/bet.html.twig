@@ -1,0 +1,82 @@
+{% extends "proj_base.html.twig" %}
+
+{% block main %}
+<div class="blackjack">
+    <h1>Blackjack [PLAYING]</h1>
+    {# {{ dump(game) }}
+    {{ dump(player) }} #}
+
+    {# <p>
+        {% for value in numHands %}
+            <p> hep </p>
+        {% endfor %}
+    </p> #}
+    {# {{ include('card21/card21_score.html.twig') }} #}
+    <form class="form_card21" method="post" action="">
+        <p>your account: $ {{ player.account }}</p><br>
+        <p>
+            <label for="bet">Place your bet</label>
+            <input type="number" name="bet" min="1" max="50" value="1">
+
+            <input type="submit" name="deal_card" value="deal"
+                onClick="this.form.action='{{ path('deal') }}';"
+            >
+        </p>
+    </form>
+    <div class="card_flex">
+        <div class="game_info">
+            <h2>Dealer</h2>
+            <p>points: </p>
+        </div>
+        <ul class="ul-game">
+            <div class="card-area"></div>
+            <div class="card-area"></div>
+        </ul>
+    </div>
+    <div class="space">
+        {{ include('card/flash.html.twig') }}
+    </div>
+    <div class="card_flex">
+        <div class="game_info">
+            <h2>{{ player.name }}</h2>
+            <p>points: {{ game.playerScore }}</p>
+        </div>
+        <ul class="ul-game">
+            <div class="card-area"></div>
+            <div class="card-area"></div>
+        </ul>
+    </div>
+    
+
+{# 
+    <p>Roll the dices or save the points you have.</p>
+
+    {{ include('flash.html.twig') }}
+    
+    <p>
+        {% for value in diceValues %}
+            <span class="dice">{{ value }}</span>
+        {% endfor %}
+    </p>
+    
+    <form method="post" action="">
+        <p>
+            <input type="submit" name="roll" value="Roll"
+                onClick="this.form.action='{{ path('pig_roll') }}';"
+            >
+            <input type="submit" name="save" value="Save"
+                onClick="this.form.action='{{ path('pig_save') }}';"
+            >
+            <input type="submit" name="restart" value="Restart"
+                onClick="this.form.action='{{ path('pig_init_get') }}';this.form.method='get';"
+            >
+        </p>
+    </form>
+    
+    <p>You are playing with {{ pigDices }} dices.</p>
+    
+    <p>Round: {{ pigRound }}</p>
+    <p>Total: {{ pigTotal }}</p> #}
+</div>
+{{ dump(game) }}
+{% endblock %}

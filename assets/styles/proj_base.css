@@ -6,6 +6,25 @@
     padding: 0;
 }
 
+/* för att bilder ska hålla sig innanför layouten */
+img,
+embed,
+object,
+video {
+    max-width: 100%;
+}
+
+img {
+    display:block;
+    margin: auto;
+    padding: 0.5em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
 .blackjack {
     width:80%;
     margin:auto;

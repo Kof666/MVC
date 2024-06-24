@@ -3,16 +3,44 @@
 {% block main %}
 {# {{ dump(game) }} #}
 <div class="blackjack">
-    <h1>Blackjack [START]</h1>
-
-    <p>How many hands of cards do you want to have in the game?</p>
+    <h1>Blackjack [INIT]</h1>
     
-    <form method="post" action="">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name..">
-        <label for="numOfHands">Number of hands</label>
-        <input type="number" name="num_of_hands" min="1" max="3" value="1">
-        <input type="submit" name="do_it" value="Start playing">
+    <form class="form_card21" method="post" action="">
+        <p>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="{{ name }}">
+            <label for="numOfHands">Number of hands</label>
+            <input type="number" name="num_of_hands" min="1" max="3" value="1">
+            <input type="submit" name="do_it" value="save">
+            <input type="submit" name="do_it" value="play"
+            onClick="this.form.action='{{ path('bet') }}';">
+        </p>
     </form>
+    <div class="card_flex">
+        <div class="game_info">
+            <h2>Dealer</h2>
+            <p>points: </p>
+        </div>
+        <ul class="ul-game">
+            <div class="card-area"></div>
+            <div class="card-area"></div>
+
+        </ul>
+    </div>
+    <div class="space">
+        {{ include('card/flash.html.twig') }}
+    </div>
+    <div class="card_flex">
+        <div class="game_info">
+            <h2>Player</h2>
+            <p>points: </p>
+        </div>
+        <ul class="ul-game">
+            <div class="card-area"></div>
+            <div class="card-area"></div>
+
+        </ul>
+    </div>
 </div>
+{{ dump(game) }}
 {% endblock %}

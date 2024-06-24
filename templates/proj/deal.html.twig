@@ -3,8 +3,8 @@
 {% block main %}
 <div class="blackjack">
     <h1>Blackjack [PLAYING]</h1>
-    {# {{ dump(game) }}
-    {{ dump(player) }} #}
+    {# {# {{ dump(game) }} #}
+    {# {{ dump(bankHand | first) }} #}
 
     {# <p>
         {% for value in numHands %}
@@ -13,34 +13,29 @@
     </p> #}
     {# {{ include('card21/card21_score.html.twig') }} #}
     <form class="form_card21" method="post" action="">
+        <p>your account: $ {{ player.account }}</p><br>
         <p>
-            <input type="submit" name="quit" value="quit"
-            {# onClick="this.form.action='{{ path('card_21') }}';" #}
+            <input type="submit" name="hit" value="hit"
+                onClick="this.form.action='{{ path('hit_post') }}';"
             >
-            <input type="submit" name="done" value="Stand"
-                {# onClick="this.form.action='{{ path('bankHand_21') }}';" #}
-            >
-            <input type="submit" name="draw_card" value="draw"
-                {# onClick="this.form.action='{{ path('start_21_post') }}';" #}
-            >
+            <input type="submit" name="stand" value="stand"
+            onClick="this.form.action='{{ path('hit_post') }}';"
+        >
         </p>
     </form>
     <div class="card_flex">
         <div class="game_info">
-            <h2>House</h2>
-            {# <p>points: {{ bank_score }}</p> #}
+            <h2>Dealer</h2>
+            <p>points: {{ game.firstBankCard }}</p>
         </div>
         <ul class="ul-game">
-            <div class="back-card"></div>
-        {% if game is not null %}
-        {% for card in game %}
             <div class="card">
-                <li class="card-topp">{{ card }}</li>
+                <li class="card-topp">{{ bankHand | first }}</li>
                 <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
-                <li class="card-bottom">{{ card }}</li>
+                <li class="card-bottom">{{ bankHand | first }}</li>
             </div>
-        {% endfor %}
-        {% endif %}
+            <div class="back-card"></div>
+
         </ul>
     </div>
     <div class="space">
@@ -48,8 +43,8 @@
     </div>
     <div class="card_flex">
         <div class="game_info">
-            <h2>{{ name }}</h2>
-            <p>$ {{ account }}</p>
+            <h2>{{ player.name }}</h2>
+            <p>points: {{ game.playerScore }}</p>
         </div>
         <ul class="ul-game">
             {% for card in playerHand %}
@@ -93,4 +88,5 @@
     <p>Round: {{ pigRound }}</p>
     <p>Total: {{ pigTotal }}</p> #}
 </div>
+{{ dump(game) }}
 {% endblock %}

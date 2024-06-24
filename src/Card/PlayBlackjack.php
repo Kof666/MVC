@@ -16,6 +16,8 @@ class PlayBlackjack
      */
     protected int $bankScore = 0;
 
+    protected int $firstBankCard;
+
     /**
      * @var int $playerScore    handle the score of the players hand
      */
@@ -88,6 +90,10 @@ class PlayBlackjack
     public function getBankScore(): int
     {
         return $this->bankScore;
+    }
+
+    public function getFirstBankCard() {
+        return $this->firstBankCard;
     }
 
     /**
@@ -212,6 +218,53 @@ class PlayBlackjack
         $draw = $this->deck->draw();
         $this->draw = $draw;
         return $draw;
+    }
+
+    /**
+     * Draws top card of the deck
+     *
+     * @return array<string|int, mixed> $draw
+     */
+    public function deal(): void
+    {
+        //first card for player
+        if($this->playerScore <= 21) {
+            $draw = $this->deck->draw();
+            $value = $draw->getValue();
+            $this->playerScore = $this->playerScore + $value;
+            if($draw) {
+                $this->playerHand[] = $draw->getAsString();
+            }
+        }
+        //first card for dealer
+        if($this->bankScore <= 21) {
+            $draw = $this->deck->draw();
+            $value = $draw->getValue();
+            $this->bankScore = $this->bankScore + $value;
+            $this->firstBankCard = $value;
+            if($draw) {
+                $this->bankHand[] = $draw->getAsString();
+            }
+        }
+        //second card for player
+        if($this->playerScore <= 21) {
+            $draw = $this->deck->draw();
+            $value = $draw->getValue();
+            $this->playerScore = $this->playerScore + $value;
+            if($draw) {
+                $this->playerHand[] = $draw->getAsString();
+            }
+        }
+        //second card for dealer
+        if($this->bankScore <= 21) {
+            $draw = $this->deck->draw();
+            $value = $draw->getValue();
+            $this->bankScore = $this->bankScore + $value;
+            if($draw) {
+                $this->bankHand[] = $draw->getAsString();
+            }
+        }
+
     }
 
     /**

@@ -7,6 +7,10 @@ body {
     background-size:cover;
 }
 
+img {
+    max-width: 100%;
+}
+
 @import 'proj_var.css';
 @import 'proj_typo.css';
 @import 'proj_base.css';
