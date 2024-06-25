@@ -8,12 +8,12 @@
     <form class="form_card21" method="post" action="">
         <p>
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="{{ name }}">
+            <input type="text" id="name" name="name" placeholder="name">
             <label for="numOfHands">Number of hands</label>
             <input type="number" name="num_of_hands" min="1" max="3" value="1">
-            <input type="submit" name="do_it" value="save">
+            {# <input type="submit" name="do_it" value="save"> #}
             <input type="submit" name="do_it" value="play"
-            onClick="this.form.action='{{ path('bet') }}';">
+            onClick="this.form.action='{{ path('init_post') }}';">
         </p>
     </form>
     <div class="card_flex">
@@ -27,9 +27,13 @@
 
         </ul>
     </div>
+
+
     <div class="space">
         {{ include('card/flash.html.twig') }}
     </div>
+
+    
     <div class="card_flex">
         <div class="game_info">
             <h2>Player</h2>
@@ -43,4 +47,5 @@
     </div>
 </div>
 {{ dump(game) }}
+{# {{ dump(player) }} #}
 {% endblock %}

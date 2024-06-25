@@ -13,7 +13,7 @@
     </p> #}
     {# {{ include('card21/card21_score.html.twig') }} #}
     <form class="form_card21" method="post" action="">
-        <p>your account: $ {{ player.account }}</p><br>
+        <p>your account: $ {{ players.account }}</p><br>
         <p>
             <input type="submit" name="hit" value="hit"
                 onClick="this.form.action='{{ path('hit_post') }}';"
@@ -38,9 +38,12 @@
 
         </ul>
     </div>
+
     <div class="space">
         {{ include('card/flash.html.twig') }}
     </div>
+
+    {% if player is not null %}
     <div class="card_flex">
         <div class="game_info">
             <h2>{{ player.name }}</h2>
@@ -56,7 +59,7 @@
             {% endfor %}
         </ul>
     </div>
-    
+    {% endif %}
 
 {# 
     <p>Roll the dices or save the points you have.</p>

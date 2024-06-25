@@ -26,6 +26,8 @@ class ProjController extends AbstractController
     ): Response {
         $game = new PlayBlackjack();
         $session->set("game", $game);
+        // $player = new Player();
+        // $session->set("player", $player);
 
         $data = [
             "game" => $game
@@ -59,9 +61,11 @@ class ProjController extends AbstractController
     ): Response {
         $game = $session->get("game");
         $name = 'Your name...';
+        // $player = $session->get("player");
 
         $data = [
             "game" => $game,
+            // "player" => $player,
             "name" => $name
         ];
 
@@ -77,17 +81,30 @@ class ProjController extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        $numOfHands = $request->request->get('num_of_hands');
         $name = $request->request->get('name');
+        $numOfHands = $request->request->get('num_of_hands');
+
+        //$players = array();
+        // for($i = 1; $i < $numOfHands+1; $i++) {
+        //     $players[] = ${"player$i"} = new Player("{$name}{$i}");
+        // }
+        // $session->set("players", $players);
+
+        $player = $session->get("player");
+
+        // $numOfHands = (int)$numOfHands;
+        // $player->setNumOfHands($numOfHands);
+        // $name = $request->request->get('name');
 
         $player = new Player($name, 1000, $numOfHands);
         $session->set("player", $player);
-        $name = $player->getName();
+        $player->setName($name);
 
         $data = [
             "game" => $game,
             "player" => $player,
-            "name" => $name
+            // "name" => $name,
+            // "numOfHands" => $numOfHands
         ];
 
         // $hand = $numHands;
@@ -104,6 +121,7 @@ class ProjController extends AbstractController
      */
     #[Route("/proj/bet", name: "bet")]
     public function bet(
+        Request $request,
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
@@ -115,6 +133,12 @@ class ProjController extends AbstractController
         // $bankScore = $game->getBankScore();
         // $playerScore = $game->getPlayerScore();
 
+        // $name = $request->request->get('name');
+        // $player->setName($name);
+        // $numOfHands = $request->request->get('num_of_hands');
+        // $numOfHands = (int)$numOfHands;
+        // $player->setNumOfHands($numOfHands);
+
         $data = [
             "game" => $game,
             "player" => $player,
@@ -124,6 +148,7 @@ class ProjController extends AbstractController
             "bankHand" => $bankHand,
             // "bank_score" => $bankScore,
             // "player_score" => $playerScore,
+            // "num_of_hands" => $numOfHands
         ];
         // echo var_dump($session->get("pig_dicehand"));
         return $this->render('proj/bet.html.twig', $data);
@@ -139,8 +164,8 @@ class ProjController extends AbstractController
     ): Response {
         $bet = $request->request->get('bet');
         $game = $session->get("game");
-        $game->deal();
         $player = $session->get("player");
+        $game->deal($player->getNumOfHands());
         // $name = $player->getName();
         $player->bet($bet);
         // $account = $player->getAccount();
@@ -148,8 +173,9 @@ class ProjController extends AbstractController
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
-
+        $handScore = $game->getHandScore();
         $session->set("game", $game);
+        $session->set("player", $player);
 
         $data = [
             "game" => $game,
@@ -161,7 +187,7 @@ class ProjController extends AbstractController
             // "bet" => $bet,
             "bank_score" => $bankScore,
             "player_score" => $playerScore,
-
+            "hand_score" => $handScore
         ];
         return $this->render('proj/deal.html.twig', $data);
     }

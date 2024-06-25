@@ -1098,7 +1098,7 @@ table tr:nth-child(even) {
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/app.css ***!
   \**************************************************************************************************************/
 body {
-    background: url(build/images/background.184a0b49.jpg);
+    background: url(images/background.184a0b49.jpg);
     background-size:cover;
 }
 

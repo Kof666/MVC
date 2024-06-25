@@ -33,9 +33,12 @@
             <div class="card-area"></div>
         </ul>
     </div>
+
     <div class="space">
         {{ include('card/flash.html.twig') }}
     </div>
+    
+    {% for i in 1.. player.numOfHands %}
     <div class="card_flex">
         <div class="game_info">
             <h2>{{ player.name }}</h2>
@@ -46,7 +49,7 @@
             <div class="card-area"></div>
         </ul>
     </div>
-    
+    {% endfor %}
 
 {# 
     <p>Roll the dices or save the points you have.</p>
@@ -79,4 +82,5 @@
     <p>Total: {{ pigTotal }}</p> #}
 </div>
 {{ dump(game) }}
+{{ dump(player) }}
 {% endblock %}

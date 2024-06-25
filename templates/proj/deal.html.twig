@@ -38,24 +38,33 @@
 
         </ul>
     </div>
+
     <div class="space">
         {{ include('card/flash.html.twig') }}
     </div>
+
+    {# {% for i in 1.. player.numOfHands %} #}
+    {% for arr in playerHand %}
+    
     <div class="card_flex">
         <div class="game_info">
             <h2>{{ player.name }}</h2>
-            <p>points: {{ game.playerScore }}</p>
+            <p>points: {{ game.handScore[loop.index0]  }}</p>
         </div>
-        <ul class="ul-game">
-            {% for card in playerHand %}
+        {% for card in arr %}
+            {# {% for card in playerHand %} #}
+            <ul class="ul-game">
                 <div class="card">
                     <li class="card-topp">{{ card }}</li>
                     <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
                     <li class="card-bottom">{{ card }}</li>
                 </div>
-            {% endfor %}
-        </ul>
+            </ul>
+        
     </div>
+    {% endfor %}
+    {% endfor %}
+    {# {% endfor %} #}
     
 
 {# 
@@ -89,4 +98,5 @@
     <p>Total: {{ pigTotal }}</p> #}
 </div>
 {{ dump(game) }}
+{# {{ dump(player) }} #}
 {% endblock %}
