@@ -61,7 +61,6 @@ class ProjController extends AbstractController
     ): Response {
         $game = $session->get("game");
         $name = 'Your name...';
-        // $player = $session->get("player");
 
         $data = [
             "game" => $game,
@@ -83,19 +82,7 @@ class ProjController extends AbstractController
         $game = $session->get("game");
         $name = $request->request->get('name');
         $numOfHands = $request->request->get('num_of_hands');
-
-        //$players = array();
-        // for($i = 1; $i < $numOfHands+1; $i++) {
-        //     $players[] = ${"player$i"} = new Player("{$name}{$i}");
-        // }
-        // $session->set("players", $players);
-
         $player = $session->get("player");
-
-        // $numOfHands = (int)$numOfHands;
-        // $player->setNumOfHands($numOfHands);
-        // $name = $request->request->get('name');
-
         $player = new Player($name, 1000, $numOfHands);
         $session->set("player", $player);
         $player->setName($name);
@@ -103,17 +90,9 @@ class ProjController extends AbstractController
         $data = [
             "game" => $game,
             "player" => $player,
-            // "name" => $name,
-            // "numOfHands" => $numOfHands
         ];
 
-        // $hand = $numHands;
-        // for ($i = 0; $i < $numDice; $i++) {
-        //     $hand->add(new DiceGraphic());
-        // }
-        // $hand->roll();
-
-        return $this->render('proj/init.html.twig', $data);
+        return $this->render('proj/bet.html.twig', $data);
     }
 
     /**
@@ -126,38 +105,23 @@ class ProjController extends AbstractController
     ): Response {
         $game = $session->get("game");
         $player = $session->get("player");
-        // $name = $player->getName();
-        // $account = $player->getAccount();
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();
-        // $bankScore = $game->getBankScore();
-        // $playerScore = $game->getPlayerScore();
-
-        // $name = $request->request->get('name');
-        // $player->setName($name);
-        // $numOfHands = $request->request->get('num_of_hands');
-        // $numOfHands = (int)$numOfHands;
-        // $player->setNumOfHands($numOfHands);
 
         $data = [
             "game" => $game,
             "player" => $player,
-            // "name" => $name,
-            // "account" => $account,
             "playerHand" => $playerHand,
             "bankHand" => $bankHand,
-            // "bank_score" => $bankScore,
-            // "player_score" => $playerScore,
-            // "num_of_hands" => $numOfHands
         ];
-        // echo var_dump($session->get("pig_dicehand"));
+
         return $this->render('proj/bet.html.twig', $data);
     }
 
     /**
      * Route for dealing cards after bet
      */
-    #[Route("/proj/deal", name: "deal")]
+    #[Route("/proj/play", name: "deal")]
     public function deal(
         Request $request,
         SessionInterface $session
@@ -165,10 +129,9 @@ class ProjController extends AbstractController
         $bet = $request->request->get('bet');
         $game = $session->get("game");
         $player = $session->get("player");
+        $game->addToPot($bet, $player->getNumOfHands());
         $game->deal($player->getNumOfHands());
-        // $name = $player->getName();
         $player->bet($bet);
-        // $account = $player->getAccount();
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();
@@ -180,11 +143,8 @@ class ProjController extends AbstractController
         $data = [
             "game" => $game,
             "player" => $player,
-            // "name" => $name,
-            // "account" => $account,
             "playerHand" => $playerHand,
             "bankHand" => $bankHand,
-            // "bet" => $bet,
             "bank_score" => $bankScore,
             "player_score" => $playerScore,
             "hand_score" => $handScore
@@ -195,14 +155,14 @@ class ProjController extends AbstractController
     /**
      * Route for hit
      */
-    #[Route("/proj/hit", name: "hit_get", methods: ['GET'])]
+    #[Route("/proj/hitg", name: "hit_get")]
     public function hit(
         Request $request,
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
         $player = $session->get("player");
-        $game->playerdraw();
+        // $game->playerdraw($player->getNumOfHands());
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();
@@ -224,14 +184,14 @@ class ProjController extends AbstractController
     /**
      * Route for hit
      */
-    #[Route("/proj/hit", name: "hit_post", methods: ['POST'])]
-    public function hitCallback(
+    #[Route("/proj/hit1", name: "hit1")]
+    public function hit1Callback(
         Request $request,
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
         $player = $session->get("player");
-        $game->playerdraw();
+        $game->playerdraw(0);
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();
@@ -248,6 +208,93 @@ class ProjController extends AbstractController
             "player_score" => $playerScore,
         ];
         return $this->render('proj/hit.html.twig', $data);
+    }
+
+        /**
+     * Route for hit
+     */
+    #[Route("/proj/hit2", name: "hit2")]
+    public function hit2Callback(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        $player = $session->get("player");
+        $game->playerdraw(1);
+        $playerHand = $game->playerHand();
+        $bankHand = $game->bankHand();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
+
+        $session->set("game", $game);
+
+        $data = [
+            "game" => $game,
+            "player" => $player,
+            "playerHand" => $playerHand,
+            "bankHand" => $bankHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+
+        ];
+        return $this->render('proj/hit.html.twig', $data);
+    }
+
+            /**
+     * Route for hit
+     */
+    #[Route("/proj/hit3", name: "hit3")]
+    public function hit3Callback(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        $player = $session->get("player");
+        $game->playerdraw(2);
+        $playerHand = $game->playerHand();
+        $bankHand = $game->bankHand();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
+
+        $session->set("game", $game);
+
+        $data = [
+            "game" => $game,
+            "player" => $player,
+            "playerHand" => $playerHand,
+            "bankHand" => $bankHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+        ];
+        return $this->render('proj/hit.html.twig', $data);
+    }
+
+    /**
+     * Route for stand
+     */
+    #[Route("/proj/stand", name: "stand")]
+    public function stand(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+        $player = $session->get("player");
+        $playerHand = $game->playerHand();
+        $bankHand = $game->bankDraw();
+        $bankScore = $game->getBankScore();
+        $playerScore = $game->getPlayerScore();
+
+        $session->set("game", $game);
+
+        $data = [
+            "game" => $game,
+            "player" => $player,
+            "playerHand" => $playerHand,
+            "bankHand" => $bankHand,
+            "bank_score" => $bankScore,
+            "player_score" => $playerScore,
+        ];
+        return $this->render('proj/stand.html.twig', $data);
     }
 
     /**

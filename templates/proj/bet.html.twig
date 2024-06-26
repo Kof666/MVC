@@ -2,17 +2,10 @@
 
 {% block main %}
 <div class="blackjack">
-    <h1>Blackjack [PLAYING]</h1>
-    {# {{ dump(game) }}
-    {{ dump(player) }} #}
+    <h1>Blackjack</h1>
 
-    {# <p>
-        {% for value in numHands %}
-            <p> hep </p>
-        {% endfor %}
-    </p> #}
-    {# {{ include('card21/card21_score.html.twig') }} #}
     <form class="form_card21" method="post" action="">
+        <p>Money in pot: $ {{ game.pot }}</p>
         <p>your account: $ {{ player.account }}</p><br>
         <p>
             <label for="bet">Place your bet</label>
@@ -39,6 +32,8 @@
     </div>
     
     {% for i in 1.. player.numOfHands %}
+    <div class="hand-flex">
+
     <div class="card_flex">
         <div class="game_info">
             <h2>{{ player.name }}</h2>
@@ -50,37 +45,6 @@
         </ul>
     </div>
     {% endfor %}
-
-{# 
-    <p>Roll the dices or save the points you have.</p>
-
-    {{ include('flash.html.twig') }}
-    
-    <p>
-        {% for value in diceValues %}
-            <span class="dice">{{ value }}</span>
-        {% endfor %}
-    </p>
-    
-    <form method="post" action="">
-        <p>
-            <input type="submit" name="roll" value="Roll"
-                onClick="this.form.action='{{ path('pig_roll') }}';"
-            >
-            <input type="submit" name="save" value="Save"
-                onClick="this.form.action='{{ path('pig_save') }}';"
-            >
-            <input type="submit" name="restart" value="Restart"
-                onClick="this.form.action='{{ path('pig_init_get') }}';this.form.method='get';"
-            >
-        </p>
-    </form>
-    
-    <p>You are playing with {{ pigDices }} dices.</p>
-    
-    <p>Round: {{ pigRound }}</p>
-    <p>Total: {{ pigTotal }}</p> #}
+    </div>
 </div>
-{{ dump(game) }}
-{{ dump(player) }}
 {% endblock %}

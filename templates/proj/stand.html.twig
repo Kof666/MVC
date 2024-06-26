@@ -2,16 +2,14 @@
 
 {% block main %}
 <div class="blackjack">
-    <h1>Blackjack</h1>
+    <h1>Blackjack [PLAYING]</h1>
 
     <form class="form_card21" method="post" action="">
         <p>Money in pot: $ {{ game.pot }}</p>
         <p>your account: $ {{ player.account }}</p>
 
 
-        <p><input type="submit" name="stand" value="stand"
-            onClick="this.form.action='{{ path('stand') }}';"
-            ></p>
+        <p><input type="submit" name="done" value="done"></p>
         <p>
             <label>Hit</label>
             <input type="submit" name="hand 1" value="hand 1"
@@ -30,20 +28,22 @@
 
         </p>
     </form>
+    
     <div class="card_flex">
         <div class="game_info">
             <h2>Dealer</h2>
-            <p>points: {{ game.firstBankCard }}</p>
+            <p>points: {{ game.bankScore }}</p>
         </div>
+        {% for card in bankHand %}
+
         <ul class="ul-game">
             <div class="card">
-                <li class="card-topp">{{ bankHand | first }}</li>
+                <li class="card-topp">{{ card }}</li>
                 <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
-                <li class="card-bottom">{{ bankHand | first }}</li>
-            </div>
-            <div class="back-card"></div>
-
+                <li class="card-bottom">{{ card }}</li>
+            </div>     
         </ul>
+        {% endfor %}
     </div>
 
     <div class="space">
@@ -73,8 +73,8 @@
         {% endfor %}
     </div>
 
-    {# {{ dump(game) }} #}
 </div>
-
-
+{# {{ dump(game) }} #}
+{# {{ dump(hit1) }} #}
+{# {{ dump(player) }} #}
 {% endblock %}
