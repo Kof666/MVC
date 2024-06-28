@@ -5,28 +5,16 @@
     <h1>Blackjack [PLAYING]</h1>
 
     <form class="form_card21" method="post" action="">
-        <p>Money in pot: $ {{ game.pot }}</p>
-        <p>your account: $ {{ player.account }}</p>
+        <p>Bet: $ {{ game.pot }}</p>
+        <p>Your Account: $ {{ player.account }}</p><br>
 
+        <p><input type="submit" name="new_round" value="New Round"
+            onClick="this.form.action='{{ path('bet') }}';"
+            ></p>
 
-        <p><input type="submit" name="done" value="done"></p>
-        <p>
-            <label>Hit</label>
-            <input type="submit" name="hand 1" value="hand 1"
-            onClick="this.form.action='{{ path('hit1') }}';"
-            >
-            {% if player.numOfHands > 1 %}
-            <input type="submit" name="hand 2" value="hand 2"
-            onClick="this.form.action='{{ path('hit2') }}';"
-            >
-            {% endif %}
-            {% if player.numOfHands > 2 %}
-            <input type="submit" name="hand 3" value="hand 3"
-            onClick="this.form.action='{{ path('hit3') }}';"
-            >
-            {% endif %}
-
-        </p>
+        <p><input type="submit" name="quit" value="quit"
+            onClick="this.form.action='{{ path('proj') }}';"
+            ></p>
     </form>
     
     <div class="card_flex">
@@ -55,9 +43,9 @@
     <div class="hand-flex">
         <div class="card_flex">
             <div class="game_info">
-                <h2>{{ player.name }}</h2>
-                <p>Hand: {{ loop.index0 + 1 }}</p>
+                <h2>Hand {{ loop.index0 + 1 }}</h2>
                 <p>points: {{ game.handScore[loop.index0]  }}</p>
+                <p>bet: {{ player.bets[loop.index0]  }}</p>
             </div>
             {% for card in arr %}
                 {# {% for card in playerHand %} #}

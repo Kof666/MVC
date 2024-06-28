@@ -23,7 +23,7 @@ class PlayBlackjack
      */
     protected int $playerScore = 0;
 
-        /**
+    /**
      * @var array $playerScore    handle the score of the players hand
      */
     protected array $handScore = array();
@@ -99,7 +99,8 @@ class PlayBlackjack
         return $this->bankScore;
     }
 
-    public function getFirstBankCard() {
+    public function getFirstBankCard()
+    {
         return $this->firstBankCard;
     }
 
@@ -217,9 +218,11 @@ class PlayBlackjack
 
     public function addToPot($value, $numOfHands): void
     {
-        for($i = 1; $i < $numOfHands+1; $i++) {
+        for($i = 1; $i < $numOfHands + 1; $i++) {
             $this->pot = $this->pot + $value;
-        }   
+        }
+
+        $this->pot = $this->pot + $value;
     }
 
     public function getPot(): int
@@ -232,26 +235,31 @@ class PlayBlackjack
         $this->pot = 0;
     }
 
-    public function addPlayerHand(array $arr) {
+    public function addPlayerHand(array $arr)
+    {
         array_push($this->playerHand, $arr);
     }
 
-    public function hitPlayerHand(int $num, string $str) {
+    public function hitPlayerHand(int $num, string $str)
+    {
         array_push($this->playerHand[$num], $str);
     }
 
-    public function addHandScore(int $score) {
+    public function addHandScore(int $score)
+    {
         array_push($this->handScore, $score);
     }
 
-    public function hitHandScore(int $num, int $score) {
+    public function hitHandScore(int $num, int $score)
+    {
         $this->handScore[$num] = $this->handScore[$num] + $score;
     }
 
-    public function getHandScore() {
+    public function getHandScore()
+    {
         return $this->handScore;
     }
-    
+
 
     /**
      * Draws top card of the deck
@@ -273,7 +281,7 @@ class PlayBlackjack
     public function deal($num): void
     {
         //first card for player
-        for($i = 1; $i < $num+1; $i++) {
+        for($i = 1; $i < $num + 1; $i++) {
             if($this->playerScore <= 21) {
                 $draw = $this->deck->draw();
                 $value = $draw->getValue();
@@ -299,16 +307,16 @@ class PlayBlackjack
         }
 
         //second card for player
-        for($i = 1; $i < $num+1; $i++) {
+        for($i = 1; $i < $num + 1; $i++) {
             if($this->playerScore <= 21) {
                 $draw = $this->deck->draw();
                 $value = $draw->getValue();
-                $this->hitHandScore($i-1, $value);
+                $this->hitHandScore($i - 1, $value);
                 // $this->playerScore = $this->playerScore + $value;
                 if($draw) {
                     $hand = array();
                     $hand =  $draw->getAsString();
-                    $this->hitPlayerHand($i-1, $hand);
+                    $this->hitPlayerHand($i - 1, $hand);
                 }
             }
         }
@@ -353,20 +361,6 @@ class PlayBlackjack
             }
         }
         return $this->playerHand;
-
-        // for($i = 1; $i < $num+1; $i++) {
-        //     if($this->playerScore <= 21) {
-        //         $draw = $this->deck->draw();
-        //         $value = $draw->getValue();
-        //         $this->addHandScore($value);
-        //         // $this->playerScore = $this->playerScore + $value;
-        //         if($draw) {
-        //             $hand = array();
-        //             $hand[] =  $draw->getAsString();
-        //         }
-        //     }
-        //     $this->addPlayerHand($hand);
-        // }
     }
 
     /**
@@ -401,6 +395,31 @@ class PlayBlackjack
     }
 
     /**
+     * Logic to decide if burst or got 21.
+     *
+     * @return string $str
+     */
+    public function bust(): string
+    {
+        $str = "It´s fun to play...right?";
+
+        if($this->handScore[0] == 21) {
+            $str = "Player wins!!";
+        } elseif($this->handScore[0] > 21) {
+            $str = "House wins!!";
+        }
+
+        if($this->getBankScore() == 21) {
+            $str = "House wins!!";
+        } elseif($this->getBankScore() > 21) {
+            $str = "Player wins!!";
+        }
+
+        return $str;
+    }
+
+
+    /**
      * Clear all hands and scores for house and player. use before new round
      */
     public function clearHands(): void
@@ -408,6 +427,7 @@ class PlayBlackjack
         $this->playerHand = array();
         $this->bankHand = array();
         $this->playerScore = 0;
+        $this->handScore = array();
         $this->bankScore = 0;
     }
 
@@ -420,32 +440,25 @@ class PlayBlackjack
     {
         $str = "no winner yet";
 
-        if ($this->getPlayerScore() > $this->getBankScore()) {
-            $str = "Player wins";
-            $this->setPlayerRounds();
-            if($this->getPlayerScore() == 21) {
-                $str = "Player winns!!";
-                $this->setPlayerRounds();
-            } elseif($this->getPlayerScore() > 21) {
-                $str = "Player bust and loose!";
-                $this->setBankRounds();
+        if ($this->handScore[0] > $this->getBankScore()) {
+            $str = "Player wins!!";
+            if($this->handScore[0] == 21) {
+                $str = "Player wins!!";
+            } elseif($this->handScore[0] > 21) {
+                $str = "House wins!!";
             }
-        } elseif ($this->getBankScore() == $this->getPlayerScore()) {
-            $str = "Even, so house winns!";
-            $this->setBankRounds();
+        } elseif ($this->getBankScore() == $this->handScore[0]) {
+            $str = "push!!"; // A tie; the player and dealer have hands with the same total below 22
         }
 
         if($this->getBankScore() == 21) {
-            $str = "House winns!!";
-            $this->setBankRounds();
+            $str = "House wins!!";
         } elseif ($this->getBankScore() > 21) {
-            $str = "House bust and loose!";
-            $this->setPlayerRounds();
+            $str = "Player wins!!";
         }
 
-        if ($this->getBankScore() > $this->getPlayerScore() && $this->getBankScore() < 21) {
-            $str = "House wins";
-            $this->setBankRounds();
+        if ($this->getBankScore() > $this->handScore[0] && $this->getBankScore() < 21) {
+            $str = "House wins!!";
         }
 
         return $str;
@@ -461,22 +474,38 @@ class PlayBlackjack
         $str = "It´s fun to play...right?";
 
         if($this->getPlayerScore() == 21) {
-            $str = "Player winns!!";
+            $str = "Player wins!!";
             $this->setPlayerRounds();
         } elseif($this->getPlayerScore() > 21) {
-            $str = "Player bust and loose!";
+            $str = "House wins!!";
             $this->setBankRounds();
         }
 
         if($this->getBankScore() == 21) {
-            $str = "House winns!!";
+            $str = "House wins!!";
             $this->setBankRounds();
         } elseif($this->getBankScore() > 21) {
-            $str = "House bust and loose!";
+            $str = "Player wins!!";
             $this->setPlayerRounds();
         }
 
         return $str;
+    }
+
+    public function endOfRound(Player $player)
+    {
+        if($this->getWinner() == 'Player wins!!' || $this->bust() == 'Player wins!!') {
+            $player->addAccount($this->getPot());
+            $this->clearPot();
+        }
+
+        if($this->getWinner() == 'Push!!' || $this->bust() == 'Push!!') {
+            $this->clearPot();
+        }
+
+        if($this->getWinner() == 'House wins!!' || $this->bust() == 'House wins!!') {
+            $this->clearPot();
+        }
     }
 
 }

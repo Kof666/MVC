@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card21 Game{% endblock %}
+
+{% block main %}
+{# {{ dump(game) }} #}
+<div class="game">
+    {{ include('card21/card21_score.html.twig') }}
+    <form class="form_card21" method="post" action="">
+        <p>
+            {# <input type="submit" name="done" value="Stand"
+                onClick="this.form.action='{{ path('bankHand_21') }}';"
+            >
+            <input type="submit" name="draw_card" value="draw"
+                onClick="this.form.action='{{ path('start_21_post') }}';"
+            > #}
+            <input type="submit" name="quit" value="quit"
+            onClick="this.form.action='{{ path('card_21') }}';"
+            >
+            <input type="submit" name="new_round" value="new round"
+            onClick="this.form.action='{{ path('new_round_21') }}';"
+            >
+        </p>
+    </form>
+    <div class="card_flex">
+        <div class="game_info">
+            <h2>House</h2>
+            <p>points: {{ bank_score }}</p>
+        </div>
+        <ul class="ul-game">
+            <div class="back-card"></div>
+        {% if game is not null %}
+        {% for card in game %}
+            <div class="card">
+                <li class="card-topp">{{ card }}</li>
+                <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
+                <li class="card-bottom">{{ card }}</li>
+            </div>
+        {% endfor %}
+        {% endif %}
+        </ul>
+    </div>
+    <div class="space">
+        {{ include('card/flash.html.twig') }}
+    </div>
+    <div class="card_flex">
+        <div class="game_info">
+            <h2>Player</h2>
+            <p>points: {{ player_score }}</p>
+        </div>
+        <ul class="ul-game">
+            {% for card in playerHand %}
+                <div class="card">
+                    <li class="card-topp">{{ card }}</li>
+                    <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
+                    <li class="card-bottom">{{ card }}</li>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

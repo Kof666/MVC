@@ -5,15 +5,22 @@
     <h1>Blackjack</h1>
 
     <form class="form_card21" method="post" action="">
-        <p>Money in pot: $ {{ game.pot }}</p>
-        <p>your account: $ {{ player.account }}</p><br>
+        <p>Player: $ {{ player.name }}</p>
+        <p>Your Account: $ {{ player.account }}</p><br>
+        <p>Place your bet</p>
         <p>
-            <label for="bet">Place your bet</label>
-            <input type="number" name="bet" min="1" max="50" value="1">
+        <label for="bet1">hand 1</label>
+        <input type="number" name="bet1" min="1" max="50" value="1">
 
-            <input type="submit" name="deal_card" value="deal"
-                onClick="this.form.action='{{ path('deal') }}';"
-            >
+        <label for="bet2">hand 2</label>
+        <input type="number" name="bet2" min="1" max="50" value="1">
+
+        <label for="bet3">Hand 3</label>
+        <input type="number" name="bet3" min="1" max="50" value="1">
+        </p><p>
+        <input type="submit" name="deal_card" value="deal"
+            onClick="this.form.action='{{ path('deal') }}';"
+        >
         </p>
     </form>
     <div class="card_flex">
@@ -36,8 +43,9 @@
 
     <div class="card_flex">
         <div class="game_info">
-            <h2>{{ player.name }}</h2>
-            <p>points: {{ game.playerScore }}</p>
+            <h2>Hand {{ loop.index0 + 1 }}</h2>
+            <p>points:</p>
+            <p>bet:</p>
         </div>
         <ul class="ul-game">
             <div class="card-area"></div>
@@ -46,5 +54,6 @@
     </div>
     {% endfor %}
     </div>
+
 </div>
 {% endblock %}

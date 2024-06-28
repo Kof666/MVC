@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card21 Game{% endblock %}
+
+{% block main %}
+<div class="game">
+    {# {{ dump(game) }} #}
+    <h1>Kortspelet 21</h1><br>
+    <p>Välkommen till min variant av kortspelet 21. Den här applikationen är en simpel variant av kortspelet 21 där man kan spela hur många omgångar man vill. Det ända vi håller koll på är hur många rundor du eller banken/huset vunnit. Det är dom vanliga reglerna med undantaget att Ess är värt 14 och inte 1 eller 14. Länken nedan kan du läsa mer om kortspelet om du vill.</p>
+
+    <a href="https://sv.wikipedia.org/wiki/Tjugoett_(kortspel)">Tjugoett - Wikipedia</a><br>
+
+    <button class="button" role="button">
+        <a href="{{ path('start_21_surface')}}">spela</a>
+    </button><br>
+
+    <a href="{{ path('doc') }}">Dokumentation</a>
+</div>
+
+{% endblock %}

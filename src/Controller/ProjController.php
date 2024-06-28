@@ -107,6 +107,10 @@ class ProjController extends AbstractController
         $player = $session->get("player");
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();
+        $game->clearHands();
+        $player->clearBets();
+
+        $session->set("game", $game);
 
         $data = [
             "game" => $game,
@@ -126,12 +130,14 @@ class ProjController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        $bet = $request->request->get('bet');
+        $bet1 = $request->request->get('bet1');
+        $bet2 = $request->request->get('bet2');
+        $bet3 = $request->request->get('bet3');
         $game = $session->get("game");
         $player = $session->get("player");
-        $game->addToPot($bet, $player->getNumOfHands());
+        // $game->addToPot($bet, $player->getNumOfHands());
         $game->deal($player->getNumOfHands());
-        $player->bet($bet);
+        $player->bet($bet1, $bet2, $bet3);
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();
@@ -139,6 +145,14 @@ class ProjController extends AbstractController
         $handScore = $game->getHandScore();
         $session->set("game", $game);
         $session->set("player", $player);
+
+        $str = $game->bust();
+        if($str != 'It´s fun to play...right?') {
+            $this->addFlash(
+                'notice',
+                $str
+            );
+        }
 
         $data = [
             "game" => $game,
@@ -167,6 +181,14 @@ class ProjController extends AbstractController
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
+
+        $str = $game->bust();
+        // if($str == 'It´s fun to play...right?') {
+        $this->addFlash(
+            'notice',
+            $str
+        );
+        // }
 
         $session->set("game", $game);
 
@@ -197,6 +219,15 @@ class ProjController extends AbstractController
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
 
+        $game->endOfRound($player);
+        $str = $game->bust();
+        if($str != 'It´s fun to play...right?') {
+            $this->addFlash(
+                'notice',
+                $str
+            );
+        }
+
         $session->set("game", $game);
 
         $data = [
@@ -210,7 +241,7 @@ class ProjController extends AbstractController
         return $this->render('proj/hit.html.twig', $data);
     }
 
-        /**
+    /**
      * Route for hit
      */
     #[Route("/proj/hit2", name: "hit2")]
@@ -226,6 +257,14 @@ class ProjController extends AbstractController
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
 
+        $str = $game->bust();
+        if($str != 'It´s fun to play...right?') {
+            $this->addFlash(
+                'notice',
+                $str
+            );
+        }
+
         $session->set("game", $game);
 
         $data = [
@@ -240,7 +279,7 @@ class ProjController extends AbstractController
         return $this->render('proj/hit.html.twig', $data);
     }
 
-            /**
+    /**
      * Route for hit
      */
     #[Route("/proj/hit3", name: "hit3")]
@@ -255,6 +294,14 @@ class ProjController extends AbstractController
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
+
+        $str = $game->bust();
+        if($str != 'It´s fun to play...right?') {
+            $this->addFlash(
+                'notice',
+                $str
+            );
+        }
 
         $session->set("game", $game);
 
@@ -283,6 +330,15 @@ class ProjController extends AbstractController
         $bankHand = $game->bankDraw();
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
+
+        $game->endOfRound($player);
+        $str = $game->getWinner();
+        if($str != 'It´s fun to play...right?') {
+            $this->addFlash(
+                'notice',
+                $str
+            );
+        }
 
         $session->set("game", $game);
 
