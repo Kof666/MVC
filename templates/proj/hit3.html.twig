@@ -14,29 +14,28 @@
             >       
         </p>
         <p>
-            {% if player.numOfHands >= 1 %}
+            {% if game.bust() == 'It´s fun to play...right?' %}
+
             <label>Hand 1</label>
-            <input type="submit" name="hit1" value="hit1"
+            <input type="submit" name="hit" value="hit"
             onClick="this.form.action='{{ path('hit1') }}';"
             >
-            {% endif %}
-            {% if player.numOfHands >= 2 %}
-            <label>Hand 2</label>
-            <input type="submit" name="hit2" value="hit2"
-            onClick="this.form.action='{{ path('hit2') }}';"
-            >
-            {% endif %}
-            {% if player.numOfHands >= 3 %}
-            <label>Hand 3</label>
-            <input type="submit" name="hit3" value="hit3"
-            onClick="this.form.action='{{ path('hit3') }}';"
-            >
-            {% endif %}
+            {% if player.numOfHands == 1 %}
             <input type="submit" name="stand" value="stand"
             onClick="this.form.action='{{ path('stand') }}';"
             >
-
-            {% if game.bust() != 'It´s fun to play...right?' %}
+            {% endif %}
+            {% if player.numOfHands == 2 %}
+            <input type="submit" name="stand" value="stand"
+            onClick="this.form.action='{{ path('deal') }}';"
+            >
+            {% endif %}
+            {% if player.numOfHands == 3 %}
+            <input type="submit" name="stand" value="stand"
+            onClick="this.form.action='{{ path('deal') }}';"
+            >
+            {% endif %}
+            {% elseif game.bust() != 'It´s fun to play...right?' %}
 
             <p><input type="submit" name="new_round" value="New Round"
                 onClick="this.form.action='{{ path('bet') }}';"

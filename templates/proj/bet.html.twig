@@ -2,21 +2,28 @@
 
 {% block main %}
 <div class="blackjack">
-    <h1>Blackjack</h1>
+    <h1>Blackjack [bet]</h1>
+
+
+    
 
     <form class="form_card21" method="post" action="">
-        <p>Player: $ {{ player.name }}</p>
+        <p>Player: {{ player.name }}</p>
         <p>Your Account: $ {{ player.account }}</p><br>
         <p>Place your bet</p>
         <p>
+        {% if player.numOfHands > 0 %}
         <label for="bet1">hand 1</label>
         <input type="number" name="bet1" min="1" max="50" value="1">
-
+        {% endif %}
+        {% if player.numOfHands > 1 %}
         <label for="bet2">hand 2</label>
         <input type="number" name="bet2" min="1" max="50" value="1">
-
+        {% endif %}
+        {% if player.numOfHands > 2 %}
         <label for="bet3">Hand 3</label>
         <input type="number" name="bet3" min="1" max="50" value="1">
+        {% endif %}
         </p><p>
         <input type="submit" name="deal_card" value="deal"
             onClick="this.form.action='{{ path('deal') }}';"

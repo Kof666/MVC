@@ -52,6 +52,11 @@ class Player
         return $this->bets;
     }
 
+    public function getBet($num)
+    {
+        return $this->bets[$num];
+    }
+
     public function setBets($amount)
     {
         $this->bets = $amount;

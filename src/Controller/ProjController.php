@@ -146,13 +146,13 @@ class ProjController extends AbstractController
         $session->set("game", $game);
         $session->set("player", $player);
 
-        $str = $game->bust();
-        if($str != 'It´s fun to play...right?') {
-            $this->addFlash(
-                'notice',
-                $str
-            );
-        }
+        // $str = $game->playerBust($player, $player->getNumOfHands());
+        // if($str != 'It´s fun to play...right?') {
+        //     $this->addFlash(
+        //         'notice',
+        //         $str
+        //     );
+        // }
 
         $data = [
             "game" => $game,
@@ -220,7 +220,7 @@ class ProjController extends AbstractController
         $playerScore = $game->getPlayerScore();
 
         $game->endOfRound($player);
-        $str = $game->bust();
+        $str = $game->playerBust($player, 0);
         if($str != 'It´s fun to play...right?') {
             $this->addFlash(
                 'notice',
@@ -238,7 +238,7 @@ class ProjController extends AbstractController
             "bank_score" => $bankScore,
             "player_score" => $playerScore,
         ];
-        return $this->render('proj/hit.html.twig', $data);
+        return $this->render('proj/hit1.html.twig', $data);
     }
 
     /**
@@ -257,7 +257,8 @@ class ProjController extends AbstractController
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
 
-        $str = $game->bust();
+        $game->endOfRound($player);
+        $str = $game->playerBust($player, 1);
         if($str != 'It´s fun to play...right?') {
             $this->addFlash(
                 'notice',
@@ -276,7 +277,7 @@ class ProjController extends AbstractController
             "player_score" => $playerScore,
 
         ];
-        return $this->render('proj/hit.html.twig', $data);
+        return $this->render('proj/hit2.html.twig', $data);
     }
 
     /**
@@ -295,7 +296,7 @@ class ProjController extends AbstractController
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
 
-        $str = $game->bust();
+        $str = $game->playerBust($player, 2);
         if($str != 'It´s fun to play...right?') {
             $this->addFlash(
                 'notice',
@@ -313,7 +314,7 @@ class ProjController extends AbstractController
             "bank_score" => $bankScore,
             "player_score" => $playerScore,
         ];
-        return $this->render('proj/hit.html.twig', $data);
+        return $this->render('proj/hit3.html.twig', $data);
     }
 
     /**

@@ -5,7 +5,7 @@
     <h1>Blackjack [PLAYING]</h1>
 
     <form class="form_card21" method="post" action="">
-        <p>Player: $ {{ player.name }}</p>
+        <p>Player: {{ player.name }}</p>
         <p>Your Account: $ {{ player.account }}</p><br>
 
         {% if game.bust() == 'It´s fun to play...right?' %}

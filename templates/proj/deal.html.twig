@@ -5,41 +5,40 @@
     <h1>Blackjack</h1>
 
     <form class="form_card21" method="post" action="">
-        <p>Player: $ {{ player.name }}</p>
+        <p>Player: {{ player.name }}</p>
         <p>Your Account: $ {{ player.account }}</p><br>
 
-        {% if game.bust() == 'It´s fun to play...right?' %}
-
         <p>
-            <label>Hit</label>
-            <input type="submit" name="hand 1" value="hand 1"
+            <input type="submit" name="quit" value="quit"
+                onClick="this.form.action='{{ path('proj') }}';"
+            >       
+        </p>
+        <p>
+            {% if player.numOfHands >= 1 %}
+            <label>Hand 1</label>
+            <input type="submit" name="hit1" value="hit1"
             onClick="this.form.action='{{ path('hit1') }}';"
             >
-            {% if player.numOfHands > 1 %}
-            <input type="submit" name="hand 2" value="hand 2"
+            {% endif %}
+            {% if player.numOfHands >= 2 %}
+            <label>Hand 2</label>
+            <input type="submit" name="hit2" value="hit2"
             onClick="this.form.action='{{ path('hit2') }}';"
             >
             {% endif %}
-            {% if player.numOfHands > 2 %}
-            <input type="submit" name="hand 3" value="hand 3"
+            {% if player.numOfHands >= 3 %}
+            <label>Hand 3</label>
+            <input type="submit" name="hit3" value="hit3"
             onClick="this.form.action='{{ path('hit3') }}';"
             >
             {% endif %}
-        </p>
-        <p><input type="submit" name="stand" value="stand"
+            <input type="submit" name="stand" value="stand"
             onClick="this.form.action='{{ path('stand') }}';"
-            ></p>
-        {% elseif game.bust() != 'It´s fun to play...right?' %}
+            >
 
-        <p><input type="submit" name="new_round" value="New Round"
-            onClick="this.form.action='{{ path('bet') }}';"
-            ></p>
-
-        <p><input type="submit" name="quit" value="quit"
-            onClick="this.form.action='{{ path('proj') }}';"
-            ></p>
-        {% endif %}
+        </p>
     </form>
+
     <div class="card_flex">
         <div class="game_info">
             <h2>Dealer</h2>
@@ -60,7 +59,6 @@
         {{ include('card/flash.html.twig') }}
     </div>
 
-    {# {% for i in 1.. player.numOfHands %} #}
     {% for arr in playerHand %}
     <div class="hand-flex">
         <div class="card_flex">
@@ -70,7 +68,6 @@
                 <p>bet: {{ player.bets[loop.index0]  }}</p>
             </div>
             {% for card in arr %}
-                {# {% for card in playerHand %} #}
                 <ul class="ul-game">
                     <div class="card">
                         <li class="card-topp">{{ card }}</li>
@@ -82,8 +79,6 @@
         </div>
         {% endfor %}
     </div>
-
-    {# {{ dump(game) }} #}
 </div>
 
 

@@ -216,13 +216,9 @@ class PlayBlackjack
         $this->rounds++;
     }
 
-    public function addToPot($value, $numOfHands): void
+    public function addToPot($value): void
     {
-        for($i = 1; $i < $numOfHands + 1; $i++) {
-            $this->pot = $this->pot + $value;
-        }
-
-        $this->pot = $this->pot + $value;
+        $this->pot = $value + $value;
     }
 
     public function getPot(): int
@@ -413,6 +409,26 @@ class PlayBlackjack
             $str = "House wins!!";
         } elseif($this->getBankScore() > 21) {
             $str = "Player wins!!";
+        }
+
+        return $str;
+    }
+
+    /**
+     * Logic to decide if burst or got 21.
+     *
+     * @return string $str
+     */
+    public function playerBust(Player $player, $hand): string
+    {
+        $str = "It´s fun to play...right?";
+
+        if($this->handScore[$hand] == 21) {
+            $str = "this hand wins!!";
+            // $this->endOfRound($this->player);
+            $player->addAccount($player->getBet($hand) * 2);
+        } elseif($this->handScore[$hand] > 21) {
+            $str = "Hand bust!!";
         }
 
         return $str;
