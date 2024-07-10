@@ -8,8 +8,15 @@ class Player
 
     protected int $account;
 
+
+    /**
+     * @var array<string|int, mixed> $hands  array of hands for player
+     */
     protected array $hands = array();
 
+    /**
+     * @var array<string|int, mixed> $bets  array of bets for player
+     */
     protected array $bets = array();
 
     protected int $numOfHands;
@@ -27,7 +34,7 @@ class Player
         $this->numOfHands = $numOfHands;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -69,6 +76,7 @@ class Player
 
     public function addAccount($amount)
     {
+        echo $this->account;
         $this->account = $this->account + $amount;
     }
 
@@ -76,6 +84,11 @@ class Player
     {
         return $this->hands;
     }
+
+    // public function getHand($value)
+    // {
+    //     return $this->hands[$value];
+    // }
 
     public function setHands($card)
     {
@@ -105,4 +118,20 @@ class Player
         //     }
         // }
     }
+
+    // public function playerBust(): string
+    // {
+    //     $str = "hephep";
+
+    //     foreach($this->getHands() as $key => $value) {
+    //         if($value == 21) {
+    //             $str = "hand $key winns";
+    //         }
+    //         if($value > 21) {
+    //             $str = "bust";
+    //         }
+    //     }
+
+    //     return $str;
+    // }
 }
