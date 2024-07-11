@@ -61,11 +61,11 @@
             <div class="back-card"></div>
 
         </ul>
+        <div class="space">
+            {{ include('card/flash.html.twig') }}
+        </div>
     </div>
 
-    <div class="space">
-        {{ include('card/flash.html.twig') }}
-    </div>
 
     {% for arr in playerHand %}
     <div class="hand-flex">

@@ -9,11 +9,14 @@
 
 .space {
     height: 5em;
+    margin-left: 7em;
+    margin-top: 3em;
 }
 
 .card_flex {
     display: flex;
     padding: 0 0 0 2em;
+    margin-bottom: 3em;
 }
 
 .game_info {

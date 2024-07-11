@@ -53,6 +53,22 @@ class ProjController extends AbstractController
     }
 
     /**
+     * route for database documentation
+     */
+    #[Route("/proj/about/database", name: "database_proj")]
+    public function databaseBj(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game");
+
+        $data = [
+            "game" => $game
+        ];
+
+        return $this->render('proj/database_proj.html.twig', $data);
+    }
+
+    /**
      * init route for blackjack
      */
     #[Route("/proj/init", name: "init_get", methods: ['GET'])]
@@ -223,8 +239,8 @@ class ProjController extends AbstractController
         $str = $game->playBust($player);
 
         $this->addFlash(
-        'notice',
-        $str
+            'notice',
+            $str
         );
 
         $session->set("game", $game);
@@ -269,8 +285,8 @@ class ProjController extends AbstractController
         $str = $game->playBust($player);
 
         $this->addFlash(
-        'notice',
-        $str
+            'notice',
+            $str
         );
 
         $session->set("game", $game);
@@ -314,8 +330,8 @@ class ProjController extends AbstractController
         $str = $game->playBust($player);
 
         $this->addFlash(
-        'notice',
-        $str
+            'notice',
+            $str
         );
 
         $session->set("game", $game);

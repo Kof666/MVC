@@ -34,6 +34,7 @@ h3, th {
 }
 
 td, th, li, dd {
+    font-family: var(--font-heading-proj);
     text-align: justify;
     overflow-wrap: break-word;
     word-wrap: break-word;

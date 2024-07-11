@@ -63,7 +63,7 @@ class PlayBlackjack
      */
     protected $bankHand = array();
 
-    protected int $pot = 0;
+    // protected int $pot = 0;
 
     /**
      * Constructor init game by init21()
@@ -74,7 +74,7 @@ class PlayBlackjack
     }
 
     /**
-     * init the game 21
+     * init the game Blackjack
      *
      * @param int $rounds           count the rounds
      * @param int $bankRounds       counts the winning rounds for the house
@@ -85,9 +85,9 @@ class PlayBlackjack
         $deck = new DeckOfCards();
         $deck->shuffle();
         $this->deck = $deck;
-        $this->rounds = $rounds;
-        $this->bankRounds = $bankRounds;
-        $this->playerRounds = $playerRounds;
+        // $this->rounds = $rounds;
+        // $this->bankRounds = $bankRounds;
+        // $this->playerRounds = $playerRounds;
     }
 
     /**
@@ -498,15 +498,11 @@ class PlayBlackjack
                 $win = $win + $player->getBet($key) * 2;
             }
             $this->clearPot();
-
-            // return $str;
         }
 
         foreach($this->handScore as $key => $value) {
-            echo "/", $value;
             if($value > 21 && $this->getBankScore() < 21) {
                 $str = "huset vinner!!";
-                // $player->addAccount($player->getBet($key));
                 $this->clearPot();
             }
             if($value == 21) {
@@ -518,9 +514,6 @@ class PlayBlackjack
                 $str = "Player $num wins!!";
                 $win = $win + $player->getBet($key) * 2;
                 $this->clearPot();
-            // elseif($value > 21) {
-                //     $str = "House wins!!";
-                // }
             } elseif ($this->getBankScore() == $value) {
                 $str = "push!!"; // A tie; the player and dealer have hands with the same total below 22
             }
@@ -531,11 +524,11 @@ class PlayBlackjack
 
         if($this->getBankScore() == 21) {
             $str = "House wins!!";
-        } elseif ($this->getBankScore() > 21) {
+        }// elseif ($this->getBankScore() > 21) {
         //     $str = "All player wins!!";
         //     $player->addAccount($this->getPot($value));
         //     $this->clearPot();
-        }
+        // }
 
         if ($this->getBankScore() > $this->handScore[0] && $this->getBankScore() < 21) {
             $str = "House wins!!";

@@ -4,8 +4,14 @@ namespace App\Card;
 
 class Player
 {
+    /**
+     * @var string $name  The name of the player
+     */
     protected string $name;
 
+    /**
+     * @var int $account  The players account
+     */
     protected int $account;
 
 
@@ -19,6 +25,9 @@ class Player
      */
     protected array $bets = array();
 
+    /**
+     * @var int $numOfHands  The amount of hands the player got
+     */
     protected int $numOfHands;
 
 
@@ -34,12 +43,19 @@ class Player
         $this->numOfHands = $numOfHands;
     }
 
+    /**
+     * Get the players name
+     * @return string name  The name of the player
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName(string $name)
+    /**
+     * Set the players name
+     */
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -85,11 +101,6 @@ class Player
         return $this->hands;
     }
 
-    // public function getHand($value)
-    // {
-    //     return $this->hands[$value];
-    // }
-
     public function setHands($card)
     {
         $this->hands[] = $card;
@@ -111,27 +122,5 @@ class Player
         $this->bets[] = $bet1;
         $this->bets[] = $bet2;
         $this->bets[] = $bet3;
-        // if($this->account > $amount) {
-        //     for($i = 0; $i < $this->numOfHands; $i++) {
-        //         $this->account = $this->account - $amount;
-        //         $this->bets[] = $amount;
-        //     }
-        // }
     }
-
-    // public function playerBust(): string
-    // {
-    //     $str = "hephep";
-
-    //     foreach($this->getHands() as $key => $value) {
-    //         if($value == 21) {
-    //             $str = "hand $key winns";
-    //         }
-    //         if($value > 21) {
-    //             $str = "bust";
-    //         }
-    //     }
-
-    //     return $str;
-    // }
 }

@@ -1,0 +1,17 @@
+.flash-notice {
+    font-family: var(--font-heading-proj);
+    font-size: 250%;
+    color: #b8b8b8;
+}
+
+.flash-warning {
+    padding: 0.5em;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color:solid 1px #fb9887;
+    border-radius: 1em;
+
+}
+.flash-warning:before {
+    content: "⚠";
+}
