@@ -164,7 +164,12 @@ class ProjController extends AbstractController
         $game = $session->get("game");
         $player = $session->get("player");
         // $game->addToPot($bet, $player->getNumOfHands());
-        $game->deal($player->getNumOfHands());
+        // $game->deal($player->getNumOfHands());
+        $game->dealFirstPlayerCard($player->getNumOfHands());
+        $game->dealFirstBankCard($player->getNumOfHands());
+        $game->dealSecondPlayerCard($player->getNumOfHands());
+        $game->dealSecondBankCard($player->getNumOfHands());
+
         $player->bet($bet1, $bet2, $bet3);
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();

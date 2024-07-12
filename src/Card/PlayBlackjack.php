@@ -185,12 +185,7 @@ class PlayBlackjack
         return $draw;
     }
 
-    /**
-     * Draws top card of the deck
-     * @param int $num   number of hands
-     */
-    public function deal($num): void
-    {
+    public function dealFirstPlayerCard($num) {
         $hand = array();
 
         //first card for player
@@ -207,18 +202,26 @@ class PlayBlackjack
             $this->addPlayerHand($hand);
         }
 
-        //first card for dealer
-        if($this->bankScore <= 21) {
-            $draw = $this->deck->draw();
-            $value = $draw->getValue();
-            $this->bankScore = $this->bankScore + $value;
-            $this->firstBankCard = $value;
-            if($draw) {
-                $this->bankHand[] = $draw->getAsString();
-            }
-        }
+        // $hand = array();
+        // // second card for player
+        // for($i = 1; $i < $num + 1; $i++) {
+        //     if($this->playerScore <= 21) {
+        //         $draw = $this->deck->draw();
+        //         $value = $draw->getValue();
+        //         $this->hitHandScore($i - 1, $value);
+        //         if($draw) {
+        //             // $hand = array();
+        //             $hand =  $draw->getAsString();
+        //             $this->hitPlayerHand($i - 1, $hand);
+        //         }
+        //     }
 
-        //second card for player
+        // }
+    }
+
+    public function dealSecondPlayerCard($num) {
+        $hand = array();
+        // second card for player
         for($i = 1; $i < $num + 1; $i++) {
             if($this->playerScore <= 21) {
                 $draw = $this->deck->draw();
@@ -230,8 +233,24 @@ class PlayBlackjack
                     $this->hitPlayerHand($i - 1, $hand);
                 }
             }
-        }
 
+        }
+    }
+
+    public function dealFirstBankCard() {
+
+        if($this->bankScore <= 21) {
+                $draw = $this->deck->draw();
+                $value = $draw->getValue();
+                $this->bankScore = $this->bankScore + $value;
+                $this->firstBankCard = $value;
+                if($draw) {
+                    $this->bankHand[] = $draw->getAsString();
+                }
+            }
+    }
+
+    public function dealsecondBankCard() {
         //second card for dealer
         if($this->bankScore <= 21) {
             $draw = $this->deck->draw();
@@ -242,6 +261,63 @@ class PlayBlackjack
             }
         }
     }
+    /**
+     * Draws top card of the deck
+     * @param int $num   number of hands
+     */
+    // public function deal($num): void
+    // {
+    //     $hand = array();
+
+    //     //first card for player
+    //     for($i = 1; $i < $num + 1; $i++) {
+    //         if($this->playerScore <= 21) {
+    //             $draw = $this->deck->draw();
+    //             $value = $draw->getValue();
+    //             $this->addHandScore($value);
+    //             if($draw) {
+    //                 $hand = array();
+    //                 $hand[] =  $draw->getAsString();
+    //             }
+    //         }
+    //         $this->addPlayerHand($hand);
+    //     }
+
+    //     //first card for dealer
+    //     if($this->bankScore <= 21) {
+    //         $draw = $this->deck->draw();
+    //         $value = $draw->getValue();
+    //         $this->bankScore = $this->bankScore + $value;
+    //         $this->firstBankCard = $value;
+    //         if($draw) {
+    //             $this->bankHand[] = $draw->getAsString();
+    //         }
+    //     }
+
+    //     //second card for player
+    //     for($i = 1; $i < $num + 1; $i++) {
+    //         if($this->playerScore <= 21) {
+    //             $draw = $this->deck->draw();
+    //             $value = $draw->getValue();
+    //             $this->hitHandScore($i - 1, $value);
+    //             if($draw) {
+    //                 // $hand = array();
+    //                 $hand =  $draw->getAsString();
+    //                 $this->hitPlayerHand($i - 1, $hand);
+    //             }
+    //         }
+    //     }
+
+    //     //second card for dealer
+    //     if($this->bankScore <= 21) {
+    //         $draw = $this->deck->draw();
+    //         $value = $draw->getValue();
+    //         $this->bankScore = $this->bankScore + $value;
+    //         if($draw) {
+    //             $this->bankHand[] = $draw->getAsString();
+    //         }
+    //     }
+    // }
 
     /**
      * Get player Hand
