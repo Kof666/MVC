@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Card\Card;
 use App\Card\DeckOfCards;
-use App\Card\CardHand;
 use App\Card\CardGraphic;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
