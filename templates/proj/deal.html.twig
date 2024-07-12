@@ -12,6 +12,9 @@
             <input type="submit" name="quit" value="quit"
                 onClick="this.form.action='{{ path('proj') }}';"
             >       
+            <input type="submit" name="save game" value="save game"
+            onClick="this.form.action='{{ path('blackjack_create') }}';"
+            >  
         </p>
         <p>
             {% if player.numOfHands >= 1 %}

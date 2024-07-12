@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-07-07 01:21:47        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-07-12 03:29:19        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -262,12 +262,12 @@
 
     var relations = [
     {
-        "name": "\\App\\Entity\\Library",
+        "name": "\\App\\Entity\\Blackjack",
         "size": 3000,
         "relations": []
     },
     {
-        "name": "\\App\\Card\\CardHand",
+        "name": "\\App\\Entity\\Library",
         "size": 3000,
         "relations": []
     },
@@ -314,7 +314,7 @@
         "relations": []
     },
     {
-        "name": "\\App\\Repository\\LibraryRepository",
+        "name": "\\App\\Repository\\BlackjackRepository",
         "size": 3000,
         "relations": []
     },
@@ -325,6 +325,11 @@
     },
     {
         "name": "\\Doctrine\\Persistence\\ManagerRegistry",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\LibraryRepository",
         "size": 3000,
         "relations": []
     },
@@ -382,6 +387,20 @@
         "relations": [
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\BlackjackController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Repository\\BlackjackRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Entity\\Blackjack",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\App\\Card\\Player"
         ]
     },
     {

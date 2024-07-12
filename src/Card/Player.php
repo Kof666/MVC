@@ -35,7 +35,7 @@ class Player
     /**
      * Constructor to init Player
      */
-    public function __construct(string $name = 'Player', int $account = 1000, int $numOfHands = 1)
+    public function __construct(mixed $name = 'Player', mixed $account = 1000, mixed $numOfHands = 1)
     {
         $this->name = $name;
         $this->account = $account;
@@ -45,9 +45,9 @@ class Player
 
     /**
      * Get the players name
-     * @return string name  The name of the player
+     * @return mixed name  The name of the player
      */
-    public function getName(): string
+    public function getName(): mixed
     {
         return $this->name;
     }
@@ -55,68 +55,118 @@ class Player
     /**
      * Set the players name
      */
-    public function setName(string $name): void
+    public function setName(mixed $name): void
     {
         $this->name = $name;
     }
 
-    public function getAccount()
+    /**
+     * Get Account
+     *
+     * @return int $account
+     */
+    public function getAccount(): int
     {
         return $this->account;
     }
 
-    public function setAccount($amount)
+    /**
+     * Set Account
+     *
+     * @param int $amount   value to set account
+     */
+    public function setAccount($amount): void
     {
         $this->account = $amount;
     }
 
-    public function getBets()
+    /**
+     * Get bets
+     *
+     * @return array<string|int, mixed> $bets
+     */
+    public function getBets(): array
     {
         return $this->bets;
     }
 
-    public function getBet($num)
+    /**
+     * Get bet. Get one given bet in array
+     *
+     * @param mixed $num  number of hands
+     */
+    public function getBet($num): mixed
     {
         return $this->bets[$num];
     }
 
-    public function setBets($amount)
-    {
-        $this->bets = $amount;
-    }
-
-    public function clearBets()
+    /**
+     * Clears array bets
+     */
+    public function clearBets(): void
     {
         $this->bets = array();
     }
 
-    public function addAccount($amount)
+    /**
+     * Add value to account
+     *
+     * @param int $amount   value to add to account
+     */
+    public function addAccount($amount): void
     {
         echo $this->account;
         $this->account = $this->account + $amount;
     }
 
-    public function getHands()
+    /**
+     * Get hands
+     *
+     * @return array<string|int, mixed>
+     */
+    public function getHands(): array
     {
         return $this->hands;
     }
 
-    public function setHands($card)
+    /**
+     * Set hands
+     *
+     * @param mixed $card
+     */
+    public function setHands($card): void
     {
         $this->hands[] = $card;
     }
 
-    public function getNumOfHands()
+    /**
+     * Get the number of hands player have
+     *
+     * @return int $numOfHands
+     */
+    public function getNumOfHands(): int
     {
         return $this->numOfHands;
     }
 
-    public function setNumOfHands($num)
+    /**
+     * Set the number of hands player have
+     *
+     * @param int $num  new value
+     */
+    public function setNumOfHands($num): void
     {
         $this->numOfHands = $num;
     }
 
-    public function bet($bet1, $bet2, $bet3)
+    /**
+     * Bets
+     *
+     * @param int $bet1
+     * @param int $bet2
+     * @param int $bet3
+     */
+    public function bet($bet1, $bet2, $bet3): void
     {
         $this->account = $this->account - $bet1 - $bet2 - $bet3;
         $this->bets[] = $bet1;

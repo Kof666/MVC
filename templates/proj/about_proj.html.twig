@@ -4,10 +4,26 @@
 
 {% block main %}
 <div class="blackjack">
-    <h1>Projekt Balckjack</h1><br>
-    <p>Här kommer det text om projektet...</p>
+    <div class="ram2">
+        <h1>Projekt Blackjack</h1><br>
+        <p>Det här är mitt examensprojekt i kursen Objektorienterade webbteknologier. Jag har valt att jobba vidare med kortspelet 21 som vi jobbat med i tidigare kursmoment. Jag har tagit grunden från kortspel 21 och vidareutvecklat programmeringen till en variant av Blackjack.</p>
+        <p>De lite större förändringar som gjorts är att man numera satsar pengar för varje omgång, att man kan välja om man vill ha en, två eller tre händer per omgång och att man kan spara sitt spel.</p>
+        <p>Jag har har lagt till en klass som hanterar spelaren. Spelaren har ett namn och ett konto. När du skapar en ny spelare börjar du med 1000 pengar. Om du haft flyt ett tag kan du välja att spara spelaren till ett senare tillfälle och här har jag valt att lagra uppgifterna i en databas.</p>
+        <p>Spelets router/sida har även fått ett annorlunda utseende än resterande webbplats och jag hoppas det ser lite festligare ut.</p>
+    
+    </div>
 
-    <a href="https://sv.wikipedia.org/wiki/Tjugoett_(kortspel)">ev ref länk ang blackjack</a><br>
+    <a href="https://sv.wikipedia.org/wiki/Black_Jack">Här kan du läsa mer om kortspelet blackjack</a><br>
+    <br>
+
+    <div class="ram">
+        <h3>Det finns några detaljer som kan va intressant att nämna med denna version av spelet:</h3>
+        <p>- Om du vinner en hand får du två gånger insatsen. Men får du däremot 21 i någon form får du tre gånger insatsen</p>
+        <p>- Ess har alltid ett värde av 10</p>
+        <p>- Spelar du med fler händer och banken blir tjock får du två gånger insatsen för varje hand.</p>
+        <p>- Får banken och spelaren samma resultat vinner banken</p>
+        <p>- I den här versionen av spelet kan du tyvärr inte splitta eller dubbla än</p>
+    </div>
 
     <button class="button" role="button">
         <a href="{{ path('proj')}}">spela</a>

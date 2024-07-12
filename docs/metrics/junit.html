@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-07-07 01:21:47        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-07-12 03:29:19        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -74,10 +74,10 @@
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(69.57 %)</small>
+                <small>(72 %)</small>
             </div>
             <div class="number">
-                16            </div>
+                18            </div>
         </div>
     </div>
 </div>
@@ -103,36 +103,36 @@
                         </thead>
                         <tbody id="contentAreaJunitNeverCalled" class="clusterize-content">
                                                     <tr>
-                                <td><span class="path">App\Entity\Library</span></td>
+                                <td><span class="path">App\Entity\Blackjack</span></td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
                                         1                                        </span>
                                     </td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
-                                        0.05                                        </span>
+                                        0.03                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
-                                <td><span class="path">App\Card\CardHand</span></td>
+                                <td><span class="path">App\Entity\Library</span></td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
                                         1                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
-                                        0                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.05);">
+                                        0.05                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
                                 <td><span class="path">App\Card\PlayBlackjack</span></td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 1);">
-                                        38                                        </span>
+                                        39                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.52);">
-                                        0.83                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.88);">
+                                        0.88                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -142,8 +142,8 @@
                                         1                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.07);">
-                                        0.11                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.1);">
+                                        0.1                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -158,13 +158,24 @@
                                     </td>
                                                             </tr>
                                                         <tr>
-                                <td><span class="path">App\Repository\LibraryRepository</span></td>
+                                <td><span class="path">App\Repository\BlackjackRepository</span></td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
                                         1                                        </span>
                                     </td>
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
+                                        0.03                                        </span>
+                                    </td>
+                                                            </tr>
+                                                        <tr>
+                                <td><span class="path">App\Repository\LibraryRepository</span></td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0);">
+                                        1                                        </span>
+                                    </td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.05);">
                                         0.05                                        </span>
                                     </td>
                                                             </tr>
@@ -175,7 +186,7 @@
                                         3                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.18);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.28);">
                                         0.28                                        </span>
                                     </td>
                                                             </tr>
@@ -186,7 +197,7 @@
                                         3                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.3);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.48);">
                                         0.48                                        </span>
                                     </td>
                                                             </tr>
@@ -197,8 +208,19 @@
                                         4                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.04);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.07);">
                                         0.07                                        </span>
+                                    </td>
+                                                            </tr>
+                                                        <tr>
+                                <td><span class="path">App\Controller\BlackjackController</span></td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.05);">
+                                        3                                        </span>
+                                    </td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.34);">
+                                        0.34                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -208,7 +230,7 @@
                                         1                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.02);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
                                         0.03                                        </span>
                                     </td>
                                                             </tr>
@@ -219,7 +241,7 @@
                                         3                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.09);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.15);">
                                         0.15                                        </span>
                                     </td>
                                                             </tr>
@@ -230,29 +252,29 @@
                                         4                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.36);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.58);">
                                         0.58                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
                                 <td><span class="path">App\Controller\ProjController</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.19);">
-                                        8                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
+                                        2                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 1);">
-                                        1.59                                        </span>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.95);">
+                                        0.95                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
                                 <td><span class="path">App\Controller\DiceGameController</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.14);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.13);">
                                         6                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.25);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.39);">
                                         0.39                                        </span>
                                     </td>
                                                             </tr>
@@ -263,18 +285,18 @@
                                         2                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.04);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.07);">
                                         0.07                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
                                 <td><span class="path">App\Controller\CardGameController</span></td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.38);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.37);">
                                         15                                        </span>
                                     </td>
                                                                     <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.4);">
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.63);">
                                         0.63                                        </span>
                                     </td>
                                                             </tr>
@@ -724,7 +746,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Card\\CardGraphicTest","time":0.008254},{"name":"App\\Card\\CardTest","time":0.001204},{"name":"App\\Card\\DeckOfCardsTest","time":0.005632},{"name":"App\\Card\\Play21Test","time":0.01375},{"name":"App\\tests\\Controller\\testGame21Controller","time":2.103599},{"name":"App\\tests\\Controller\\test21GameControllerJson","time":0.016403},{"name":"App\\tests\\Controller\\testGameControllerJson","time":0.021094},{"name":"App\\tests\\Controller\\testGameController","time":0.11319},{"name":"App\\tests\\Controller\\testDiceGameController","time":0.047512},{"name":"App\\tests\\Controller\\LibraryControllerJsonTest","time":0.098312},{"name":"App\\tests\\Controller\\testLibraryController","time":0.117279},{"name":"App\\tests\\Controller\\testMyPageController","time":0.10936},{"name":"App\\Dice\\DiceGraphicTest","time":0.000766},{"name":"App\\Dice\\DiceHandTest","time":0.012816},{"name":"App\\Dice\\DiceTest","time":0.000989}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Card\\CardGraphicTest","time":0.008724},{"name":"App\\Card\\CardTest","time":0.001426},{"name":"App\\Card\\DeckOfCardsTest","time":0.006013},{"name":"App\\Card\\Play21Test","time":0.014368},{"name":"App\\tests\\Controller\\testGame21Controller","time":2.199688},{"name":"App\\tests\\Controller\\test21GameControllerJson","time":0.018593},{"name":"App\\tests\\Controller\\testGameControllerJson","time":0.02456},{"name":"App\\tests\\Controller\\testGameController","time":0.111717},{"name":"App\\tests\\Controller\\testDiceGameController","time":0.049983},{"name":"App\\tests\\Controller\\LibraryControllerJsonTest","time":0.105671},{"name":"App\\tests\\Controller\\testLibraryController","time":0.113388},{"name":"App\\tests\\Controller\\testMyPageController","time":0.110935},{"name":"App\\Dice\\DiceGraphicTest","time":0.000951},{"name":"App\\Dice\\DiceHandTest","time":0.01405},{"name":"App\\Dice\\DiceTest","time":0.00106}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {

@@ -5,20 +5,31 @@
 {% block main %}
 {# {{ dump(draw) }} #}
 <div class="blackjack">
-<h1>Blackjack</h1>
+    <h1>Blackjack</h1>
+    <p>Välkommen till min version av Blackjack!!</p>
+    <div class="flex-container">
+        <div>
+            <img src="{{ asset('img/ess.png') }}" width="300" alt="cards">
+        </div>
 
+        <div>
+            <button class="button" role="button">
+                <a href="{{ path('init_get')}}">new game</a>
+            </button><br>
+            
+            <button class="button" role="button">
+                <a href="{{ path('players_view_all')}}">load game</a>
+            </button><br>
+            
+            <button class="button" role="button">
+                <a href="{{ path('me') }}">quit</a>
+            </button><br>
+        </div>
 
-<button class="button" role="button">
-    <a href="{{ path('init_get')}}">new game</a>
-</button><br>
-
-<button class="button" role="button">
-    <a href="{{ path('players_view_all')}}">load game</a>
-</button><br>
-
-<button class="button" role="button">
-    <a href="{{ path('me') }}">quit</a>
-</button><br>
+        <div>
+            <img src="{{ asset('img/ess.png') }}" width="300" alt="cards">
+        </div>
+    </div>
 
 </div>
 {# {{ dump(game) }} #}

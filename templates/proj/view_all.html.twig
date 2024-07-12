@@ -13,7 +13,6 @@
             <th>Name</th>
             <th>Account</th>
             <th>Number of hands</th>
-            <th>View</th>
             <th>Load</th>
             <th>Delete</th>
         </tr>
@@ -24,13 +23,10 @@
             <td>{{ players.getAccount|e }}</td>
             <td>{{ players.getNumOfHands|e }}</td>
             <td>
-                <a href="{{ path('library_by_id', {'id': players.getId})}}"><i class="fa-solid fa-circle-info"></i></a>
+                <a href="{{ path('load', {'id': players.getId})}}"><i class="fa-regular fa-floppy-disk"></i></a>
             </td>
             <td>
-                <a href="{{ path('library_update_get', {'id': players.getId})}}"><i class="fa-regular fa-floppy-disk"></i></a>
-            </td>
-            <td>
-                <a href="{{ path('library_delete_by_id', {'id': players.getId})}}"><i class="fa-solid fa-trash"></i></a>
+                <a href="{{ path('player_delete_by_id', {'id': players.getId})}}"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
     {% endfor %}
@@ -41,7 +37,7 @@
     </button>
 
     <button class="button" role="button">
-        <a href="{{ path('proj')}}">Reset database</a>
+        <a href="{{ path('reset')}}">Reset database</a>
     </button>
 </div>
 

@@ -6,10 +6,13 @@ use App\Entity\Blackjack;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\BlackjackRepository;
 
+use App\Card\Player;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class BlackjackController extends AbstractController
 {
@@ -26,36 +29,26 @@ class BlackjackController extends AbstractController
      */
     #[Route('/blackjack/create', name: 'blackjack_create')]
     public function createBlackjack(
-        ManagerRegistry $doctrine
+        BlackjackRepository $blackjackRepository,
+        ManagerRegistry $doctrine,
+        SessionInterface $session
     ): Response {
+        $player = $session->get("player");
         $entityManager = $doctrine->getManager();
-
-        $blackjack1 = new Blackjack();
-        $blackjack1->setName('default player 1');
-        $blackjack1->setAccount(1000);
-        $blackjack1->setNumOfHands(3);
-
-        // $blackjack2 = new Blackjack();
-        // $blackjack2->setName('default player 2');
-        // $blackjack2->setAccount(900);
-        // $blackjack2->setNumOfHands(2);
-
-        // $blackjack3 = new Blackjack();
-        // $blackjack3->setName('default player 3');
-        // $blackjack3->setAccount(800);
-        // $blackjack3->setNumOfHands(1);
-
-
-        // tell Doctrine you want to (eventually) save the Product
-        // (no queries yet)
-        $entityManager->persist($blackjack1);
-        // $entityManager->persist($blackjack2);
-        // $entityManager->persist($blackjack3);
-
-        // actually executes the queries (i.e. the INSERT query)
+        $blackjack = new Blackjack();
+        $blackjack->setName($player->getName());
+        $blackjack->setAccount($player->getAccount());
+        $blackjack->setNumOfHands($player->getNumOfHands());
+        $entityManager->persist($blackjack);
         $entityManager->flush();
 
-        return new Response('Saved new product with id '.$blackjack1->getId());
+        $blackjack = $blackjackRepository->findAll();
+
+        $data = [
+            'blackjack' => $blackjack
+        ];
+
+        return $this->render('proj/view_all.html.twig', $data);
     }
 
     /**
@@ -68,11 +61,11 @@ class BlackjackController extends AbstractController
         $blackjack = $blackjackRepository
             ->findAll();
 
-            $response = $this->json($blackjack);
-            $response->setEncodingOptions(
-                $response->getEncodingOptions() | JSON_PRETTY_PRINT
-            );
-            return $response;
+        $response = $this->json($blackjack);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
 
     /**
@@ -89,5 +82,110 @@ class BlackjackController extends AbstractController
         ];
 
         return $this->render('proj/view_all.html.twig', $data);
+    }
+
+    /**
+     * Route to delete player by id
+     */
+    #[Route('/proj/player/delete/{id}', name: 'player_delete_by_id')]
+    public function deleteLibraryById(
+        ManagerRegistry $doctrine,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $blackjack = $entityManager->getRepository(Blackjack::class)->find($id);
+
+        if (!$blackjack) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $this->addFlash(
+            'notice',
+            'Player deleted'
+        );
+
+        $entityManager->remove($blackjack);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('players_view_all');
+    }
+
+    /**
+     * route to load player by id
+     */
+    #[Route('/proj/laod/{id}', name: 'load')]
+    public function load(
+        ManagerRegistry $doctrine,
+        int $id,
+        SessionInterface $session,
+        Request $request
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $blackjack = $entityManager->getRepository(Blackjack::class)->find($id);
+
+        if (!$blackjack) {
+            throw $this->createNotFoundException(
+                'No player for id '.$id
+            );
+        }
+
+        // $session->get("player", $player);
+        $player = new Player($blackjack->getName(), $blackjack->getAccount(), $blackjack->getNumOfHands());
+
+        $session->set("player", $player);
+
+        $data = [
+            'player' => $player
+        ];
+
+        $entityManager->flush();
+
+        $this->addFlash(
+            'lib',
+            'player has been uploaded'
+        );
+
+        return $this->redirectToRoute('bet', $data);
+    }
+
+    /**
+     * Route to reset library
+     */
+    #[Route('/proj/player/reset', name: 'reset')]
+    public function reset(
+        ManagerRegistry $doctrine
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        /** @phpstan-ignore-next-line */
+        $entityManager->getRepository(Blackjack::class)->deleteAll();
+
+        $blackjack1 = new Blackjack();
+        $blackjack1->setName('Default Player 1');
+        $blackjack1->setAccount(1000);
+        $blackjack1->setNumOfHands(1);
+
+        $blackjack2 = new Blackjack();
+        $blackjack2->setName('Default Player 2');
+        $blackjack2->setAccount(900);
+        $blackjack2->setNumOfHands(2);
+
+        $blackjack3 = new Blackjack();
+        $blackjack3->setName('Default Player 3');
+        $blackjack3->setAccount(800);
+        $blackjack3->setNumOfHands(3);
+
+        $this->addFlash(
+            'notice',
+            'You reseted the database'
+        );
+
+        $entityManager->persist($blackjack1);
+        $entityManager->persist($blackjack2);
+        $entityManager->persist($blackjack3);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('players_view_all');
     }
 }

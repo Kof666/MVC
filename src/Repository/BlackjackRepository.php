@@ -16,6 +16,45 @@ class BlackjackRepository extends ServiceEntityRepository
         parent::__construct($registry, Blackjack::class);
     }
 
+    /**
+     * Find player by id
+     *
+     * @param int $id id number of book
+     *
+     * @return array<string|int, mixed> $resultSet
+     */
+    public function findById($id): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM blackjack AS p
+            WHERE p.id = :id
+        ';
+
+        $resultSet = $conn->executeQuery($sql, ['id' => $id]);
+
+        return $resultSet->fetchAllAssociative();
+    }
+
+    /**
+     * Deletes all players from blackjack
+     *
+     * @return array<string|int, mixed> $resultSet
+     */
+    public function deleteAll(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            DELETE FROM blackjack
+        ';
+
+        $resultSet = $conn->executeQuery($sql);
+
+        return $resultSet->fetchAllAssociative();
+    }
+
     //    /**
     //     * @return Blackjack[] Returns an array of Blackjack objects
     //     */

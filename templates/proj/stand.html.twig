@@ -7,14 +7,19 @@
     <form class="form_card21" method="post" action="">
         <p>Player: {{ player.name }}</p>
         <p>Your Account: $ {{ player.account }}</p><br>
-
-        <p><input type="submit" name="new_round" value="New Round"
+        <p>
+            <input type="submit" name="quit" value="quit"
+                onClick="this.form.action='{{ path('proj') }}';"
+            >       
+            <input type="submit" name="save game" value="save game"
+            onClick="this.form.action='{{ path('blackjack_create') }}';"
+            > 
+        </p>
+        <p>
+            <input type="submit" name="new_round" value="New Round"
             onClick="this.form.action='{{ path('bet') }}';"
-            ></p>
-
-        <p><input type="submit" name="quit" value="quit"
-            onClick="this.form.action='{{ path('proj') }}';"
-            ></p>
+            >
+        </p>
     </form>
     
     <div class="card_flex">
