@@ -88,7 +88,7 @@ class BlackjackController extends AbstractController
      * Route to delete player by id
      */
     #[Route('/proj/player/delete/{id}', name: 'player_delete_by_id')]
-    public function deleteLibraryById(
+    public function deletePlayerById(
         ManagerRegistry $doctrine,
         int $id
     ): Response {
@@ -97,7 +97,7 @@ class BlackjackController extends AbstractController
 
         if (!$blackjack) {
             throw $this->createNotFoundException(
-                'No product found for id '.$id
+                'No player found for id '.$id
             );
         }
 

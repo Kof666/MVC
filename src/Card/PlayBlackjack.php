@@ -8,10 +8,6 @@ namespace App\Card;
 class PlayBlackjack
 {
     /**
-     * variables that handles the score
-     */
-
-    /**
      * @var int $bankScore  handle the score of the house hand
      */
     protected int $bankScore = 0;
@@ -91,19 +87,19 @@ class PlayBlackjack
      *
      * @return int
      */
-    public function setBankScore(): int
-    {
-        return $this->bankScore;
-    }
+    // public function setBankScore(): int
+    // {
+    //     return $this->bankScore;
+    // }
 
     /**
      * Set bankScore for tests
      *
      */
-    public function setBankScoreTest(int $score): void
-    {
-        $this->bankScore = $score;
-    }
+    // public function setBankScoreTest(int $score): void
+    // {
+    //     $this->bankScore = $score;
+    // }
 
     /**
      * Get playerScore
@@ -120,19 +116,19 @@ class PlayBlackjack
      *
      * @return int $playerScore
      */
-    public function setPlayerScore(): int
-    {
-        return $this->playerScore;
-    }
+    // public function setPlayerScore(): int
+    // {
+    //     return $this->playerScore;
+    // }
 
     /**
      * Set playerScore for tests
      *
      */
-    public function setPlayerScoreTest(int $score): void
-    {
-        $this->playerScore = $score;
-    }
+    // public function setPlayerScoreTest(int $score): void
+    // {
+    //     $this->playerScore = $score;
+    // }
 
     /**
      * Get Deck of cards
@@ -142,6 +138,17 @@ class PlayBlackjack
     public function getDeck(): mixed
     {
         return $this->deck;
+    }
+
+    public function getApiDeck(): mixed
+    {
+        $deck = $this->deck->getAsString();
+        return $deck;
+    }
+
+    public function countBankHand()
+    {
+        return count($this->bankHand);
     }
 
     /**
@@ -185,7 +192,8 @@ class PlayBlackjack
         return $draw;
     }
 
-    public function dealFirstPlayerCard($num) {
+    public function dealFirstPlayerCard($num)
+    {
         $hand = array();
 
         //first card for player
@@ -201,25 +209,10 @@ class PlayBlackjack
             }
             $this->addPlayerHand($hand);
         }
-
-        // $hand = array();
-        // // second card for player
-        // for($i = 1; $i < $num + 1; $i++) {
-        //     if($this->playerScore <= 21) {
-        //         $draw = $this->deck->draw();
-        //         $value = $draw->getValue();
-        //         $this->hitHandScore($i - 1, $value);
-        //         if($draw) {
-        //             // $hand = array();
-        //             $hand =  $draw->getAsString();
-        //             $this->hitPlayerHand($i - 1, $hand);
-        //         }
-        //     }
-
-        // }
     }
 
-    public function dealSecondPlayerCard($num) {
+    public function dealSecondPlayerCard($num)
+    {
         $hand = array();
         // second card for player
         for($i = 1; $i < $num + 1; $i++) {
@@ -228,7 +221,6 @@ class PlayBlackjack
                 $value = $draw->getValue();
                 $this->hitHandScore($i - 1, $value);
                 if($draw) {
-                    // $hand = array();
                     $hand =  $draw->getAsString();
                     $this->hitPlayerHand($i - 1, $hand);
                 }
@@ -237,20 +229,21 @@ class PlayBlackjack
         }
     }
 
-    public function dealFirstBankCard() {
-
+    public function dealFirstBankCard()
+    {
         if($this->bankScore <= 21) {
-                $draw = $this->deck->draw();
-                $value = $draw->getValue();
-                $this->bankScore = $this->bankScore + $value;
-                $this->firstBankCard = $value;
-                if($draw) {
-                    $this->bankHand[] = $draw->getAsString();
-                }
+            $draw = $this->deck->draw();
+            $value = $draw->getValue();
+            $this->bankScore = $this->bankScore + $value;
+            $this->firstBankCard = $value;
+            if($draw) {
+                $this->bankHand[] = $draw->getAsString();
             }
+        }
     }
 
-    public function dealsecondBankCard() {
+    public function dealsecondBankCard()
+    {
         //second card for dealer
         if($this->bankScore <= 21) {
             $draw = $this->deck->draw();
@@ -261,63 +254,16 @@ class PlayBlackjack
             }
         }
     }
-    /**
-     * Draws top card of the deck
-     * @param int $num   number of hands
-     */
-    // public function deal($num): void
-    // {
-    //     $hand = array();
 
-    //     //first card for player
-    //     for($i = 1; $i < $num + 1; $i++) {
-    //         if($this->playerScore <= 21) {
-    //             $draw = $this->deck->draw();
-    //             $value = $draw->getValue();
-    //             $this->addHandScore($value);
-    //             if($draw) {
-    //                 $hand = array();
-    //                 $hand[] =  $draw->getAsString();
-    //             }
-    //         }
-    //         $this->addPlayerHand($hand);
-    //     }
-
-    //     //first card for dealer
-    //     if($this->bankScore <= 21) {
-    //         $draw = $this->deck->draw();
-    //         $value = $draw->getValue();
-    //         $this->bankScore = $this->bankScore + $value;
-    //         $this->firstBankCard = $value;
-    //         if($draw) {
-    //             $this->bankHand[] = $draw->getAsString();
-    //         }
-    //     }
-
-    //     //second card for player
-    //     for($i = 1; $i < $num + 1; $i++) {
-    //         if($this->playerScore <= 21) {
-    //             $draw = $this->deck->draw();
-    //             $value = $draw->getValue();
-    //             $this->hitHandScore($i - 1, $value);
-    //             if($draw) {
-    //                 // $hand = array();
-    //                 $hand =  $draw->getAsString();
-    //                 $this->hitPlayerHand($i - 1, $hand);
-    //             }
-    //         }
-    //     }
-
-    //     //second card for dealer
-    //     if($this->bankScore <= 21) {
-    //         $draw = $this->deck->draw();
-    //         $value = $draw->getValue();
-    //         $this->bankScore = $this->bankScore + $value;
-    //         if($draw) {
-    //             $this->bankHand[] = $draw->getAsString();
-    //         }
-    //     }
-    // }
+    public function dealBankCard()
+    {
+        $draw = $this->deck->draw();
+        $value = $draw->getValue();
+        $this->bankScore = $this->bankScore + $value;
+        if($draw) {
+            $this->bankHand[] = $draw->getAsString();
+        }
+    }
 
     /**
      * Get player Hand
@@ -380,24 +326,24 @@ class PlayBlackjack
      *
      * @return string $str
      */
-    public function bust(): string
-    {
-        $str = "It´s fun to play...right?";
+    // public function bust(): string
+    // {
+    //     $str = "It´s fun to play...right?";
 
-        if($this->handScore[0] == 21) {
-            $str = "Player wins!!";
-        } elseif($this->handScore[0] > 21) {
-            $str = "House wins!!";
-        }
+    //     if($this->handScore[0] == 21) {
+    //         $str = "Player wins!!";
+    //     } elseif($this->handScore[0] > 21) {
+    //         $str = "House wins!!";
+    //     }
 
-        if($this->getBankScore() == 21) {
-            $str = "House wins!!";
-        } elseif($this->getBankScore() > 21) {
-            $str = "Player wins!!";
-        }
+    //     if($this->getBankScore() == 21) {
+    //         $str = "House wins!!";
+    //     } elseif($this->getBankScore() > 21) {
+    //         $str = "Player wins!!";
+    //     }
 
-        return $str;
-    }
+    //     return $str;
+    // }
 
     /**
      * Logic to decide if player is bust
@@ -515,22 +461,22 @@ class PlayBlackjack
      *
      * @return string $str
      */
-    public function bustOrWinn(): string
-    {
-        $str = "It´s fun to play...right?";
+    // public function bustOrWinn(): string
+    // {
+    //     $str = "It´s fun to play...right?";
 
-        if($this->getPlayerScore() == 21) {
-            $str = "Player wins!!";
-        } elseif($this->getPlayerScore() > 21) {
-            $str = "House wins!!";
-        }
+    //     if($this->getPlayerScore() == 21) {
+    //         $str = "Player wins!!";
+    //     } elseif($this->getPlayerScore() > 21) {
+    //         $str = "House wins!!";
+    //     }
 
-        if($this->getBankScore() == 21) {
-            $str = "House wins!!";
-        } elseif($this->getBankScore() > 21) {
-            $str = "Player wins!!";
-        }
+    //     if($this->getBankScore() == 21) {
+    //         $str = "House wins!!";
+    //     } elseif($this->getBankScore() > 21) {
+    //         $str = "Player wins!!";
+    //     }
 
-        return $str;
-    }
+    //     return $str;
+    // }
 }

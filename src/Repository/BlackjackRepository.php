@@ -38,6 +38,27 @@ class BlackjackRepository extends ServiceEntityRepository
     }
 
     /**
+     * Find player by name
+     *
+     * @param string $name name of player
+     *
+     * @return array<string|int, mixed> $resultSet
+     */
+    public function findByName($name): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM blackjack AS p
+            WHERE p.name = :name
+        ';
+
+        $resultSet = $conn->executeQuery($sql, ['name' => $name]);
+
+        return $resultSet->fetchAllAssociative();
+    }
+
+    /**
      * Deletes all players from blackjack
      *
      * @return array<string|int, mixed> $resultSet

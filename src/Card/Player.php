@@ -115,7 +115,6 @@ class Player
      */
     public function addAccount($amount): void
     {
-        echo $this->account;
         $this->account = $this->account + $amount;
     }
 

@@ -1,0 +1,44 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block main %}
+{# {{ dump(draw) }} #}
+<div class="blackjack">
+    <h1>API Blackjack</h1><br>
+
+    <h3>Deck</h3>
+    <a href="{{ path('deck')}}" target="_blank">Här visas de kort som finns kvar i kortleken</a>
+    <br><br><br>
+    <h3>Hands</h3>
+    <a href="{{ path('hands')}}" target="_blank">Här visas vilka kort dealer och spelare har på handen för tillfället</a>
+    <br><br><br>
+    <h3>Players</h3>
+    <a href="{{ path('players')}}" target="_blank">Här visas info om de spelare som är sparade i databasen</a>
+    <br><br><br>
+    <h3>Lägg till kort till dealers hand</h3>
+    <p>Här nedan kan du lägga till ett kort till dealerns hand. Det dras ett till varje gång du uppdaterar sidan</p>
+    <div class="flex-container">
+        <form method="post" action="{{ path('proj_deck_draw_post') }}">
+            <p>
+                <input type="submit" name="dra_kort" value="lägg till kort"
+                >
+            </p>
+        </form>
+    </div>
+
+    <h3>Search player</h3>
+    <p>Här kan du söka efter spelare i databasen. Skriv spelarens namn och få information i Json format</p>
+    <form method="POST" action="{{ path('find_player_post') }}">
+        <label for="title">search:</label><br>
+            <input type="text" id="name" name="name" value="name"><br>
+
+            <input type="submit" value="enter">
+    </form> 
+
+{% endblock %}
+
+
+
+
+

@@ -14,19 +14,19 @@
             >       
         </p>
         <p>
-            {% if player.numOfHands >= 1 and game.player21() != '21' %}
+            {% if player.numOfHands >= 1 %}
             <label>Hand 1</label>
             <input type="submit" name="hit1" value="hit1"
             onClick="this.form.action='{{ path('hit1') }}';"
             >
             {% endif %}
-            {% if player.numOfHands >= 2 and game.player21() != '21' %}
+            {% if player.numOfHands >= 2 %}
             <label>Hand 2</label>
             <input type="submit" name="hit2" value="hit2"
             onClick="this.form.action='{{ path('hit2') }}';"
             >
             {% endif %}
-            {% if player.numOfHands >= 3 and game.player21() != '21' %}
+            {% if player.numOfHands >= 3 %}
             <label>Hand 3</label>
             <input type="submit" name="hit3" value="hit3"
             onClick="this.form.action='{{ path('hit3') }}';"

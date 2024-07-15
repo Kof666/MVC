@@ -29,8 +29,6 @@ class ProjController extends AbstractController
     ): Response {
         $game = new PlayBlackjack();
         $session->set("game", $game);
-        // $player = new Player();
-        // $session->set("player", $player);
 
         $data = [
             "game" => $game
@@ -43,32 +41,36 @@ class ProjController extends AbstractController
      * about route for blackjack
      */
     #[Route("/proj/about", name: "about_proj")]
-    public function aboutBj(
+    public function aboutBj(): Response {
+
+        return $this->render('proj/about_proj.html.twig');
+    }
+
+    /**
+     * api route for blackjack
+     */
+    #[Route("/proj/api", name: "api_proj")]
+    public function apiBj(
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
+        $player = $session->get("player");
 
         $data = [
-            "game" => $game
+            "game" => $game,
+            "player" => $player
         ];
 
-        return $this->render('proj/about_proj.html.twig', $data);
+        return $this->render('proj/api.html.twig', $data);
     }
 
     /**
      * route for database documentation
      */
     #[Route("/proj/about/database", name: "database_proj")]
-    public function databaseBj(
-        SessionInterface $session
-    ): Response {
-        $game = $session->get("game");
+    public function databaseBj(): Response {
 
-        $data = [
-            "game" => $game
-        ];
-
-        return $this->render('proj/database_proj.html.twig', $data);
+        return $this->render('proj/database_proj.html.twig');
     }
 
     /**
@@ -79,12 +81,9 @@ class ProjController extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
-        $name = 'Your name...';
 
         $data = [
-            "game" => $game,
-            // "player" => $player,
-            "name" => $name
+            "game" => $game
         ];
 
         return $this->render('proj/init.html.twig', $data);
@@ -95,7 +94,6 @@ class ProjController extends AbstractController
      */
     #[Route("/proj/init", name: "init_post", methods: ['POST'])]
     public function initCallback(
-        // ManagerRegistry $doctrine,
         Request $request,
         SessionInterface $session
     ): Response {
@@ -106,14 +104,6 @@ class ProjController extends AbstractController
         $player = new Player($name, 1000, $numOfHands);
         $session->set("player", $player);
         $player->setName($name);
-
-        // $entityManager = $doctrine->getManager();
-        // $blackjack = new Blackjack();
-        // $blackjack->setName($name);
-        // $blackjack->setAccount($player->getAccount());
-        // $blackjack->setNumOfHands($numOfHands);
-        // $entityManager->persist($blackjack);
-        // $entityManager->flush();
 
         $data = [
             "game" => $game,
@@ -163,8 +153,6 @@ class ProjController extends AbstractController
         $bet3 = $request->request->get('bet3');
         $game = $session->get("game");
         $player = $session->get("player");
-        // $game->addToPot($bet, $player->getNumOfHands());
-        // $game->deal($player->getNumOfHands());
         $game->dealFirstPlayerCard($player->getNumOfHands());
         $game->dealFirstBankCard($player->getNumOfHands());
         $game->dealSecondPlayerCard($player->getNumOfHands());
@@ -207,14 +195,6 @@ class ProjController extends AbstractController
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
 
-        // $str = $game->bust();
-        // if($str == 'It´s fun to play...right?') {
-        // $this->addFlash(
-        //     'notice',
-        //     $str
-        // );
-        // }
-
         $session->set("game", $game);
 
         $data = [
@@ -241,18 +221,6 @@ class ProjController extends AbstractController
         $game->playerdraw(0);
         $playerHand = $game->playerHand();
         $bankHand = $game->bankHand();
-        // $bankScore = $game->getBankScore();
-        // $playerScore = $game->getPlayerScore();
-
-        // $game->endOfRound($player);
-        // $str = $game->playerBust($player, 0);
-        // if($str != 'It´s fun to play...right?') {
-        //     $this->addFlash(
-        //         'notice',
-        //         $str
-        //     );
-        // }
-
         $str = $game->playBust($player);
 
         $this->addFlash(
@@ -267,8 +235,6 @@ class ProjController extends AbstractController
             "player" => $player,
             "playerHand" => $playerHand,
             "bankHand" => $bankHand,
-            // "bank_score" => $bankScore,
-            // "player_score" => $playerScore,
         ];
 
         return $this->render('proj/hit1.html.twig', $data);
@@ -289,15 +255,6 @@ class ProjController extends AbstractController
         $bankHand = $game->bankHand();
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
-
-        // $game->endOfRound($player);
-        // $str = $game->playerBust($player, 1);
-        // if($str != 'It´s fun to play...right?') {
-        //     $this->addFlash(
-        //         'notice',
-        //         $str
-        //     );
-        // }
 
         $str = $game->playBust($player);
 
@@ -336,14 +293,6 @@ class ProjController extends AbstractController
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
 
-        // $str = $game->playerBust($player, 2);
-        // if($str != 'It´s fun to play...right?') {
-        //     $this->addFlash(
-        //         'notice',
-        //         $str
-        //     );
-        // }
-
         $str = $game->playBust($player);
 
         $this->addFlash(
@@ -379,7 +328,6 @@ class ProjController extends AbstractController
         $bankScore = $game->getBankScore();
         $playerScore = $game->getPlayerScore();
 
-        // $game->endOfRound($player);
         $str = $game->getWinner($player);
         if($str != 'It´s fun to play...right?') {
             $this->addFlash(

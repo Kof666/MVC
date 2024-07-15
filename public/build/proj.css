@@ -552,6 +552,11 @@ body {
     background-size:cover;
 }
 
+/* .blackjack {
+    background: url('../images/card_frame.png');
+    background-size:cover;
+} */
+
 img {
     max-width: 100%;
 }
