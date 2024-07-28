@@ -6,6 +6,7 @@
 
 <div class="blackjack">
     <h2>Saved players</h2>
+    {# {{ dump(test) }} #}
     {{ include('card/flash.html.twig') }}
     <table>
         <tr>
@@ -15,6 +16,7 @@
             <th>Number of hands</th>
             <th>Load</th>
             <th>Delete</th>
+            <th>view hands</th>
         </tr>
     {% for players in blackjack %}
         <tr>
@@ -27,6 +29,9 @@
             </td>
             <td>
                 <a href="{{ path('player_delete_by_id', {'id': players.getId})}}"><i class="fa-solid fa-trash"></i></a>
+            </td>
+            <td>
+                <a href="{{ path('hand_by_id', {'id': players.getId})}}"><i class="fa-solid fa-circle-info"></i></a>
             </td>
         </tr>
     {% endfor %}

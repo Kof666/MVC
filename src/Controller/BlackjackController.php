@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Blackjack;
+use App\Entity\Game;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\BlackjackRepository;
+use App\Repository\GameRepository;
 
 use App\Card\Player;
+use App\Card\PlayBlackjack;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,10 +33,12 @@ class BlackjackController extends AbstractController
     #[Route('/blackjack/create', name: 'blackjack_create')]
     public function createBlackjack(
         BlackjackRepository $blackjackRepository,
+        GameRepository $gameRepository,
         ManagerRegistry $doctrine,
         SessionInterface $session
     ): Response {
         $player = $session->get("player");
+        $gameInfo = $session->get("game");
         $entityManager = $doctrine->getManager();
         $blackjack = new Blackjack();
         $blackjack->setName($player->getName());
@@ -41,11 +46,24 @@ class BlackjackController extends AbstractController
         $blackjack->setNumOfHands($player->getNumOfHands());
         $entityManager->persist($blackjack);
         $entityManager->flush();
-
+        $playerId = $blackjack->getId(); //to get id for table game
         $blackjack = $blackjackRepository->findAll();
 
+        //test to see if table game worked
+        $game = new Game();
+        $game->setPlayerId($playerId);
+        // for($i = 0; $i < count($gameInfo->bankHand()); $i++) {
+        //     $game->setBankHand($gameInfo->getBankHand($i));
+        // }
+        //skapa en str som innehåller alla kort för att spara i db. exploe() sen när du hämtat den..
+        $game->setBankHand($gameInfo->bankHand());
+        $test =  $game->getBankHand();
+        $entityManager->persist($game);
+        $entityManager->flush();
+
         $data = [
-            'blackjack' => $blackjack
+            'blackjack' => $blackjack,
+            'test' => $test
         ];
 
         return $this->render('proj/view_all.html.twig', $data);
@@ -82,6 +100,44 @@ class BlackjackController extends AbstractController
         ];
 
         return $this->render('proj/view_all.html.twig', $data);
+    }
+
+    #[Route('/proj/players/view/hand/{id}', name: 'hand_by_id')]
+    public function viewHandById(
+        ManagerRegistry $doctrine,
+
+        GameRepository $gameRepository,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $hands = $entityManager->getRepository(Game::class)->findById($id);
+
+        // $hands = $gameRepository->findById($id);
+        // $bankHand =  $hands->getBankHand();
+
+        // $entityManager->persist($hands);
+        // $entityManager->flush();
+
+        foreach($hands as $key => $value) {
+            // $pieces = $value['bank_hand'];
+            $pieces = explode("\"", $value['bank_hand']);
+        }
+        foreach($pieces as $key => $value)
+        {
+        if($key%2 == 0) //The key is uneven, skip
+            continue;
+        //do your stuff
+        $cards[] = $value;
+        }
+
+        $data = [
+            'hands' => $hands,
+            'pieces' => $pieces,
+            'cards' => $cards,
+            // 'bank_hand' => $bankHand
+        ];
+
+        return $this->render('proj/view_hand.html.twig', $data);
     }
 
     /**

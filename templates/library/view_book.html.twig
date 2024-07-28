@@ -4,6 +4,8 @@
 
 {% block main %}
 {# <h2>View one book in library</h2> #}
+    {{ dump(library) }}
+
 {% for book in library %}
 <div class="flex-container-lib">
     <div class="d-pic">

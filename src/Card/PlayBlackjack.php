@@ -35,7 +35,7 @@ class PlayBlackjack
     /**
      * @var array<string|int, mixed>    $draw give you the last drawn card from the deck
      */
-    protected $draw = array();
+    // protected $draw = array();
 
     /**
      * @var array<string|int, mixed>    $playerHand   store the hand of cards for the player
@@ -185,12 +185,12 @@ class PlayBlackjack
      *
      * @return array<string|int, mixed> $draw
      */
-    public function draw(): mixed
-    {
-        $draw = $this->deck->draw();
-        $this->draw = $draw;
-        return $draw;
-    }
+    // public function draw(): mixed
+    // {
+    //     $draw = $this->deck->draw();
+    //     $this->draw = $draw;
+    //     return $draw;
+    // }
 
     public function dealFirstPlayerCard($num)
     {
@@ -303,6 +303,11 @@ class PlayBlackjack
     public function bankHand(): mixed
     {
         return $this->bankHand;
+    }
+
+    public function getbankHand($num): mixed
+    {
+        return $this->bankHand[$num];
     }
 
     /**
