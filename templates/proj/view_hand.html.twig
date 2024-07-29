@@ -4,9 +4,9 @@
 <div class="blackjack">
     <h1>Blackjack [bet]</h1>
     {{ dump(hands) }}
-    {{ dump(pieces) }}
-    {{ dump(cards) }}
-    {# {{ dump(bankHand) }} #}
+    {# {{ dump(pieces) }} #}
+    {# {{ dump(cards) }} #}
+    {{ dump(player_hands) }}
     {% for hand in hands %}
     <p class="info">id: {{ hand.bank_hand|e }}</p>
     {% endfor %}
@@ -18,39 +18,42 @@
             <h2>Dealer</h2>
             {# <p>points: {{ game.firstBankCard }}</p> #}
         </div>
+        {% for value in bank_hand %}
         <ul class="ul-game">
             <div class="card">
-                <li class="card-topp">{{ pieces[1] }}</li>
+                <li class="card-topp">{{ value }}</li>
                 <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
-                <li class="card-bottom">{{ pieces[1] }}</li>
+                <li class="card-bottom">{{ value }}</li>
             </div>
-            <div class="back-card"></div>
-
         </ul>
+        {% endfor %}     
+
         <div class="space">
             {{ include('card/flash.html.twig') }}
         </div>
     </div>
 
-    {# {% for card in hands %} #}
+    {% for arr in player_hands %}
     <div class="hand-flex">
         <div class="card_flex">
-            {# <div class="game_info">
-                <h2>Hand {{ loop.index0 + 1 }}</h2>
-                <p>points: {{ game.handScore[loop.index0]  }}</p>
-                <p>bet: {{ player.bets[loop.index0]  }}</p>
-            </div> #}
-            {% for value in cards %}
+            <div class="game_info">
+                <h2>Players<br>hand</h2>
+                {# <p>points: {{ game.handScore[loop.index0]  }}</p> #}
+                {# <p>bet: {{ player.bets[loop.index0]  }}</p> #}
+            </div>
+            {% for card in arr %}
                 <ul class="ul-game">
                     <div class="card">
-                        <li class="card-topp">{{ value }}</li>
+                        <li class="card-topp">{{ card }}</li>
                         <li class="card-mid"><img src="{{ asset('img/bth.png') }}" alt="bth-logo"></li>
-                        <li class="card-bottom">{{ value }}</li>
+                        <li class="card-bottom">{{ card }}</li>
                     </div>
                 </ul>   
-                {% endfor %}     
-        </div>
-    </div>
+            {% endfor %}     
+        </div> 
+    {% endfor %}     
+    </div> 
+    
 
 </div>
 {% endblock %}

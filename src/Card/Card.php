@@ -38,7 +38,7 @@ class Card
             case 'K':
                 return 10;
             case 'A':
-                return 10;
+                return 11;
         }
         return $this->value;
     }

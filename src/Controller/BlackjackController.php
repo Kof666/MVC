@@ -57,13 +57,25 @@ class BlackjackController extends AbstractController
         // }
         //skapa en str som innehåller alla kort för att spara i db. exploe() sen när du hämtat den..
         $game->setBankHand($gameInfo->bankHand());
-        $test =  $game->getBankHand();
+        $bankHand =  $game->getBankHand();
+
+        $hands = $gameInfo->playerHand();
+        $game->setPlayerHandOne($hands[0]);
+        if(isset($hands[1])) {
+            $game->setPlayerHandTwo($hands[1]);
+        }
+        if(isset($hands[2])) {
+            $game->setPlayerHandThree($hands[2]);
+        } 
+
         $entityManager->persist($game);
         $entityManager->flush();
 
         $data = [
             'blackjack' => $blackjack,
-            'test' => $test
+            'bank_hand' => $bankHand,
+            'hands' => $hands,
+            'game_info' => $gameInfo
         ];
 
         return $this->render('proj/view_all.html.twig', $data);
@@ -112,29 +124,50 @@ class BlackjackController extends AbstractController
         $entityManager = $doctrine->getManager();
         $hands = $entityManager->getRepository(Game::class)->findById($id);
 
-        // $hands = $gameRepository->findById($id);
-        // $bankHand =  $hands->getBankHand();
-
-        // $entityManager->persist($hands);
-        // $entityManager->flush();
-
         foreach($hands as $key => $value) {
-            // $pieces = $value['bank_hand'];
             $pieces = explode("\"", $value['bank_hand']);
+            $pieces2 = explode("\"", $value['player_hand_one']);
+            $pieces3 = explode("\"", $value['player_hand_two']);
+            $pieces4 = explode("\"", $value['player_hand_three']);
         }
-        foreach($pieces as $key => $value)
-        {
-        if($key%2 == 0) //The key is uneven, skip
-            continue;
-        //do your stuff
-        $cards[] = $value;
+        foreach($pieces as $key => $value) {
+            if($key%2 == 0)
+                continue;
+            $bankHand[] = $value;
+        }
+
+        foreach($pieces2 as $key => $value) {
+            if($key%2 == 0)
+                continue;
+            $playerHandOne[] = $value;
+        }
+
+        foreach($pieces3 as $key => $value) {
+            if($key%2 == 0)
+                continue;
+            $playerHandTwo[] = $value;
+        }
+
+        foreach($pieces4 as $key => $value) {
+            if($key%2 == 0)
+                continue;
+            $playerHandThree[] = $value;
+        }
+
+        $playerHands = array($playerHandOne);
+        if(isset($playerHandTwo)) {
+            array_push($playerHands, $playerHandTwo);
+        }
+        if(isset($playerHandThree)) {
+            array_push($playerHands, $playerHandThree);
         }
 
         $data = [
             'hands' => $hands,
             'pieces' => $pieces,
-            'cards' => $cards,
-            // 'bank_hand' => $bankHand
+            'bank_hand' => $bankHand,
+            'player_hands' => $playerHands,
+
         ];
 
         return $this->render('proj/view_hand.html.twig', $data);
@@ -150,6 +183,7 @@ class BlackjackController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $blackjack = $entityManager->getRepository(Blackjack::class)->find($id);
+        $playerId = $blackjack->getID();
 
         if (!$blackjack) {
             throw $this->createNotFoundException(
@@ -163,6 +197,18 @@ class BlackjackController extends AbstractController
         );
 
         $entityManager->remove($blackjack);
+        $entityManager->flush();
+
+        $entityManager = $doctrine->getManager();
+        $game = $entityManager->getRepository(Game::class)->findById($playerId);
+
+        foreach($game as $key => $value) {
+            $gameId = $value['id'];
+        }
+
+        $game = $entityManager->getRepository(Game::class)->find($gameId);
+
+        $entityManager->remove($game);
         $entityManager->flush();
 
         return $this->redirectToRoute('players_view_all');
@@ -216,31 +262,56 @@ class BlackjackController extends AbstractController
         $entityManager = $doctrine->getManager();
         /** @phpstan-ignore-next-line */
         $entityManager->getRepository(Blackjack::class)->deleteAll();
+        /** @phpstan-ignore-next-line */
+        $entityManager->getRepository(Game::class)->deleteAll();
 
-        $blackjack1 = new Blackjack();
-        $blackjack1->setName('Default Player 1');
-        $blackjack1->setAccount(1000);
-        $blackjack1->setNumOfHands(1);
+        for($i = 1; $i < 4; $i++) {
+            $blackjack1 = new Blackjack();
+            $blackjack1->setName("Default Player $i");
+            $blackjack1->setAccount(1000);
+            $blackjack1->setNumOfHands($i);
 
-        $blackjack2 = new Blackjack();
-        $blackjack2->setName('Default Player 2');
-        $blackjack2->setAccount(900);
-        $blackjack2->setNumOfHands(2);
+            $entityManager->persist($blackjack1);
+            $entityManager->flush();
+        
+            $blackjack = $entityManager->getRepository(Blackjack::class)->findByName("Default Player $i");
+            // $playerId = $blackjack->getId();
+    
+            foreach($blackjack as $key => $value) {
+                $playerId = $value['id'];
+            }
+    
+            $player = new PlayBlackjack();
 
-        $blackjack3 = new Blackjack();
-        $blackjack3->setName('Default Player 3');
-        $blackjack3->setAccount(800);
-        $blackjack3->setNumOfHands(3);
+            $player->dealFirstPlayerCard($blackjack1->getNumOfHands());
+            $player->dealFirstBankCard($blackjack1->getNumOfHands());
+            $player->dealSecondPlayerCard($blackjack1->getNumOfHands());
+            $player->dealSecondBankCard($blackjack1->getNumOfHands());
+    
+            $game1 = new Game();
+            $game1->setPlayerId($playerId);
+            $game1->setBankHand($player->bankHand());
+            // $game1->setPlayerHandOne($player->playerHand());
+
+            $hands = $player->playerHand();
+            $game1->setPlayerHandOne($hands[0]);
+            if(isset($hands[1])) {
+                $game1->setPlayerHandTwo($hands[1]);
+            }
+            if(isset($hands[2])) {
+                $game1->setPlayerHandThree($hands[2]);
+            } 
+
+
+
+            $entityManager->persist($game1);
+            $entityManager->flush();
+        }   
 
         $this->addFlash(
             'notice',
             'You reseted the database'
         );
-
-        $entityManager->persist($blackjack1);
-        $entityManager->persist($blackjack2);
-        $entityManager->persist($blackjack3);
-        $entityManager->flush();
 
         return $this->redirectToRoute('players_view_all');
     }

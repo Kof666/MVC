@@ -37,6 +37,24 @@ class GameRepository extends ServiceEntityRepository
         return $resultSet->fetchAllAssociative();
     }
 
+    /**
+     * Deletes all from game
+     *
+     * @return array<string|int, mixed> $resultSet
+     */
+    public function deleteAll(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            DELETE FROM game
+        ';
+
+        $resultSet = $conn->executeQuery($sql);
+
+        return $resultSet->fetchAllAssociative();
+    }
+
     //    /**
     //     * @return Game[] Returns an array of Game objects
     //     */
