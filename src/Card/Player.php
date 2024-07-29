@@ -119,26 +119,6 @@ class Player
     }
 
     /**
-     * Get hands
-     *
-     * @return array<string|int, mixed>
-     */
-    public function getHands(): array
-    {
-        return $this->hands;
-    }
-
-    /**
-     * Set hands
-     *
-     * @param mixed $card
-     */
-    public function setHands($card): void
-    {
-        $this->hands[] = $card;
-    }
-
-    /**
      * Get the number of hands player have
      *
      * @return int $numOfHands

@@ -3,20 +3,28 @@
 {% block main %}
 <div class="blackjack">
     <h1>Blackjack [bet]</h1>
-    {{ dump(hands) }}
+    {# {{ dump(hands) }} #}
     {# {{ dump(pieces) }} #}
     {# {{ dump(cards) }} #}
-    {{ dump(player_hands) }}
-    {% for hand in hands %}
+    {# {{ dump(player_hands) }} #}
+    {# {% for hand in hands %}
     <p class="info">id: {{ hand.bank_hand|e }}</p>
-    {% endfor %}
+    {% endfor %} #}
 
-    <p class="info">id: {{ pieces[1] }}</p>
-
+    {# <p class="info">id: {{ pieces[1] }}</p> #}
+    <form class="form_card21" method="post" action="">
+        <p>
+            <input type="submit" name="quit" value="quit"
+                onClick="this.form.action='{{ path('proj') }}';"
+            >       
+            <input type="submit" name="back" value="back"
+            onClick="this.form.action='{{ path('players_view_all') }}';"
+            > 
+        </p>
+    </form>
     <div class="card_flex">
         <div class="game_info">
             <h2>Dealer</h2>
-            {# <p>points: {{ game.firstBankCard }}</p> #}
         </div>
         {% for value in bank_hand %}
         <ul class="ul-game">
@@ -37,9 +45,7 @@
     <div class="hand-flex">
         <div class="card_flex">
             <div class="game_info">
-                <h2>Players<br>hand</h2>
-                {# <p>points: {{ game.handScore[loop.index0]  }}</p> #}
-                {# <p>bet: {{ player.bets[loop.index0]  }}</p> #}
+                <h2>Player<br>hand</h2>
             </div>
             {% for card in arr %}
                 <ul class="ul-game">

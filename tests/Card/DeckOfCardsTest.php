@@ -58,6 +58,23 @@ class DeckOfCardsTest extends TestCase
     }
 
     /**
+     * Tests draw if statment and verify that empty deck schuffles
+     */
+    public function testDrawSchuffle(): void
+    {
+        $deck = new DeckOfCards();
+        for($i = 0; $i < 53; $i++) {
+            $deck->draw();
+        }
+
+        $res = $deck->cardCount();
+
+        $exp = 51;
+
+        $this->assertEquals($res, $exp);
+    }
+
+    /**
      * Tests getLast and verify that function returns an array
      */
     public function testGetLast(): void
