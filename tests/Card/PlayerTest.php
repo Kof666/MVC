@@ -130,9 +130,10 @@ class PlayerTest extends TestCase
      */
     public function testAddAccount(): void
     {
+
         $player = new Player("Name", 666, 3);
-        $exp = 666;
-        $this->assertEquals($exp, $player->getAccount());
+        $res = $player->addAccount(1);
+        $this->assertNull($res);
     }
 
     /**
