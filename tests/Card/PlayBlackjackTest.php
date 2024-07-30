@@ -93,8 +93,11 @@ class PlayBlackjackTest extends TestCase
     public function testAddPlayerHand()
     {
         $game = new PlayBlackjack();
+        $before = $game->playerHand();
         $arr = array("1", "2");
         $res = $game->addPlayerHand($arr);
+        $after = $game->playerHand();
         $this->assertNull($res);
+        $this->assertNotEquals($before, $after);
     }
 }
