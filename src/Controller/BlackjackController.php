@@ -49,13 +49,9 @@ class BlackjackController extends AbstractController
         $playerId = $blackjack->getId(); //to get id for table game
         $blackjack = $blackjackRepository->findAll();
 
-        //test to see if table game worked
         $game = new Game();
         $game->setPlayerId($playerId);
-        // for($i = 0; $i < count($gameInfo->bankHand()); $i++) {
-        //     $game->setBankHand($gameInfo->getBankHand($i));
-        // }
-        //skapa en str som innehåller alla kort för att spara i db. exploe() sen när du hämtat den..
+
         $game->setBankHand($gameInfo->bankHand());
         $bankHand =  $game->getBankHand();
 
@@ -66,7 +62,7 @@ class BlackjackController extends AbstractController
         }
         if(isset($hands[2])) {
             $game->setPlayerHandThree($hands[2]);
-        } 
+        }
 
         $entityManager->persist($game);
         $entityManager->flush();
@@ -114,14 +110,23 @@ class BlackjackController extends AbstractController
         return $this->render('proj/view_all.html.twig', $data);
     }
 
+    /**
+     * View hand by id
+     */
     #[Route('/proj/players/view/hand/{id}', name: 'hand_by_id')]
     public function viewHandById(
         ManagerRegistry $doctrine,
-
         GameRepository $gameRepository,
         int $id
     ): Response {
+        $pieces = array();
+        $pieces2 = array();
+        $pieces3 = array();
+        $pieces4 = array();
+        $bankHand = array();
+
         $entityManager = $doctrine->getManager();
+        /** @phpstan-ignore-next-line */
         $hands = $entityManager->getRepository(Game::class)->findById($id);
 
         foreach($hands as $key => $value) {
@@ -131,29 +136,34 @@ class BlackjackController extends AbstractController
             $pieces4 = explode("\"", $value['player_hand_three']);
         }
         foreach($pieces as $key => $value) {
-            if($key%2 == 0)
+            if($key % 2 == 0) {
                 continue;
+            }
             $bankHand[] = $value;
         }
 
         foreach($pieces2 as $key => $value) {
-            if($key%2 == 0)
+            if($key % 2 == 0) {
                 continue;
+            }
             $playerHandOne[] = $value;
         }
 
         foreach($pieces3 as $key => $value) {
-            if($key%2 == 0)
+            if($key % 2 == 0) {
                 continue;
+            }
             $playerHandTwo[] = $value;
         }
 
         foreach($pieces4 as $key => $value) {
-            if($key%2 == 0)
+            if($key % 2 == 0) {
                 continue;
+            }
             $playerHandThree[] = $value;
         }
 
+        /** @phpstan-ignore-next-line */
         $playerHands = array($playerHandOne);
         if(isset($playerHandTwo)) {
             array_push($playerHands, $playerHandTwo);
@@ -183,6 +193,7 @@ class BlackjackController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $blackjack = $entityManager->getRepository(Blackjack::class)->find($id);
+        /** @phpstan-ignore-next-line */
         $playerId = $blackjack->getID();
 
         if (!$blackjack) {
@@ -200,14 +211,16 @@ class BlackjackController extends AbstractController
         $entityManager->flush();
 
         $entityManager = $doctrine->getManager();
+        /** @phpstan-ignore-next-line */
         $game = $entityManager->getRepository(Game::class)->findById($playerId);
 
         foreach($game as $key => $value) {
             $gameId = $value['id'];
         }
 
+        /** @phpstan-ignore-next-line */
         $game = $entityManager->getRepository(Game::class)->find($gameId);
-
+        /** @phpstan-ignore-next-line */
         $entityManager->remove($game);
         $entityManager->flush();
 
@@ -233,7 +246,6 @@ class BlackjackController extends AbstractController
             );
         }
 
-        // $session->get("player", $player);
         $player = new Player($blackjack->getName(), $blackjack->getAccount(), $blackjack->getNumOfHands());
 
         $session->set("player", $player);
@@ -259,6 +271,8 @@ class BlackjackController extends AbstractController
     public function reset(
         ManagerRegistry $doctrine
     ): Response {
+        $playerId = 0;
+
         $entityManager = $doctrine->getManager();
         /** @phpstan-ignore-next-line */
         $entityManager->getRepository(Blackjack::class)->deleteAll();
@@ -273,25 +287,27 @@ class BlackjackController extends AbstractController
 
             $entityManager->persist($blackjack1);
             $entityManager->flush();
-        
+
+            /** @phpstan-ignore-next-line */
             $blackjack = $entityManager->getRepository(Blackjack::class)->findByName("Default Player $i");
-            // $playerId = $blackjack->getId();
-    
+
             foreach($blackjack as $key => $value) {
                 $playerId = $value['id'];
             }
-    
-            $player = new PlayBlackjack();
 
+            $player = new PlayBlackjack();
+            /** @phpstan-ignore-next-line */
             $player->dealFirstPlayerCard($blackjack1->getNumOfHands());
+            /** @phpstan-ignore-next-line */
             $player->dealFirstBankCard($blackjack1->getNumOfHands());
+            /** @phpstan-ignore-next-line */
             $player->dealSecondPlayerCard($blackjack1->getNumOfHands());
+            /** @phpstan-ignore-next-line */
             $player->dealSecondBankCard($blackjack1->getNumOfHands());
-    
+
             $game1 = new Game();
             $game1->setPlayerId($playerId);
             $game1->setBankHand($player->bankHand());
-            // $game1->setPlayerHandOne($player->playerHand());
 
             $hands = $player->playerHand();
             $game1->setPlayerHandOne($hands[0]);
@@ -300,13 +316,13 @@ class BlackjackController extends AbstractController
             }
             if(isset($hands[2])) {
                 $game1->setPlayerHandThree($hands[2]);
-            } 
+            }
 
 
 
             $entityManager->persist($game1);
             $entityManager->flush();
-        }   
+        }
 
         $this->addFlash(
             'notice',

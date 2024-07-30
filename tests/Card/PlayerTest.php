@@ -63,7 +63,7 @@ class PlayerTest extends TestCase
         $player->setAccount(666);
         $res = $player->getAccount();
         $exp = 666;
-        
+
         $this->assertEquals($res, $exp);
     }
 
@@ -82,7 +82,7 @@ class PlayerTest extends TestCase
         $exp1 = 11;
         $exp2 = 22;
         $exp3 = 33;
-        
+
         $this->assertEquals($res1, $exp1);
         $this->assertEquals($res2, $exp2);
         $this->assertEquals($res3, $exp3);
@@ -95,7 +95,7 @@ class PlayerTest extends TestCase
     {
         $player = new Player("Name", 666, 3);
         $res = $player->getBets();
-        
+
         $this->assertIsArray($res);
     }
 
@@ -108,7 +108,7 @@ class PlayerTest extends TestCase
         $player->bet(11, 22, 33);
         $res = $player->getBet(1);
         $exp = 22;
-        
+
         $this->assertEquals($res, $exp);
     }
 
@@ -121,7 +121,7 @@ class PlayerTest extends TestCase
         $player->bet(11, 22, 33);
         $player->clearBets();
         $res = $player->getBets();
-        
+
         $this->assertEmpty($res);
     }
 
@@ -131,10 +131,8 @@ class PlayerTest extends TestCase
     public function testAddAccount(): void
     {
         $player = new Player("Name", 666, 3);
-        $res = $player->getAccount();
         $exp = 666;
-
-        $this->assertEquals($res, $exp);
+        $this->assertEquals($exp, $player->getAccount());
     }
 
     /**
@@ -144,7 +142,7 @@ class PlayerTest extends TestCase
     {
         $player = new Player("Name", 666, 3);
         $res = $player->getNumOfHands();
-        
+
         $this->assertIsInt($res);
     }
 
@@ -156,7 +154,7 @@ class PlayerTest extends TestCase
         $player = new Player("Name", 666, 3);
         $res = $player->getNumOfHands();
         $exp = 3;
-        
+
         $this->assertEquals($res, $exp);
     }
 }

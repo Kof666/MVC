@@ -16,7 +16,7 @@ class GameRepository extends ServiceEntityRepository
         parent::__construct($registry, Game::class);
     }
 
-        /**
+    /**
      * Find hand by id
      *
      * @param int $id id number of hand

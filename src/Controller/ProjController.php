@@ -41,7 +41,8 @@ class ProjController extends AbstractController
      * about route for blackjack
      */
     #[Route("/proj/about", name: "about_proj")]
-    public function aboutBj(): Response {
+    public function aboutBj(): Response
+    {
 
         return $this->render('proj/about_proj.html.twig');
     }
@@ -68,7 +69,8 @@ class ProjController extends AbstractController
      * route for database documentation
      */
     #[Route("/proj/about/database", name: "database_proj")]
-    public function databaseBj(): Response {
+    public function databaseBj(): Response
+    {
 
         return $this->render('proj/database_proj.html.twig');
     }

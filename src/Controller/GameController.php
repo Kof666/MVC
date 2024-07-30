@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Game;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\GameRepository;
