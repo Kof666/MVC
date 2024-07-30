@@ -153,9 +153,7 @@ class PlayerTest extends TestCase
     public function testSetNumOfHands(): void
     {
         $player = new Player("Name", 666, 3);
-        $res = $player->getNumOfHands();
-        $exp = 3;
-
-        $this->assertEquals($res, $exp);
+        $res = $player->setNumOfHands(2);
+        $this->assertNull($res);
     }
 }

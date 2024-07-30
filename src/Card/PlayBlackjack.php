@@ -83,25 +83,6 @@ class PlayBlackjack
     }
 
     /**
-     * Set bankScore
-     *
-     * @return int
-     */
-    // public function setBankScore(): int
-    // {
-    //     return $this->bankScore;
-    // }
-
-    /**
-     * Set bankScore for tests
-     *
-     */
-    // public function setBankScoreTest(int $score): void
-    // {
-    //     $this->bankScore = $score;
-    // }
-
-    /**
      * Get playerScore
      *
      * @return int $playerScore
@@ -110,25 +91,6 @@ class PlayBlackjack
     {
         return $this->playerScore;
     }
-
-    /**
-     * Set playerScore for tests
-     *
-     * @return int $playerScore
-     */
-    // public function setPlayerScore(): int
-    // {
-    //     return $this->playerScore;
-    // }
-
-    /**
-     * Set playerScore for tests
-     *
-     */
-    // public function setPlayerScoreTest(int $score): void
-    // {
-    //     $this->playerScore = $score;
-    // }
 
     /**
      * Get Deck of cards
