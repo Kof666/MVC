@@ -133,7 +133,7 @@ class PlayerTest extends TestCase
 
         $player = new Player("Name", 666, 3);
         $res = $player->addAccount(1);
-        $this->assertNull($res);
+        $this->assertTrue($res);
     }
 
     /**
@@ -154,6 +154,6 @@ class PlayerTest extends TestCase
     {
         $player = new Player("Name", 666, 3);
         $res = $player->setNumOfHands(2);
-        $this->assertNull($res);
+        $this->assertTrue($res);
     }
 }

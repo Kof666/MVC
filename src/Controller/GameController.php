@@ -37,28 +37,4 @@ class GameController extends AbstractController
 
         return $this->render('proj/view_all_hands.html.twig', $data);
     }
-
-    /**
-     * Create
-     */
-    // #[Route('/blackjack/create', name: 'blackjack_create')]
-    // public function createGame(
-    //     GameRepository $gameRepository,
-    //     ManagerRegistry $doctrine,
-    //     SessionInterface $session
-    // ): Response {
-    //     // $player = $session->get("player");
-    //     $entityManager = $doctrine->getManager();
-    //     $game = new Game();
-    //     $game->getPlayerId(100);
-    //     $game->setBankHand("hep");
-    //     $entityManager->persist($game);
-    //     $entityManager->flush();
-
-    //     // $data = [
-    //     //     'game' => $game
-    //     // ];
-
-    //     return $this->render('proj/view_all.html.twig');
-    // }
 }

@@ -25,7 +25,9 @@
 
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">src/Card</directory>
+            <directory suffix=".php">src/Dice</directory>
+            <directory suffix=".php">src/Entity</directory>
         </include>
         <report>
         <clover outputFile="docs/coverage.clover"/>

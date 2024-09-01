@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class testLibraryController extends WebTestCase
 {
-    // #[Route("/game", name: "card_21")]
+    #[Route("/game", name: "card_21")]
     public function testIndex(): void
     {
 

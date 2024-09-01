@@ -77,6 +77,17 @@ class PlayBlackjack
         return $this->bankScore;
     }
 
+    /**
+     * Set bankScore for phpunit tests
+     *
+     * @param int $value  new value of bankhand
+     *
+     */
+    public function setBankScoreTest($value): void
+    {
+        $this->bankScore = $value;
+    }
+
     public function getFirstBankCard(): int
     {
         return $this->firstBankCard;
@@ -102,6 +113,12 @@ class PlayBlackjack
         return $this->deck;
     }
 
+    public function countDeck(): mixed
+    {
+        $res = $this->deck->cardCount();
+        return $res;
+    }
+
     public function getApiDeck(): mixed
     {
         $deck = $this->deck->getAsString();
@@ -115,6 +132,7 @@ class PlayBlackjack
 
     /**
      * @param array<string|int, mixed> $arr
+     * @return void
      */
     public function addPlayerHand(array $arr): void
     {
@@ -136,6 +154,17 @@ class PlayBlackjack
         $this->handScore[$num] = $this->handScore[$num] + $score;
     }
 
+    /**
+     * Set handScore for phpunit tests
+     *
+     * @param int $num  index number of array
+     * @param int $value    new value for handscore at specific index
+     */
+    public function setHandScoreTest($num, $value): void
+    {
+        $this->handScore[$num] = $value;
+    }
+
     public function getHandScore(): mixed
     {
         return $this->handScore;
@@ -152,14 +181,12 @@ class PlayBlackjack
 
         //first card for player
         for($i = 1; $i < $num + 1; $i++) {
-            if($this->playerScore <= 21) {
-                $draw = $this->deck->draw();
-                $value = $draw->getValue();
-                $this->addHandScore($value);
-                if($draw) {
-                    $hand = array();
-                    $hand[] =  $draw->getAsString();
-                }
+            $draw = $this->deck->draw();
+            $value = $draw->getValue();
+            $this->addHandScore($value);
+            if($draw) {
+                $hand = array();
+                $hand[] =  $draw->getAsString();
             }
             $this->addPlayerHand($hand);
         }
@@ -173,14 +200,12 @@ class PlayBlackjack
     public function dealSecondPlayerCard($num): void
     {
         for($i = 1; $i < $num + 1; $i++) {
-            if($this->playerScore <= 21) {
-                $draw = $this->deck->draw();
-                $value = $draw->getValue();
-                $this->hitHandScore($i - 1, $value);
-                if($draw) {
-                    $hand =  $draw->getAsString();
-                    $this->hitPlayerHand($i - 1, $hand);
-                }
+            $draw = $this->deck->draw();
+            $value = $draw->getValue();
+            $this->hitHandScore($i - 1, $value);
+            if($draw) {
+                $hand =  $draw->getAsString();
+                $this->hitPlayerHand($i - 1, $hand);
             }
         }
     }
@@ -273,6 +298,8 @@ class PlayBlackjack
      * Get BankHand
      *
      * @param int $num  index number of array
+     *
+     * @return string
      */
     public function getbankHand($num): mixed
     {

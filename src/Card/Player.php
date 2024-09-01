@@ -112,10 +112,13 @@ class Player
      * Add value to account
      *
      * @param int $amount   value to add to account
+     * @return boolean
      */
-    public function addAccount($amount): void
+    public function addAccount($amount): bool
     {
         $this->account = $this->account + $amount;
+
+        return true;
     }
 
     /**
@@ -132,10 +135,13 @@ class Player
      * Set the number of hands player have
      *
      * @param int $num  new value
+     * @return boolean
      */
-    public function setNumOfHands($num): void
+    public function setNumOfHands($num): bool
     {
         $this->numOfHands = $num;
+
+        return true;
     }
 
     /**

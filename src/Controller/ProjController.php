@@ -34,7 +34,11 @@ class ProjController extends AbstractController
             "game" => $game
         ];
 
-        return $this->render('proj/index.html.twig', $data);
+        // return $this->render('proj/index.html.twig', $data);
+
+        return $this->render('proj/index.html.twig', [
+            'controller_name' => 'ProjController'
+        ]);
     }
 
     /**
@@ -44,7 +48,11 @@ class ProjController extends AbstractController
     public function aboutBj(): Response
     {
 
-        return $this->render('proj/about_proj.html.twig');
+        // return $this->render('proj/about_proj.html.twig');
+
+        return $this->render('proj/about_proj.html.twig', [
+            'controller_name' => 'ProjController'
+        ]);
     }
 
     /**
@@ -62,7 +70,11 @@ class ProjController extends AbstractController
             "player" => $player
         ];
 
-        return $this->render('proj/api.html.twig', $data);
+        // return $this->render('proj/api.html.twig', $data);
+
+        return $this->render('proj/api.html.twig', [
+            'controller_name' => 'ProjController'
+        ]);
     }
 
     /**
@@ -72,7 +84,11 @@ class ProjController extends AbstractController
     public function databaseBj(): Response
     {
 
-        return $this->render('proj/database_proj.html.twig');
+        // return $this->render('proj/database_proj.html.twig');
+
+        return $this->render('proj/database_proj.html.twig', [
+            'controller_name' => 'ProjController'
+        ]);
     }
 
     /**

@@ -17,15 +17,27 @@ class Game
     #[ORM\Column(nullable: true)]
     private ?int $playerId = null;
 
+    /**
+     * @var array<string|int, mixed>|null
+     */
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private ?array $bankHand = null;
 
+    /**
+     * @var array<string|int, mixed>|null
+     */
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private ?array $playerHandOne = null;
 
+    /**
+     * @var array<string|int, mixed>|null
+     */
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private ?array $playerHandTwo = null;
 
+    /**
+     * @var array<string|int, mixed>|null
+     */
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private ?array $playerHandThree = null;
 
@@ -46,11 +58,18 @@ class Game
         return $this;
     }
 
+    /**
+     * @return array<string|int, mixed>|null
+     */
     public function getBankHand(): ?array
     {
         return $this->bankHand;
     }
 
+    /**
+     * @param array<string|int, mixed>|null $bankHand
+     *
+     */
     public function setBankHand(?array $bankHand): static
     {
         $this->bankHand = $bankHand;
@@ -58,11 +77,17 @@ class Game
         return $this;
     }
 
+    /**
+     * @return array<string|int, mixed>|null
+     */
     public function getPlayerHandOne(): ?array
     {
         return $this->playerHandOne;
     }
 
+    /**
+     * @param array<string|int, mixed>|null $playerHandOne
+     */
     public function setPlayerHandOne(?array $playerHandOne): static
     {
         $this->playerHandOne = $playerHandOne;
@@ -70,11 +95,17 @@ class Game
         return $this;
     }
 
+    /**
+     * @return array<string|int, mixed>|null
+     */
     public function getPlayerHandTwo(): ?array
     {
         return $this->playerHandTwo;
     }
 
+    /**
+     * @param array<string|int, mixed>|null $playerHandTwo
+     */
     public function setPlayerHandTwo(?array $playerHandTwo): static
     {
         $this->playerHandTwo = $playerHandTwo;
@@ -82,11 +113,17 @@ class Game
         return $this;
     }
 
+    /**
+     * @return array<string|int, mixed>|null $playerHandThree
+     */
     public function getPlayerHandThree(): ?array
     {
         return $this->playerHandThree;
     }
 
+    /**
+     * @param array<string|int, mixed>|null $playerHandThree
+     */
     public function setPlayerHandThree(?array $playerHandThree): static
     {
         $this->playerHandThree = $playerHandThree;
