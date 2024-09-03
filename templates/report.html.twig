@@ -130,8 +130,22 @@
         
         <a href="{{ path('report') }}">top of page</a>
         <h2 id="kmom07/10">kmom07/10</h2>
-        <p>Här kommer redovisningstexten för detta kursmoment.</p>
+        <h3>Krav 1-3 Webbplats</h3>
+            <p>Jag valde i projektet att vidareutveckla mitt kortspel 21 till en variant av Blackjack. I dessa krav börjar vi med att strukturera upp en landningssida och en about sida. Efter detta handlar det mestadels om utseendet och dokumentation.</p>
+            <p>För att skapa en helt annan design till projektets sidor valde jag att skapa en alternativ base template. Den innehåller html strukturen med tags för head, body, header, main, footer etc. Denna template importeras i samtliga templates med hjälp av twigs exdends som ger ramen för utseendet på webbplatsen. Så när jag skapat ett alternativt template kan jag enkelt importera den till projektets sidor och på så sätt skapa en ny ram för utseendet med helt annorlunda header, footer etc. Jag la även till en entry i min webbpack.config.js fil som gav mej en till ram för style etc i asset mappen. den första heter app.js och den nya proj.js. dom två olika base templates jag har får varsin entry och jag kan på så sätt skapa två helt olika css styles, men även återanvända mycke css och slippa upprepa mej i onödan. Angående dokumentationen har det mest handlat om att hålla detta uppdaterat då vi i tidigare kursmoment installerat och testat oss fram här. Jag är glad att jag tidigare lagt lite tid på min README.md då andra delar som kod täckningen och testning av naturliga skäl med mycke ny kod tar ganska mycke tid att hålla uppdaterad.</p>
+    
+        <h3>krav 4 JSON API</h3>
+            <p>Här har jag försökt att skapa några relevanta json api på platsen proj/api. Jag har lite svårt att veta vad som är relevant när jag inte riktigt greppat syftet helt och hållet. De api jag skapat här är i alla fall ett som visar korten som finns kvar i kortleken, ett som visar dom kort banken och spelare har på handen, ett som visar samtliga spelare som är sparade i databasen och sen två stycken som har post routes. Det ena lägger till ett kort till bankens hand och den andra är en sökfunktion i databasen där du kan söka efter en specifik spelare via namn. Samtliga länkar och knappar är klickbara och jag har lagt en target=”_blank” så att webbrowsern öppnar sidan i en ny flik. Jag tyckte det kändes mer användarvänligt då json routern inte har möjlighet till en tillbaka knapp eller liknande.</p>
 
+        <h3>Krav 5: ORM</h3>
+            <p>Här krånglade jag till det lite i början då jag inte riktigt tänkte mej för. Jag ville hålla det enkelt men började lite väl enkelt. Jag började med att jag ville kunna spara information om spelare och gjorde en tabell för det som jag döpte till Blackjack. Senare ville jag även kunna spara dom kort banken och spelare har på hand som fick namnet game. Dessa val av namn är lite förvirrande. Jag valde att skapa en kolumn i tabellen Game som bör innehålla spelarens namn och på detta sätt hantera relationen mellan tabellerna. Kanske är mera rätt att skapa en kopplingstabell men i och med att databasen är så pass liten med enbart två tabeller kände jag att detta kunde va ok här.</p>
+            <p>Enhet Testningen slukade ganska mycket tid för mig här. I tidigare kursmoment lyckades jag skapa test för routes i controllern. Dessa test testade responsen och på så sätt fick jag kodtäckning på både Entity och Repository. Men i projektet har jag nog jobbat lite annorlunda med route och jag fick inte dessa test att fungera. Jag la nog för mycket tid och vikt vid detta innan jag bytte strategi och gick över till att helt enkelt skapa test för själva Entity klasserna istället. Jag valde till slut att excludera Controller och Repository klasserna och nöja mej där för denna gång.</p>
+
+        <h3>Sammanfattning kursen</h3>
+            <p>Projektet var en rolig avslutning på den här kursen. Som vanligt kan jag känna att det kanske  slukade lite för mycket tid men det börjar jag vänja mej vid nu. Svårt att veta om jag är långsam eller om projektet är lite väl omfattande men det lutar väl åt att det faller på mig när det återkommer. Det som slukade mest tid för mig var enhets testningen. Här kan jag kanske försöka lära mig att eventuellt släppa vissa saker (som test av Controller klasser) och jobba vidare med andra saker för att få bättre perspektiv och kanske bli lite effektivare.</p>
+            <p>Jag tycker att detta var en rolig och givande kurs. Roligt att testa på både objektorienterad webb programmering, enhets testning och dokumentation. Jag tycker att kursen var bra genomförd och ganska begriplig.</p>
+    
+        <a href="{{ path('report') }}">top of page</a>
     </div>
 </div>
 {% endblock %}

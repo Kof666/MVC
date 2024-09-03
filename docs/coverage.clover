@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1725226639">
-  <project timestamp="1725226639">
+<coverage generated="1725335522">
+  <project timestamp="1725335522">
     <file name="/home/kb/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="7" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="16" coveredelements="16"/>
@@ -43,25 +43,25 @@
       <line num="46" type="method" name="getAsString" visibility="public" complexity="6" crap="6" count="26"/>
       <line num="48" type="stmt" count="26"/>
       <line num="49" type="stmt" count="26"/>
-      <line num="50" type="stmt" count="12"/>
-      <line num="51" type="stmt" count="26"/>
-      <line num="52" type="stmt" count="15"/>
-      <line num="53" type="stmt" count="23"/>
-      <line num="54" type="stmt" count="13"/>
-      <line num="55" type="stmt" count="19"/>
-      <line num="56" type="stmt" count="18"/>
+      <line num="50" type="stmt" count="13"/>
+      <line num="51" type="stmt" count="25"/>
+      <line num="52" type="stmt" count="14"/>
+      <line num="53" type="stmt" count="22"/>
+      <line num="54" type="stmt" count="17"/>
+      <line num="55" type="stmt" count="13"/>
+      <line num="56" type="stmt" count="12"/>
       <line num="58" type="stmt" count="2"/>
       <line num="67" type="method" name="getValue" visibility="public" complexity="5" crap="5" count="18"/>
       <line num="69" type="stmt" count="18"/>
       <line num="70" type="stmt" count="18"/>
-      <line num="71" type="stmt" count="4"/>
-      <line num="72" type="stmt" count="16"/>
+      <line num="71" type="stmt" count="2"/>
+      <line num="72" type="stmt" count="18"/>
       <line num="73" type="stmt" count="4"/>
-      <line num="74" type="stmt" count="15"/>
-      <line num="75" type="stmt" count="2"/>
-      <line num="76" type="stmt" count="15"/>
+      <line num="74" type="stmt" count="17"/>
+      <line num="75" type="stmt" count="6"/>
+      <line num="76" type="stmt" count="16"/>
       <line num="77" type="stmt" count="3"/>
-      <line num="79" type="stmt" count="15"/>
+      <line num="79" type="stmt" count="14"/>
       <metrics loc="82" ncloc="59" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="31" elements="35" coveredelements="35"/>
     </file>
     <file name="/home/kb/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php">
@@ -215,7 +215,7 @@
     </file>
     <file name="/home/kb/dbwebb-kurser/mvc/me/report/src/Card/PlayBlackjack.php">
       <class name="App\Card\PlayBlackjack" namespace="global">
-        <metrics complexity="60" methods="31" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="120" coveredstatements="120" elements="151" coveredelements="151"/>
+        <metrics complexity="60" methods="31" coveredmethods="30" conditionals="0" coveredconditionals="0" statements="120" coveredstatements="119" elements="151" coveredelements="149"/>
       </class>
       <line num="55" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="27"/>
       <line num="57" type="stmt" count="27"/>
@@ -366,9 +366,9 @@
       <line num="433" type="stmt" count="1"/>
       <line num="434" type="stmt" count="1"/>
       <line num="437" type="stmt" count="1"/>
-      <line num="438" type="stmt" count="1"/>
+      <line num="438" type="stmt" count="0"/>
       <line num="441" type="stmt" count="1"/>
-      <metrics loc="444" ncloc="305" classes="1" methods="31" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="120" coveredstatements="120" elements="151" coveredelements="151"/>
+      <metrics loc="444" ncloc="305" classes="1" methods="31" coveredmethods="30" conditionals="0" coveredconditionals="0" statements="120" coveredstatements="119" elements="151" coveredelements="149"/>
     </file>
     <file name="/home/kb/dbwebb-kurser/mvc/me/report/src/Card/Player.php">
       <class name="App\Card\Player" namespace="global">
@@ -545,6 +545,6 @@
       <line num="93" type="stmt" count="1"/>
       <metrics loc="96" ncloc="96" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="27" coveredelements="27"/>
     </file>
-    <metrics files="12" loc="1668" ncloc="1152" classes="12" methods="122" coveredmethods="122" conditionals="0" coveredconditionals="0" statements="350" coveredstatements="350" elements="472" coveredelements="472"/>
+    <metrics files="12" loc="1668" ncloc="1152" classes="12" methods="122" coveredmethods="121" conditionals="0" coveredconditionals="0" statements="350" coveredstatements="349" elements="472" coveredelements="470"/>
   </project>
 </coverage>

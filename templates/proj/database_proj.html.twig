@@ -4,11 +4,39 @@
 
 {% block main %}
 <div class="blackjack">
-    <h1>Databas dokumentation</h1><br>
-    <p>Här kommer det text om databasen...</p>
+    <h1>Databas dokumentation</h1>
+    <p>
+        Här hittar du lite information om databasen som används på webbplatsen. Jag valde att använda sqlite3 då detta är en enklare databas. Databasen har endast två stycken tabeller. En som hanterar spelare och en som hanterar spelarens och bankens kort/händer. Tabellerna blev lite dumt döpta då jag först bara tänkte spara allt i en tabell för enkelhetens skull. Senare insåg jag att jag kanske förenklade lite väl mycket..
+    </p><br>
 
-    <img src="{{ asset('img/er_proj.png') }}" width="500" alt="er diagram">
-
+    <div class="ram">
+        <h3>ER diagram</h3>
+        <img src="{{ asset('img/er_proj.png') }}" width="500" alt="er diagram">
+        <h3>
+            Databasens tabeller:
+        </h3>
+        <p>
+            Blackjack:
+        </p>
+        <p>
+            Denna tabell hanterar information om spelaren, namn, konto etc.
+        </p>
+        <p>
+            Game:
+        </p>
+        <p>
+            Denna hanterar korten/händerna för både spelaren och banken.
+        </p>
+    </div><br>
+    <p>
+        I och med att tabellerna automatiskt får ett id attribut så gav jag Game ett attribut som jag kallat för player_id, dvs Blackjack tabellens id. Med hjälp av detta kan jag hantera relationen mellan tabellerna.
+    </p>
+    <p>
+        Om jag skulle jämföra arbetssätten från databas kursen och här med ORM skulle jag nog säga att det kan finnas både för- och nackdelar med båda sätten. Jag tyckte det kändes enkelt att komma igång med doctrine och ORM ändå. Enkla steg för att skapa databasen och sina tabeller. Och lätt begripligt när man får upp sina tabeller som entity klasser. Väldigt likt resterande objekt orienterade programmeringen. Jag kan ändå inte låta bli att tänka att det är en genväg där man som lite sämre databas programmerare kan få en chans ändå.. ORM kan ju kanske anses mer rätt i det här sammanhanget där det är en mycket enkel databas och det då kan finnas en poäng med att även databasen blir objektorienterad. Å andra sidan hamnar ju sql koden lite mer lättillgänglig och kanske då blir lite mindre säker. Att skapa som ett api för databasen så som vi gjorde i databas kursen blir ju inte bara lite säkrare utan har ju också fördelen att den som ska använda den inte behöver vara expert på sql. 
+    </p>
+    <p>
+        När det gäller enhets testningen så hittade jag ett sätt i ett tidigare kursmoment där jag testade kontrollklassens olika routes och med hjälp av den fick både Entity och Repository testat. Detta var ett WebTestCase som i huvudsak testade att responsen var ok. Då jag här arbetade lite annorlunda (kanske såhär i efterhand inser att det kan va lite felaktigt..) med routes så fungerade inte längre detta test vilket gjorde att jag istället skapade specifikt test för Entity klasserna och filtrerade bort både Controller och Repository i phpunit. 
+    </p>
 
     <a href="{{ path('about_proj') }}">tillbaka</a>
 
